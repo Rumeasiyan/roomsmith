@@ -56,8 +56,27 @@ material specifications, and a written justification for every single change.
 ## Pipeline
 
 ```
-survey → constraints → N direction specs (JSON) → prompt build → codex image_gen renders → PDF report
+survey → canonical room model → shell drawings → THEN, ONE DIRECTION AT A TIME:
+    spec → layout → measured drawings → 6 renders → QA → fix → only then the next direction
+→ PDF report
 ```
+
+### The room model comes first
+Before any direction is written, build `brief/room.json`: exact width, length, ceiling height, the
+alcove, and an **exhaustive list of every opening** with position, width, sill and head. Every
+drawing, every render prompt and every report figure is generated from it. Nothing about the room's
+geometry is ever typed twice.
+
+### Never generate a set in one batch
+Build the COMPLETE pack for direction 01. Inspect every image against the QA checklist. Fix whatever
+is wrong **in the shared code or the room model**, so the fix propagates. Only then start direction
+02. Batch generation hides a defect in image 1 and then reproduces it forty times — that is the most
+expensive mistake available in this work, and it is entirely avoidable.
+
+### Drawings are drawn, not generated
+Plans, blueprints, elevations and the isometric are produced by `scripts/drawings.py` from the room
+model. A generated image cannot be trusted with geometry; a drawing can. The plan is then passed to
+the renderer as a reference image, so the photoreal views inherit the real proportions.
 
 ### Step 1 — Survey
 Read the reference images. Write `brief/site-survey.md`. Extract dimensions from any sketch.
@@ -69,7 +88,12 @@ One JSON file per direction in `directions/NN-slug.json`, matching
 `directions/_schema.json`. Author them; do not generate them mechanically. Before writing
 direction N, re-read the theses of 1..N-1 and confirm the four-axis difference rule holds.
 
-### Step 3 — Renders
+### Step 3 — The pack (per direction, in this order)
+Seven measured drawings — plan, blueprint, isometric dollhouse, and four wall elevations — then six
+photoreal views that between them cover all four walls: `hero-in`, `hero-back`, `seated`, `corner`,
+`alcove`, `far-wall`. `scripts/make_pack.sh <direction>` does one direction and stops.
+
+### Step 3b — Renders
 `scripts/render.sh <NN-slug> <a|b>` shells out to `codex exec`, which has the `image_gen`
 tool. Prompts are built from the JSON by `scripts/build_prompts.py` so the render and the
 report can never drift apart. Two camera views per direction, both matched to an existing

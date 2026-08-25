@@ -56,7 +56,17 @@ report/                   report.html, report.pdf
    `validation`, where validation cites this room's constraints — climate, proportion,
    circulation, damp, devotional objects, budget. Also fill `risks` and `not_for`.
 
-4. **Render.** `scripts/render_all.sh` — two views per direction, each anchored to a real
+4. **Build one pack at a time.** `scripts/make_pack.sh <NN-slug>` produces the seven measured
+   drawings and the six photoreal views for ONE direction, then stops. Inspect every image against
+   the QA checklist it prints. Fix defects in `brief/room.json`, `scripts/drawings.py` or
+   `scripts/build_prompts.py` so the correction carries into every later direction, then move on.
+   Do not start the next direction until the current one passes.
+
+   Common failures, all of which must be fixed at the source: an invented door or window; a wall
+   that should be solid showing daylight; the room drawn wider than it is; furniture missing;
+   views that disagree with each other.
+
+5. **Render (batch, only once every spec is settled).** `scripts/render_all.sh` — two views per direction, each anchored to a real
    reference photograph so the client compares like with like. Resumable: existing outputs
    are skipped, so a failed run is re-run, not restarted.
 
