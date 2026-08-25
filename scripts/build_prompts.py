@@ -184,6 +184,9 @@ def build(spec, view):
     palette = ", ".join(f"{c['name']} {c['hex']} ({c['use']})" for c in spec["palette"])
     materials = ", ".join(spec["materials"])
     scene = spec["render"].get(view) or spec["render"].get("a", "")
+    newops = spec.get("layout", {}).get("new_openings") or []
+    newop_txt = ("\n\nTHE ONE EXCEPTION TO THE OPENING LIST — this direction forms a NEW opening:\n  "
+                 + "\n  ".join(newops)) if newops else ""
     layout_note = spec.get("scale_check", "")
 
     return f"""{QUALITY.format(W=W)}
@@ -191,7 +194,7 @@ def build(spec, view):
 DESIGN DIRECTION {spec['id']} - {spec['name'].upper()}
 {spec['tagline']}
 
-{SHELL}
+{SHELL}{newop_txt}
 
 {SCALE}
 

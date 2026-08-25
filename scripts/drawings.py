@@ -265,6 +265,27 @@ def draw_plan(spec=None, blueprint=False):
 
 # ---------------------------------------------------------------- ELEVATIONS
 
+def derive_elevation(spec, wall):
+    """Elevation elements inferred from the plan, so plan and elevation cannot disagree."""
+    out, eps = [], 0.08
+    for it in spec.get("layout", {}).get("plan", []):
+        x, y, w_, d_ = it["x"], it["y"], it["w"], it["d"]
+        z, h = it.get("z", 0.0), it.get("h", 0.45)
+        hit = None
+        if wall == "left" and x <= eps:
+            hit = (y, d_)
+        elif wall == "right" and x + w_ >= alcove_x(y + d_ / 2) - eps:
+            hit = (y, d_)
+        elif wall == "entrance" and y <= eps:
+            hit = (x, w_)
+        elif wall == "far" and y + d_ >= L - eps:
+            hit = (x, w_)
+        if hit:
+            out.append({"u": hit[0], "w": hit[1], "z": z, "h": h,
+                        "label": it.get("label", ""), "kind": it.get("kind", "")})
+    return out
+
+
 WALL_TITLE = {
     "entrance": "Elevation A — entrance wall (front door and window)",
     "far": "Elevation C — far wall",
@@ -343,7 +364,7 @@ def draw_elevation(wall, spec=None):
 
     # direction elements on this wall
     if spec and spec.get("layout"):
-        for el in spec["layout"].get("elevations", {}).get(wall, []):
+        for el in spec["layout"].get("elevations", {}).get(wall) or derive_elevation(spec, wall):
             x1, y1 = px(el["u"], el["z"] + el["h"])
             x2, y2 = px(el["u"] + el["w"], el["z"])
             fillc = JOIN if el.get("kind") == "built" else FURN

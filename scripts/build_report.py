@@ -15,6 +15,7 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DIRECTIONS = ROOT / "directions"
 RENDERS = ROOT / "renders"
+DRAWINGS = ROOT / "drawings"
 REFS = ROOT / "refs"
 REPORT = ROOT / "report"
 SURVEY = ROOT / "brief" / "site-survey.md"
@@ -160,7 +161,12 @@ tr { page-break-inside:avoid; }
 .dir-title .tag { font-style:italic; color:#5c554a; font-size:10.5pt; }
 .tier { font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:7.2pt; text-transform:uppercase;
      letter-spacing:.9pt; white-space:nowrap; border:.8pt solid #14140f; padding:1.4mm 2.4mm; }
-.renders { display:grid; grid-template-columns:1fr 1fr; gap:3mm; margin-bottom:3.5mm; }
+.renders { display:grid; grid-template-columns:1fr 1fr 1fr; gap:2.5mm; margin-bottom:3.5mm; }
+.dwg3 { display:grid; grid-template-columns:1fr 1fr; gap:3mm; margin-bottom:3mm; }
+.dwg3 figure:first-child { grid-row:span 2; }
+.dwg3 img, .dwg4 img { width:100%; border:.4pt solid #ddd8ce; display:block; background:#fff; }
+.dwg3 figure, .dwg4 figure { margin:0; }
+.dwg4 { display:grid; grid-template-columns:1fr 1fr; gap:3mm; }
 .renders figure { margin:0; }
 .renders img { width:100%; border:.4pt solid #ddd8ce; display:block; }
 figcaption { font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:7pt; text-transform:uppercase;
@@ -185,15 +191,43 @@ figcaption { font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:
 """
 
 
-def render_direction(spec):
-    a = data_uri(RENDERS / f"{spec['id']}-{spec['slug']}-a.png")
-    b = data_uri(RENDERS / f"{spec['id']}-{spec['slug']}-b.png")
+VIEWS = [
+    ("hero-in",   "From the front door, looking in"),
+    ("hero-back", "From the far end, looking back at the door and window"),
+    ("corner",    "High corner overview — entrance wall and the whole right flank"),
+    ("seated",    "From the settee, across the narrow width"),
+    ("alcove",    "The entering-right flank: alcove, curtained doorway and shrine"),
+    ("far-wall",  "The far end: eating table, far wall and the arch"),
+]
+
+DWGS = [
+    ("plan",           "Measured floor plan"),
+    ("iso",            "Isometric cutaway — dollhouse view"),
+    ("blueprint",      "Blueprint"),
+    ("elev-entrance",  "Elevation A — entrance wall"),
+    ("elev-right",     "Elevation B — entering-right long wall"),
+    ("elev-far",       "Elevation C — far wall"),
+    ("elev-left",      "Elevation D — entering-left long wall"),
+]
+
+
+def figure_grid(items, cls):
     figs = ""
-    for img, cap in ((a, "View A — from the front door, looking toward the rear arch"),
-                     (b, "View B — from the rear arch, looking back toward the door")):
-        if img:
-            figs += f"<figure><img src='{img}'><figcaption>{cap}</figcaption></figure>"
-    renders = f"<div class='renders'>{figs}</div>" if figs else ""
+    for src, cap in items:
+        if src:
+            figs += f"<figure><img src='{src}'><figcaption>{esc(cap)}</figcaption></figure>"
+    return f"<div class='{cls}'>{figs}</div>" if figs else ""
+
+
+def render_direction(spec):
+    stem = f"{spec['id']}-{spec['slug']}"
+    got = [(data_uri(RENDERS / f"{stem}-{v}.png"), c) for v, c in VIEWS]
+    got = [(s_, c) for s_, c in got if s_]
+    renders = figure_grid(got, "renders")
+    if not got:
+        renders = ("<div class='callout warn'><b>Photoreal views</b>Not yet generated for this "
+                   "direction. The measured drawings opposite are complete and are the "
+                   "dimensionally authoritative record.</div>")
 
     axes = "".join(
         f"<p><b>{AXIS_LABEL[k]}</b><br>{esc(spec['axes'][k])}</p>" for k in AXIS_LABEL if k in spec["axes"]
@@ -213,6 +247,11 @@ def render_direction(spec):
     keeps = ", ".join(spec.get("keeps", []))
     removes = ", ".join(spec.get("removes", []))
     solves = ", ".join(spec.get("solves", []))
+
+    plan_big = figure_grid(
+        [(data_uri(DRAWINGS / f"{stem}-{k}.png", 1500), c) for k, c in DWGS[:3]], "dwg3")
+    elevs = figure_grid(
+        [(data_uri(DRAWINGS / f"{stem}-{k}.png", 1200), c) for k, c in DWGS[3:]], "dwg4")
 
     return f"""
 <section class="page">
@@ -278,6 +317,16 @@ def render_direction(spec):
       <div class="callout warn"><b>Who this direction is wrong for</b>{esc(spec['not_for'])}</div>
     </div>
   </div>
+</section>
+
+<section class="page">
+  <h3>{esc(spec['id'])} · {esc(spec['name'])} — measured drawings</h3>
+  <p style="font-size:8.6pt;color:#6a6155">Drawn to scale from the confirmed room model, not
+  generated. Room 3120 × 6250 mm, ceiling 2900 mm. The only openings are D1 (front door) and W1
+  (window) on the entrance wall, D2 (curtained doorway, inside the alcove) and A1 (arch) on the
+  entering-right flank. Both the far wall and the entering-left long wall are solid.</p>
+  {plan_big}
+  {elevs}
 </section>
 """
 
