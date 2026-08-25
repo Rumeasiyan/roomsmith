@@ -64,7 +64,11 @@ report/                   report.html, report.pdf
 
    Common failures, all of which must be fixed at the source: an invented door or window; a wall
    that should be solid showing daylight; the room drawn wider than it is; furniture missing;
-   views that disagree with each other.
+   views that disagree with each other; **a MISSED opening** - re-read every photograph and count the
+   windows before trusting the model, because an opening you never modelled is invisible until a
+   render looks wrong; and images that read **bare** - a real home has layered textiles, objects in
+   use, plants, a full display cabinet and three or four lamps actually switched on. Bareness is a
+   prompt failure, not a style.
 
 5. **Render (batch, only once every spec is settled).** `scripts/render_all.sh` — two views per direction, each anchored to a real
    reference photograph so the client compares like with like. Resumable: existing outputs

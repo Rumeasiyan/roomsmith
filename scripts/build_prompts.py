@@ -75,7 +75,10 @@ SHELL = f"""THE REAL ROOM — these facts are fixed and must be true in the imag
 - A SMALL NARROW family hall, {W:.2f} m wide and {L:.2f} m long, ceiling {H:.2f} m.
 - On the entering-RIGHT flank there is a shallow ALCOVE: the wall steps out {ALC['depth']*1000:.0f} mm
   for {(ALC['y_end']-ALC['y_start'])*1000:.0f} mm of its length, starting {ALC['y_start']:.2f} m in from
-  the entrance. The curtained doorway sits inside this alcove.
+  the entrance. THE SECOND WINDOW W2 SITS IN THE BACK WALL OF THIS ALCOVE, with two pierced
+  ventilation grilles above it - so the alcove is a small daylit bay, the brightest corner of the
+  room, and every direction should use it as such. The household's wall shrine sits on the alcove's
+  entrance-side return wall.
 - The entering-LEFT long wall is COMPLETELY SOLID — no door, no window, no opening of any kind. It is
   the wall that carries the family's curio cabinet and their framed photographs, and it is the wall
   with the damp problem.
@@ -123,6 +126,33 @@ PERMANENT CONTENTS — present in EVERY image, never absent:
 - The household shrine with a crucifix or statue and a lit votive lamp, in daily use.
 - Framed family and wedding photographs on the wall.
 - Shoes near the front door."""
+
+RICHNESS = """RICHNESS AND DEPTH - the images must not look bare:
+This is a family home that has been lived in for decades, not an empty show flat. Render it with the
+DENSITY a real occupied local house has, held in order by the design rather than tidied away:
+- Layered textiles: a patterned or handwoven rug over the floor, cushions in two or three fabrics and
+  scales, a folded throw over an arm, a runner on the table, curtains with real weight and folds.
+- Things in use: a tea tray with cups, a covered dish, a jug of water, a newspaper, schoolbooks and a
+  pencil tin, reading glasses, a bowl of mangoes or bananas, a basket, slippers by the door.
+- The family's own objects densely present: the curio cabinet FULL of painted plaster saints, brass
+  oil lamps, souvenirs and small framed portraits on every shelf; framed wedding and graduation
+  photographs on the wall; a wall clock; a small brass or ceramic figure on a shelf.
+- Greenery: two or three real potted plants at different heights - a palm or Dracaena on the floor, a
+  small pot on a shelf, something trailing - in clay, brass or glazed pots.
+- Devotion visible: a lit votive lamp with a real flame glow, fresh flowers or a small garland at the
+  shrine, a rosary.
+- Material richness rendered honestly: visible grain and carving shadow in the teak, the slight
+  unevenness of hand-applied plaster, the weave of the upholstery, patina on brass, the sheen and
+  faint mottling of a polished oxide floor, dust-free but not sterile.
+- LIGHT IN LAYERS, and this is what makes an image read as rich rather than flat: strong directional
+  daylight from a window falling across the floor and up a wall, PLUS at least three warm artificial
+  sources actually switched on and visibly glowing - the lit curio cabinet, a pendant or wall lamp, a
+  concealed cove or strip, the votive flame. Let there be real contrast, deep shadow in the corners
+  and warm pools of light. Late afternoon or early evening reads best.
+- Compose with depth: something close to the lens in the foreground, the main furniture in the
+  midground, and a lit focal object at the back of the room.
+It should still be ORDERED - designed, not messy, and never a hoarded room. The test is that it looks
+like a home somebody loves and keeps well, photographed on a good evening."""
 
 CAMERAS = {
     "hero-in": (
@@ -199,6 +229,8 @@ DESIGN DIRECTION {spec['id']} - {spec['name'].upper()}
 {SCALE}
 
 {CONTEXT}
+
+{RICHNESS}
 
 {CAMERAS[view].format(L=L)}
 
