@@ -1,0 +1,3 @@
+prompts/
+renders/*.log
+renders/_*.log
