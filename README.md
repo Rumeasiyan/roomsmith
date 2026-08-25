@@ -12,7 +12,8 @@ Produced by the reusable **`interior-designer`** agent / **`/interior-design`** 
 |---|---|
 | `report/report.pdf` | The report — 125 pages, 20 directions, 291 justified changes, 40 renders |
 | `report/report.html` | Same, as HTML |
-| `renders/` | 40 renders, two camera views per direction |
+| `drawings/` | 147 measured drawings — per direction: plan, blueprint, isometric dollhouse and four wall elevations, all drawn by code from `brief/room.json` |
+| `renders/` | photoreal views, six camera angles per direction, covering all four walls |
 | `directions/NN-slug.json` | The authored specs — single source of truth for both renders and report |
 | `brief/site-survey.md` | Surveyed ground truth: geometry, openings, fabric, problems P1–P8, constraints |
 
@@ -28,10 +29,20 @@ Produced by the reusable **`interior-designer`** agent / **`/interior-design`** 
 6. The damp on the right wall is repaired at source before any finish, in every direction.
 7. True scale: every spec carries a `scale_check` adding up widths across the 3.12 m dimension.
 8. The register is a lived-in local family front room, not a gallery, loft or showroom.
+9. **Exactly four openings.** D1 front door and W1 window on the entrance wall; D2 curtained doorway
+   inside the alcove on the entering-right flank; A1 arch at the far end of the same flank. The far
+   wall and the entering-left long wall are solid. The render prompts generate this inventory from
+   `brief/room.json`, so no image can invent a door.
+10. **One direction at a time.** Build a pack, inspect it, fix defects in the shared code, then start
+   the next. Never batch-generate a whole set.
 
 ## Rebuilding
 
 ```bash
+python3 scripts/drawings.py --shell        # measured drawings of the empty room
+python3 scripts/drawings.py 07             # drawings for one direction
+./scripts/make_pack.sh 07                  # ONE direction: 7 drawings + 6 renders, then stop
+./scripts/resume_renders.sh                # continue any directions still missing renders
 python3 scripts/build_prompts.py          # specs -> prompts/
 JOBS=5 ./scripts/render_all.sh            # all renders (resumable; skips existing)
 ./scripts/render_all.sh 07 12             # just these directions
