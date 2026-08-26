@@ -31,9 +31,15 @@ No dependencies to install. Python 3.9+ and Chrome/Chromium.
 ## Before opening a PR
 
 ```bash
-./bin/design check --project compact-hall      # must pass
-./bin/design drawings --shell --project compact-hall
+./tests/run.sh
 ```
+
+Runs everything: engine imports, unit tests, the example project, both templates, and drawing
+rasterisation. No network, no API key, nothing to pay for. There is deliberately no CI — this is
+the whole test suite and it takes seconds.
+
+The unit tests run with PyYAML forcibly unavailable, because the built-in fallback parser is what
+most people will actually hit and a bug there truncates a config silently rather than failing.
 
 Then look at the drawings. Most regressions in this codebase are visual and invisible in a diff.
 

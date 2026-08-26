@@ -80,6 +80,28 @@ Both take the same prompt and the same references. `codex` shells out to the cod
 rendered partly on each is still visually one document. Both stop cleanly on quota or on the spend
 ceiling and resume by skipping finished views.
 
+## Who does what
+
+| Layer | Runs | Does |
+|---|---|---|
+| Agents | Claude Code | Interviews, surveys, authors specs, critiques renders, writes the report |
+| `design` CLI | Python, locally | Room model, scaled drawings, prompt assembly, report build. **No AI** |
+| Image backend | Codex CLI or OpenRouter | Photoreal renders only |
+
+The separation is the point. Anything that must be *correct* — dimensions, openings, layouts,
+arithmetic — is computed. Anything that benefits from *judgement* — the brief, the design, the
+critique — is an agent. Anything that needs *imagination* — light, material, atmosphere — is the
+image model, and it is given no say in the geometry.
+
+## Testing
+
+`tests/run.sh` is the whole suite: engine imports, unit tests, the example project, both templates
+and drawing rasterisation. It needs no network, no key and no browser beyond the one already
+required.
+
+There is deliberately **no CI**. The suite runs in seconds locally, and a failing build emailing
+the maintainer on every push is noise for a project this size.
+
 ## Dependencies
 
 Python 3 standard library only. PyYAML is used if installed; otherwise a small YAML parser in

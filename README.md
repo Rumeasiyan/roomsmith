@@ -67,6 +67,21 @@ Because it will draw you a room you cannot build.
 from a single room model, then handed to the renderer as references. The image model does light,
 material and atmosphere — it gets no say in what the room is.
 
+## How the pieces fit
+
+```
+  Claude Code  ──  the six agents: interview, survey, strategise, author, critique, report
+       │
+       ├── design CLI (Python) ── room model · scaled drawings · prompts · report   ← no AI at all
+       │
+       └── image backend ─── codex CLI  (free, quota-limited)   ┐ both default to
+                          └─ OpenRouter (paid, ~$0.18/image)    ┘ the same model
+```
+
+Claude does the **design thinking** — reading your photographs, writing the specifications, and
+reviewing the results. It does not draw the plans and it does not generate the images. Geometry is
+computed; images come from a dedicated image model through whichever backend you choose.
+
 ## The agents
 
 | Agent | Job |
