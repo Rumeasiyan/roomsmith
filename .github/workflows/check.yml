@@ -15,6 +15,11 @@ jobs:
       - name: Engine imports cleanly
         run: python -c "import engine.room, engine.project, engine.drawings, engine.prompts, engine.render, engine.cli; print('ok')"
 
+      # Deliberately WITHOUT PyYAML installed, so the built-in fallback parser is the one
+      # under test. That is what most users will actually run.
+      - name: Unit tests
+        run: python tests/test_config.py
+
       - name: Example project validates
         run: ./bin/design check --project compact-hall
 
@@ -25,9 +30,10 @@ jobs:
             ./bin/design check --project "ci-$t"
           done
 
-      - name: Drawings render without a display
+      - name: Drawings rasterise headlessly
         run: |
-          sudo apt-get update -qq && sudo apt-get install -y -qq chromium-browser || sudo apt-get install -y -qq chromium
           ./bin/design approve room-model --project ci-room --note ci
           ./bin/design drawings --shell --project ci-room
           test -s projects/ci-room/drawings/_shell-plan.png
+          test -s projects/ci-room/drawings/_shell-elev-w1.png
+          echo "drawings ok"

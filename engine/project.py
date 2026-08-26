@@ -195,24 +195,74 @@ def resolve(slug=None):
 
 
 # ---------------------------------------------------------------------------- tiny YAML
-# Enough YAML for the project file when PyYAML is not installed: nested maps, lists of
-# scalars, lists of maps, and inline {..} / [..] flow scalars. Keeps the repo dependency-free.
+# Enough YAML for a project file when PyYAML is not installed, so the repo stays
+# dependency-free: nested maps, block sequences, flow sequences and maps with unquoted
+# scalars, folded/literal block scalars, and inline comments.
+
+def _strip_comment(v):
+    """Remove a trailing # comment that is not inside quotes."""
+    out, quote = [], None
+    for i, ch in enumerate(v):
+        if quote:
+            out.append(ch)
+            if ch == quote:
+                quote = None
+        elif ch in "\"'":
+            quote = ch
+            out.append(ch)
+        elif ch == "#" and (i == 0 or v[i - 1] in " \t"):
+            break
+        else:
+            out.append(ch)
+    return "".join(out).strip()
+
+
+def _split_flow(body):
+    """Split a flow sequence/map body on commas at depth zero."""
+    parts, depth, cur, quote = [], 0, "", None
+    for ch in body:
+        if quote:
+            cur += ch
+            if ch == quote:
+                quote = None
+            continue
+        if ch in "\"'":
+            quote = ch
+            cur += ch
+        elif ch in "[{":
+            depth += 1
+            cur += ch
+        elif ch in "]}":
+            depth -= 1
+            cur += ch
+        elif ch == "," and depth == 0:
+            parts.append(cur)
+            cur = ""
+        else:
+            cur += ch
+    if cur.strip():
+        parts.append(cur)
+    return [p.strip() for p in parts if p.strip()]
+
 
 def _coerce(v):
-    v = v.strip()
-    if v == "" or v in ("~", "null"):
+    v = _strip_comment(v)
+    if v == "" or v in ("~", "null", "None"):
         return None
-    if v in ("true", "True", "yes"):
+    if v in ("true", "True", "yes", "on"):
         return True
-    if v in ("false", "False", "no"):
+    if v in ("false", "False", "no", "off"):
         return False
-    if (v.startswith('"') and v.endswith('"')) or (v.startswith("'") and v.endswith("'")):
+    if len(v) >= 2 and v[0] == v[-1] and v[0] in "\"'":
         return v[1:-1]
-    if v.startswith("[") or v.startswith("{"):
-        try:
-            return json.loads(v.replace("'", '"'))
-        except Exception:
-            return v
+    if v.startswith("[") and v.endswith("]"):
+        return [_coerce(x) for x in _split_flow(v[1:-1])]
+    if v.startswith("{") and v.endswith("}"):
+        out = {}
+        for item in _split_flow(v[1:-1]):
+            k, _, val = item.partition(":")
+            out[_strip_comment(k).strip("\"'")] = _coerce(val)
+        return out
     try:
         return int(v)
     except ValueError:
@@ -223,64 +273,122 @@ def _coerce(v):
         return v
 
 
-def _mini_yaml(text):
-    root, stack = {}, [(-1, root)]
-    lines = [l.rstrip() for l in text.splitlines()]
-    i = 0
-    while i < len(lines):
-        raw = lines[i]
-        i += 1
-        if not raw.strip() or raw.lstrip().startswith("#"):
-            continue
-        indent = len(raw) - len(raw.lstrip())
-        line = raw.strip()
-        while stack and indent <= stack[-1][0]:
-            stack.pop()
-        parent = stack[-1][1]
+def _depth_delta(line):
+    """Net bracket depth of a line, ignoring brackets inside quotes and comments."""
+    d, quote = 0, None
+    for i, ch in enumerate(line):
+        if quote:
+            if ch == quote:
+                quote = None
+        elif ch in "\"'":
+            quote = ch
+        elif ch == "#" and (i == 0 or line[i - 1] in " \t"):
+            break
+        elif ch in "[{":
+            d += 1
+        elif ch in "]}":
+            d -= 1
+    return d
 
-        if line.startswith("- "):
-            item = line[2:].strip()
-            if not isinstance(parent, list):
-                continue
-            if ":" in item and not item.startswith("{"):
-                d = {}
-                k, _, v = item.partition(":")
-                d[k.strip()] = _coerce(v)
-                parent.append(d)
-                stack.append((indent, d))
-                # following deeper lines belong to this map
-                while i < len(lines):
-                    nxt = lines[i]
-                    if not nxt.strip() or nxt.lstrip().startswith("#"):
-                        i += 1
-                        continue
-                    ni = len(nxt) - len(nxt.lstrip())
-                    if ni <= indent:
-                        break
-                    nk, _, nv = nxt.strip().partition(":")
-                    if nxt.strip().startswith("- "):
-                        break
-                    if nv.strip() == "":
-                        child = []
-                        d[nk.strip()] = child
-                        stack.append((ni, child))
-                    else:
-                        d[nk.strip()] = _coerce(nv)
-                    i += 1
+
+def _join_flow_lines(lines):
+    """Join a flow collection that wraps across lines into one logical line."""
+    out, buf, depth = [], None, 0
+    for line in lines:
+        if buf is None:
+            depth = _depth_delta(line)
+            if depth > 0:
+                buf = line
             else:
-                parent.append(_coerce(item))
-            continue
-
-        k, _, v = line.partition(":")
-        k, v = k.strip(), v.strip()
-        if v == "":
-            nxt = next((l for l in lines[i:] if l.strip() and not l.lstrip().startswith("#")), "")
-            ni = len(nxt) - len(nxt.lstrip())
-            child = [] if nxt.strip().startswith("- ") and ni > indent else {}
-            if isinstance(parent, dict):
-                parent[k] = child
-            stack.append((indent, child))
+                out.append(line)
         else:
-            if isinstance(parent, dict):
-                parent[k] = _coerce(v)
-    return root
+            buf += " " + line.strip()
+            depth += _depth_delta(line)
+            if depth <= 0:
+                out.append(buf)
+                buf = None
+    if buf is not None:
+        out.append(buf)
+    return out
+
+
+def _mini_yaml(text):
+    lines = _join_flow_lines(text.splitlines())
+
+    def indent_of(i):
+        return len(lines[i]) - len(lines[i].lstrip())
+
+    def skip(i):
+        while i < len(lines) and (not lines[i].strip() or lines[i].lstrip().startswith("#")):
+            i += 1
+        return i
+
+    def block_scalar(i, parent_indent, fold):
+        """Consume an indented block after > or | and return (text, next_index)."""
+        buf, j = [], i
+        while j < len(lines):
+            if not lines[j].strip():
+                buf.append("")
+                j += 1
+                continue
+            if indent_of(j) <= parent_indent:
+                break
+            buf.append(lines[j].strip())
+            j += 1
+        while buf and buf[-1] == "":
+            buf.pop()
+        return ((" ".join(x for x in buf if x) if fold else "\n".join(buf)), j)
+
+    def parse(i, indent):
+        """Parse a block at the given indent. Returns (value, next_index)."""
+        i = skip(i)
+        if i >= len(lines):
+            return {}, i
+        if lines[i].lstrip().startswith("- "):
+            seq = []
+            while True:
+                i = skip(i)
+                if i >= len(lines) or indent_of(i) != indent or not lines[i].lstrip().startswith("- "):
+                    break
+                item = lines[i].lstrip()[2:].strip()
+                i += 1
+                if item and ":" in item and not item.startswith(("{", "[")):
+                    k, _, v = item.partition(":")
+                    entry = {}
+                    v = _strip_comment(v)
+                    if v:
+                        entry[k.strip()] = _coerce(v)
+                    nxt = skip(i)
+                    if nxt < len(lines) and indent_of(nxt) > indent:
+                        rest, i = parse(nxt, indent_of(nxt))
+                        if isinstance(rest, dict):
+                            entry.update(rest)
+                    seq.append(entry)
+                else:
+                    seq.append(_coerce(item))
+            return seq, i
+
+        mapping = {}
+        while True:
+            i = skip(i)
+            if i >= len(lines) or indent_of(i) != indent or lines[i].lstrip().startswith("- "):
+                break
+            k, _, v = lines[i].lstrip().partition(":")
+            k, v = k.strip(), v.strip()
+            i += 1
+            if v in (">", "|", ">-", "|-"):
+                mapping[k], i = block_scalar(i, indent, v.startswith(">"))
+                continue
+            v = _strip_comment(v)
+            if v == "":
+                nxt = skip(i)
+                if nxt < len(lines) and indent_of(nxt) > indent:
+                    mapping[k], i = parse(nxt, indent_of(nxt))
+                else:
+                    mapping[k] = None
+            else:
+                mapping[k] = _coerce(v)
+        return mapping, i
+
+    value, _ = parse(0, indent_of(skip(0)) if skip(0) < len(lines) else 0)
+    return value if isinstance(value, dict) else {}

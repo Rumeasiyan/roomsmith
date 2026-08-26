@@ -328,9 +328,12 @@ def draw_iso(room, spec=None, hide=None):
 # ---------------------------------------------------------------- output
 
 def rasterise(svg_path, png_path, width=1500):
-    chrome = next((c for c in ("google-chrome", "chromium", "chromium-browser")
+    """SVG -> PNG via headless Chrome. The SVG is always written; only the raster needs a browser."""
+    chrome = next((c for c in ("google-chrome", "chromium", "chromium-browser", "chrome")
                    if subprocess.run(["which", c], capture_output=True).returncode == 0), None)
     if not chrome:
+        print(f"    note: no Chrome/Chromium found - wrote {pathlib.Path(svg_path).name} "
+              f"but could not rasterise it to PNG", flush=True)
         return False
     txt = pathlib.Path(svg_path).read_text()
     w = int(txt.split('width="')[1].split('"')[0])
