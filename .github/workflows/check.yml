@@ -1,0 +1,33 @@
+name: check
+
+on:
+  push: {branches: [main]}
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+
+      - name: Engine imports cleanly
+        run: python -c "import engine.room, engine.project, engine.drawings, engine.prompts, engine.render, engine.cli; print('ok')"
+
+      - name: Example project validates
+        run: ./bin/design check --project compact-hall
+
+      - name: Templates scaffold and validate
+        run: |
+          for t in room kitchen; do
+            ./bin/design init "ci-$t" --from "$t"
+            ./bin/design check --project "ci-$t"
+          done
+
+      - name: Drawings render without a display
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq chromium-browser || sudo apt-get install -y -qq chromium
+          ./bin/design approve room-model --project ci-room --note ci
+          ./bin/design drawings --shell --project ci-room
+          test -s projects/ci-room/drawings/_shell-plan.png

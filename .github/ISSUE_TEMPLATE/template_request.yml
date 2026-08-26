@@ -1,0 +1,19 @@
+name: Room template request
+description: A room type that is not covered yet
+labels: [template, good first issue]
+body:
+  - type: input
+    id: room
+    attributes:
+      label: Room type
+      placeholder: bathroom / home office / studio flat
+    validations: {required: true}
+  - type: textarea
+    id: shape
+    attributes:
+      label: Typical shape and what makes it awkward
+      description: Fixed plumbing, a low ceiling, one door and no window, whatever it is.
+  - type: textarea
+    id: views
+    attributes:
+      label: Which camera views matter for this room type

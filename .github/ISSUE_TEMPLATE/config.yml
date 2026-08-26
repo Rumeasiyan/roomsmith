@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Question or idea
+    url: https://github.com/Rumeasiyan/roomsmith/discussions
+    about: Ask anything, or share a room you designed with it

@@ -1,0 +1,32 @@
+name: Bug report
+description: Something produced the wrong result
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: If it is visual, attach the drawing or render. A screenshot of a wrong plan is worth more than a paragraph.
+    validations: {required: true}
+  - type: textarea
+    id: room
+    attributes:
+      label: The room block from project.yml
+      render: yaml
+    validations: {required: true}
+  - type: input
+    id: cmd
+    attributes:
+      label: Command you ran
+      placeholder: ./bin/design pack 03
+    validations: {required: true}
+  - type: textarea
+    id: check
+    attributes:
+      label: Output of ./bin/design check
+      render: shell
+  - type: input
+    id: env
+    attributes:
+      label: Python version, OS, and render backend
+      placeholder: Python 3.12, Fedora 43, codex

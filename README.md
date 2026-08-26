@@ -1,151 +1,177 @@
-# Interior Design Agent
+<div align="center">
 
-A reusable, agent-driven interior design studio. Point it at a room, answer some questions, and it
-produces measured drawings, photoreal renders and a client report where **every change is
-justified** — with approval gates so nothing expensive or irreversible happens without a decision.
+# Roomsmith
 
-It is generic: any room type, any shape, any country, any brief. The worked example in
-`projects/compact-hall/` is a 20-direction job for a 3.12 × 6.25 m family hall —
-**291 justified changes, 168 measured drawings, 120 renders, a 165-page report**.
+**The open-source AI interior design agent.**
+Photographs of a room go in. Measured drawings, photoreal renders and a design report where every
+single change is justified come out.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-black.svg)](LICENSE)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-black.svg)](https://www.python.org/)
+[![No dependencies](https://img.shields.io/badge/dependencies-none-black.svg)](#requirements)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-black.svg)](CONTRIBUTING.md)
+
+</div>
 
 ---
 
-## Quick start
+Roomsmith is an **AI interior design tool** that runs as a team of agents in
+[Claude Code](https://claude.com/claude-code). Give it photos of a real room and it interviews you,
+surveys the space, produces scaled floor plans and wall elevations, generates photoreal renders,
+and writes a client-ready PDF report — with approval gates so nothing expensive happens without
+your say-so.
+
+It is not a mood-board generator. Every design direction is a **spatial thesis** with a measured
+layout, and every change carries a specification, a reason, and a validation against the room's
+real constraints.
 
 ```bash
-./bin/design init my-room             # scaffold projects/my-room/
+./bin/design init my-room
 cp ~/photos/*.jpg projects/my-room/refs/
 ```
-
-Then in Claude Code:
-
+then in Claude Code:
 ```
 /interior-design
 ```
 
-The orchestrator interviews you, surveys the room, plans the directions, and walks the gates.
-Or drive it yourself:
+## What it produces
 
-```bash
-./bin/design status                   # where the job is
-./bin/design check                    # validate config, geometry, layouts
-./bin/design drawings --shell         # measured drawings of the empty room
-./bin/design pack 01                  # ONE direction: drawings + all views, then stop
-./bin/design approve pilot            # unlock the rest
-./bin/design render                   # everything remaining
-./bin/design report                   # the PDF
-```
+For each design direction:
 
-## Why it produces usable work
+| Output | What |
+|---|---|
+| **Floor plan** | Scaled, dimensioned, with furniture and the circulation route |
+| **Blueprint** | The same plan in drafting style |
+| **Wall elevations** | One per wall, square-on, with every opening dimensioned |
+| **Isometric** | A dollhouse cutaway |
+| **Photoreal renders** | One per camera view — hero, reverse, seated eye-level, corner overview… |
+| **Justified changes** | Every item: specification, design reason, and validation |
 
-**Geometry cannot drift.** The room lives in one config block. Plans, blueprints, elevations and
-the isometric are *drawn by code* from it, so they cannot invent a door or enlarge a room. Those
-drawings are then handed to the image model as references, which is what keeps the renders honest.
+Plus one PDF report containing all of it, a site survey, and a comparison matrix proving the
+directions genuinely differ.
 
-**Renders cannot invent openings.** The prompt's opening inventory and its "these walls are solid"
-clause are generated from the model. If it is not in the model, the render is told it does not exist.
+## Why not just prompt an image model?
 
-**Scale is proved, not hoped for.** Every direction carries a `scale_check` with the arithmetic
-done across the room's narrow dimension. `design check` independently verifies that no furniture
-falls outside the room or collides.
+Because it will draw you a room you cannot build.
 
-**Directions are genuinely different.** Two count as distinct only if they differ on four or more
-of: plan/zoning, ceiling, floor, seating typology, storage, lighting architecture, programme. A
-paint change is not a direction.
+| Problem | What Roomsmith does |
+|---|---|
+| Invents doors and windows that don't exist | The opening inventory and a "these walls are solid" clause are **generated from the room model** and pinned into every prompt |
+| Draws a small room as a spacious one | Scaled drawings are passed in as references; every direction carries arithmetic proving the layout fits |
+| Silently deletes furniture you can't part with | `must_appear` items are pinned into every prompt and checked by an adversarial critic |
+| Gives you five variations of one idea | Two directions count as distinct only if they differ on **4+ of 7 axes** |
+| Looks like a hotel lobby | The cultural register is part of the brief, not an afterthought |
+| Costs a fortune before you notice it's wrong | One direction is built and reviewed before the rest run; spend ceilings are enforced against real API costs |
 
-**What the client refuses to lose, stays.** `must_appear` items are pinned into every prompt and
-checked by the critic. "Relocate it elsewhere" is deletion by another name.
-
-**One direction at a time.** The pilot pack is built and reviewed before the rest run. Batch
-generation hides a defect in image one and reproduces it a hundred times.
+**Geometry never comes from the image model.** Plans, elevations and isometrics are *drawn by code*
+from a single room model, then handed to the renderer as references. The image model does light,
+material and atmosphere — it gets no say in what the room is.
 
 ## The agents
 
-| Agent | Does |
+| Agent | Job |
 |---|---|
-| `design-intake` | Interviews the client, resolves ambiguity, writes `project.yml` |
-| `design-surveyor` | Reads the photographs, builds the room model, writes the survey |
-| `design-strategist` | Plans the direction set and proves they differ |
-| `design-author` | Writes one direction: thesis, justified changes, measured layout |
-| `design-critic` | Adversarially reviews a rendered pack; reports root causes |
-| `design-reporter` | Compiles the report and reads it back |
+| `design-intake` | Interviews you. Asks the question most designers forget: *is there anything here that cannot leave?* |
+| `design-surveyor` | Reads every photo, counts the openings out loud, builds the measured room model |
+| `design-strategist` | Plans the direction set and proves each one is genuinely different |
+| `design-author` | Writes one direction: thesis, measured layout, every change justified |
+| `design-critic` | Read-only by design, so it reports **root causes** instead of patching one image |
+| `design-reporter` | Compiles the report and reads the PDF back to catch layout errors |
 
 ## Approval gates
 
-Nothing expensive happens without a decision. The tool refuses rather than asking twice.
+Nothing expensive or irreversible happens without a decision. The tool refuses rather than asking twice.
 
-| Gate | Guards |
-|---|---|
-| `brief` | writing the room model |
-| `room-model` | generating drawings and any renders |
-| `direction-set` | authoring the full specs |
-| `pilot` | rendering beyond the first direction |
-| `spend` | using a paid render backend |
-| `report` | marking the job delivered |
+`brief` → `room-model` → `direction-set` → `pilot` → `spend` → `report`
 
 ```bash
-./bin/design approve room-model --note "measured on site 2026-08-26"
-./bin/design approve room-model --revoke
+./bin/design status
+./bin/design approve room-model --note "measured on site"
 ```
 
-## Layout
+## Worked example
 
-```
-bin/design                  the CLI
-engine/                     room model · drawings · prompts · render backends · report
-config/templates/           project templates (room, kitchen) + direction schema
-projects/<slug>/
-  project.yml               THE file you edit
-  STATE.json                approvals and history, written by the tool
-  refs/ brief/ directions/ drawings/ renders/ report/
-.claude/agents/             the six agents
-.claude/skills/             the orchestrator
-docs/                       SETUP.md · WORKFLOW.md · CONFIG.md
-```
+`projects/compact-hall/` is a real completed job — a 3.12 × 6.25 m family hall:
 
-## Rendering
+**20 design directions · 291 justified changes · 168 measured drawings · 120 renders · 165-page report · $5.30 in render costs**
 
-Two interchangeable backends, same prompts and reference drawings:
+[`docs/EXAMPLE.md`](docs/EXAMPLE.md) documents the seven mistakes it took to get right — a missed
+window, a mirrored floor plan, a design whose own arithmetic was impossible — and how each one is
+now prevented structurally.
 
-| Backend | Cost | Notes |
-|---|---|---|
-| `codex` | free | via the codex CLI's `image_gen` (gpt-image-2). Quota-limited |
-| `openrouter` | ~$0.18/image | `openai/gpt-image-2` by default — the same model, so the set stays visually consistent |
+## FAQ
 
-```bash
-cp .env.example .env        # then set OPENROUTER_API_KEY
-./bin/design render --backend openrouter
-```
+<details>
+<summary><b>What do I need to run it?</b></summary>
 
-`render.max_spend_usd` is a hard ceiling enforced against the real per-image cost the API reports.
-Both backends stop cleanly on quota or ceiling and resume by skipping finished views.
+Python 3.9+ (no third-party packages), Chrome or Chromium, and one render backend. That's it.
+</details>
 
-## Requirements
+<details>
+<summary><b>How much does it cost?</b></summary>
 
-Python 3 (no required third-party packages; PyYAML used if present), Chrome or Chromium for
-rasterising drawings and printing the PDF, and at least one render backend.
+Free on the `codex` backend, which is quota-limited. On OpenRouter it's about **$0.18 per image** —
+a 20-direction job at six views each is 120 images, roughly $22. `render.max_spend_usd` is a hard
+ceiling enforced against the real per-image cost the API returns.
+</details>
 
-## What is committed
+<details>
+<summary><b>Does it work for kitchens / bedrooms / offices / L-shaped rooms?</b></summary>
 
-| Committed | Not committed |
-|---|---|
-| `project.yml` — brief and room model | `refs/` — the client's photographs |
-| `brief/*.md` — the survey | `drawings/` · `renders/` · `report/` — generated |
-| `directions/*.json` — authored specs | `.env` — secrets |
-| `STATE.json` — the approval record | |
+Yes. The room model takes rectangles, rectangles with alcoves, or arbitrary polygons with walls at
+any angle. Ships with `room` and `kitchen` templates; adding more is the easiest useful contribution.
+</details>
 
-Everything on the right regenerates from everything on the left. Photographs of someone's home are
-their property and stay out of version control.
+<details>
+<summary><b>Can I use my own image model?</b></summary>
 
-## Docs
+Yes. A backend is one function in `engine/render.py`. Two ship: `codex` (free, via the Codex CLI's
+built-in image generation) and `openrouter` (paid, any model it hosts). Both default to the same
+model so a set rendered partly on each still looks like one document.
+</details>
+
+<details>
+<summary><b>Is my room data private?</b></summary>
+
+Client photographs and all generated output are gitignored by default. Only the brief, survey and
+design specs are committed — they regenerate everything else.
+</details>
+
+<details>
+<summary><b>Do I need Claude Code?</b></summary>
+
+For the agents, yes. The `design` CLI works standalone if you'd rather write the specs yourself.
+</details>
+
+## Documentation
 
 | | |
 |---|---|
-| `docs/SETUP.md` | Install and first run |
-| `docs/USAGE.md` | Commands and recipes |
-| `docs/WORKFLOW.md` | The full job, gate by gate |
-| `docs/CONFIG.md` | Every `project.yml` option |
-| `docs/AGENTS.md` | The team, handoffs, customising |
-| `docs/ARCHITECTURE.md` | How the engine works and why |
-| `docs/TROUBLESHOOTING.md` | When something goes wrong |
-| `docs/EXAMPLE.md` | The worked 20-direction job |
+| [SETUP](docs/SETUP.md) | Install and first run |
+| [USAGE](docs/USAGE.md) | Commands and recipes |
+| [WORKFLOW](docs/WORKFLOW.md) | The full job, gate by gate |
+| [CONFIG](docs/CONFIG.md) | Every `project.yml` option |
+| [AGENTS](docs/AGENTS.md) | The team, handoffs, customising |
+| [ARCHITECTURE](docs/ARCHITECTURE.md) | How it works and why |
+| [TROUBLESHOOTING](docs/TROUBLESHOOTING.md) | When something goes wrong |
+| [EXAMPLE](docs/EXAMPLE.md) | The worked 20-direction job |
+
+## Requirements
+
+Python 3.9+ · Chrome or Chromium · one render backend
+([Codex CLI](https://github.com/openai/codex) free, or an [OpenRouter](https://openrouter.ai) key)
+
+## Contributing
+
+New room templates, render backends, drawing types and validation rules are all welcome —
+see [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Licence
+
+MIT — see [LICENSE](LICENSE).
+
+---
+
+<div align="center">
+<sub>Roomsmith · AI interior design agent · floor plans, elevations, renders and a justified design report from room photographs</sub>
+</div>
