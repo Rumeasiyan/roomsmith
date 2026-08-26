@@ -113,13 +113,13 @@ def test_wall_attribution_rejects_grazing_contact():
 
 def test_example_project_still_valid():
     from engine.project import Project
-    p = Project(ROOT / "projects" / "compact-hall")
+    p = Project(ROOT / "projects" / "study-terrace")
     room = p.room()
-    assert room.confirmed
-    assert len(room.openings) == 5
-    assert abs(room.narrow_dim() - 3.12) < 1e-6, "key_dimensions must beat the bounding box"
-    assert len(p.specs()) == 20
-    assert sum(len(s["items"]) for s in p.specs()) == 291
+    assert len(room.walls) == 8, "the chimney breast makes this an eight-wall room"
+    assert len(room.openings) == 2
+    assert abs(room.narrow_dim() - 3.4) < 1e-6, "key_dimensions must beat the bounding box"
+    assert len(p.specs()) == 2, "2 of the 6 planned directions are authored"
+    assert sum(len(s["items"]) for s in p.specs()) == 35
 
 
 if __name__ == "__main__":

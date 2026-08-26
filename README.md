@@ -130,13 +130,14 @@ Nothing expensive or irreversible happens without a decision. The tool refuses r
 
 ## Worked example
 
-`projects/compact-hall/` is a real completed job — a 3.12 × 6.25 m family hall:
+`projects/study-terrace/` is the one project kept in the repository — a 3.4 × 3.8 m Victorian back
+bedroom becoming a full-time home office, carried end to end through every gate:
 
-**20 design directions · 291 justified changes · 168 measured drawings · 120 renders · 165-page report · $5.30 in render costs**
+**6 directions planned · 2 authored in full · 35 justified changes · 8-wall room model with a chimney breast · every approval gate signed**
 
-[`docs/EXAMPLE.md`](docs/EXAMPLE.md) documents the seven mistakes it took to get right — a missed
-window, a mirrored floor plan, a design whose own arithmetic was impossible — and how each one is
-now prevented structurally.
+Client work is not committed. [`docs/EXAMPLE.md`](docs/EXAMPLE.md) walks that example, and documents
+the seven mistakes a real 20-direction job took to get right — a missed window, a mirrored floor
+plan, a design whose own arithmetic was impossible — and how each one is now prevented structurally.
 
 ## FAQ
 

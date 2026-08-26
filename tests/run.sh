@@ -13,7 +13,7 @@ echo "── unit tests (fallback YAML parser, room geometry, example project)"
 python3 tests/test_config.py | sed 's/^/   /'
 
 echo "── example project validates"
-./bin/design check --project compact-hall | sed 's/^/   /'
+./bin/design check --project study-terrace | sed 's/^/   /'
 
 echo "── templates scaffold and validate"
 for t in room kitchen; do
@@ -24,9 +24,9 @@ for t in room kitchen; do
 done
 
 echo "── drawings rasterise"
-./bin/design approve room-model --project compact-hall --note "local test" >/dev/null
-./bin/design drawings --shell --project compact-hall >/dev/null
-test -s projects/compact-hall/drawings/_shell-plan.png && echo "   ok"
+./bin/design approve room-model --project study-terrace --note "local test" >/dev/null
+./bin/design drawings --shell --project study-terrace >/dev/null
+test -s projects/study-terrace/drawings/_shell-plan.png && echo "   ok"
 
 echo
 echo "all checks passed"

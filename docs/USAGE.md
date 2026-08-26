@@ -119,7 +119,7 @@ from engine.project import resolve
 from engine import prompts
 import json, pathlib
 p = resolve(None)
-spec = json.loads(pathlib.Path('projects/compact-hall/directions/01-tropical-modernist-pavilion.json').read_text())
+spec = json.loads(pathlib.Path('projects/study-terrace/directions/01-make-good.json').read_text())
 print(prompts.build(p, spec, 'hero-in'))"
 ```
 Worth doing when a render keeps coming out wrong — the answer is usually visible in the prompt.

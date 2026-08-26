@@ -75,4 +75,4 @@ cleanly on a quota or a spend ceiling and resumes by skipping finished views.
 ## Reference
 
 `docs/WORKFLOW.md` for the full walkthrough, `config/templates/room.yml` for every config option,
-`projects/compact-hall/` for a completed 20-direction job to copy from.
+`projects/study-terrace/` for a worked job to copy the file shapes from.

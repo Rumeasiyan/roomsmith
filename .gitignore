@@ -9,6 +9,14 @@
 # COMMITTED     project.yml · STATE.json · brief/*.md · directions/*.json
 # NOT COMMITTED refs/ · drawings/ · renders/ · report/ · prompts/
 # ---------------------------------------------------------------------------
+# Real client work is never committed. Exactly one project is kept in the
+# repository, as a worked example; everything else stays local on the machine
+# that made it.
+projects/*
+!projects/study-terrace/
+!projects/study-terrace/**
+
+# ...and even inside that one, only the sources are committed.
 projects/*/refs/*
 projects/*/drawings/*
 projects/*/renders/*
