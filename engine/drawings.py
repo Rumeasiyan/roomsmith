@@ -244,7 +244,7 @@ def _derive(room, spec, wid):
     out = []
     for it in spec.get("layout", {}).get("plan", []):
         hit = room.nearest_wall(it)
-        if hit and hit[0].id == wid:
+        if hit and hit[0].id == wid and hit[2] >= room.MIN_RUN:
             out.append({"u": hit[1], "w": hit[2], "z": it.get("z", 0.0),
                         "h": it.get("h", 0.45), "label": it.get("label", ""),
                         "kind": it.get("kind", "")})

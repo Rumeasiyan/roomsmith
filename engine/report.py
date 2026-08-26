@@ -262,6 +262,17 @@ def render_direction(spec):
     removes = ", ".join(spec.get("removes", []))
     solves = ", ".join(spec.get("solves", []))
 
+    room = PROJECT.room()
+    scale_callout = (f"<div class='callout'><b>Scale check — does it fit "
+                     f"{room.narrow_dim():.2f} × {room.long_dim():.2f} m?</b>"
+                     f"{esc(spec['scale_check'])}</div>") if spec.get("scale_check") else ""
+    # `retained_treatment` is the generic field; `teak_treatment` is the older name kept working.
+    retained = spec.get("retained_treatment") or spec.get("teak_treatment")
+    retained_callout = (f"<div class='callout'><b>Retained items — how they are kept</b>"
+                        f"{esc(retained)}</div>") if retained else ""
+    table_callout = (f"<div class='callout'><b>Work surfaces and tables</b>"
+                     f"{esc(spec['table'])}</div>") if spec.get("table") else ""
+
     plan_big = figure_grid(
         [(data_uri(DRAWINGS / f"{stem}-{k}.png", 1500), c) for k, c in DWGS[:3]], "dwg3")
     elevs = figure_grid(
@@ -294,9 +305,9 @@ def render_direction(spec):
   <h4>Headline interventions, in build order</h4>
   {moves}
 
-  <div class="callout"><b>Scale check — does it fit 3.12 × 6.25 m?</b>{esc(spec['scale_check'])}</div>
-  <div class="callout"><b>The inherited carved teak — how it is kept</b>{esc(spec['teak_treatment'])}</div>
-  <div class="callout"><b>The tables</b>{esc(spec['table'])}</div>
+  {scale_callout}
+  {retained_callout}
+  {table_callout}
 </section>
 
 <section class="page">

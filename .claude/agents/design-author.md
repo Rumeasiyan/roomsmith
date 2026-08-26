@@ -30,9 +30,17 @@ Write `projects/<slug>/directions/NN-slug.json` against `directions/_schema.json
   This generates the plan, the elevations and the isometric, so it must be physically true.
 - `scale_check` — add the widths across the room's narrow dimension and state the clear
   circulation lane that survives. Do the arithmetic. If it does not fit, change the design.
+- `retained_treatment` — how every item in `brief.must_appear` is kept and re-worked. Mandatory
+  whenever that list is non-empty.
+- `table` — how work surfaces are provided, if the room needs one.
 - `risks` — what must not be value-engineered away.
 - `not_for` — who this direction is wrong for. A direction with no downside has not been thought about.
-- `render` — one scene description per view id.
+- `render` — one scene description per view id, plus `default`.
+
+  **Never state where an opening is, or is not, in a scene description.** The opening inventory and
+  the per-view orientation block are already generated from the room model. A sentence like "the
+  window is out of shot on the right" contradicts them and the image will follow your sentence, not
+  the model. Describe finishes, furniture, light and atmosphere — never geometry.
 
 ## Rules
 

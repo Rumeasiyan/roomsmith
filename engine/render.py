@@ -238,6 +238,9 @@ def dry_run(project, key, view):
         errors.append(f"view '{view}' is not declared in deliverables.views")
     if not vc.get("camera"):
         errors.append(f"view '{view}' has no camera description")
+    if not (vc.get("from") and vc.get("look_at")):
+        warnings.append("view has no `from`/`look_at`, so no orientation block is generated - the "
+                        "render may mirror the room or invent daylight on a solid wall")
 
     for name in vc.get("drawings", []):
         own = project.path / "drawings" / f"{key}-{name}.png"
@@ -249,6 +252,11 @@ def dry_run(project, key, view):
                             f"furniture will not appear on it. Run: design drawings {key}")
         else:
             errors.append(f"reference drawing '{name}' missing - run: design drawings {key}")
+    if not vc.get("photos"):
+        warnings.append("no photographic anchor for this view - geometry comes only from the "
+                        "drawings, so 3D judgements (ceiling height, wall length, depth) may drift")
+    if not project.get("room.confirmed"):
+        warnings.append("room.confirmed is false - these dimensions have not been measured on site")
     for photo in vc.get("photos", []):
         if not (project.path / "refs" / photo).exists():
             warnings.append(f"reference photo '{photo}' not in refs/ - the render loses its "

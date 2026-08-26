@@ -18,7 +18,7 @@
     "risks",
     "not_for",
     "render",
-    "teak_treatment",
+    "retained_treatment",
     "table",
     "scale_check"
   ],
@@ -226,9 +226,9 @@
         }
       }
     },
-    "teak_treatment": {
+    "retained_treatment": {
       "type": "string",
-      "description": "How the inherited carved teak settee, armchairs and curio cabinet are re-worked and re-used IN THIS ROOM. Removing them is not permitted."
+      "description": "How the items in brief.must_appear are re-worked and re-used IN THIS ROOM. Removing them is not permitted. (Older specs may use the name teak_treatment; both are read.)"
     },
     "table": {
       "type": "string",

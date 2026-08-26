@@ -1,0 +1,247 @@
+{
+  "id": "01",
+  "slug": "make-good",
+  "name": "Make Good",
+  "tagline": "Add nothing. Repair the sash, the plaster, the boards and the hearth, put the desk in the dead corner, and let a 130-year-old room do the job it was always able to do.",
+  "budget_tier": "A",
+  "solves": ["P1", "P2", "P3", "P4", "P5"],
+
+  "thesis": "The single move is to stop treating the chimney breast as an obstruction and start using it as the room's far focus, then put every piece of furniture on the two walls that nobody looks at. The desk goes hard into the entrance-wall corner against the party wall, 1.70 m clear of the window wall, and the sitter turns their back on the whole depth of the room: 2.35 m of empty floor ending in a reopened hearth. That one decision solves the call problem with geometry instead of equipment - the window falls at 90 degrees to the camera and never enters frame - and it leaves the centre of the room empty, which is what a 12.4 m2 room needs more than it needs joinery. Everything else is repair, in the correct order: secure the ceiling before you paint it, strip the woodchip before you skim, splice the sash before you draught-strip it, unblock and ventilate the flue before you finish the breast. Six linear metres of books arrive as two second-hand oak bookcases cut to sit inside the 350 mm alcoves, and the entire scheme lifts out of the building in an afternoon, which is exactly what a house that will be let later wants.",
+
+  "story": "This client inherited a partners' desk and a Victorian back bedroom, and both are better than anything a budget would buy new. The survey found original skirting, an intact picture rail, lath and plaster with one hairline crack, painted pine boards and a sash that has never been replaced - a complete and undamaged Victorian room hiding under woodchip paper and a blocked fireplace. The failures listed as P1 to P5 are not design failures, they are maintenance failures: the alcoves are awkward because nothing has been sized to them, the papers are on the floor because there is no shelf, the extension leads trail because there is one socket, and the room is cold because the sash rattles and the boards have 4 mm gaps. Each of those has a repair, and the repairs together cost less than one fitted alcove. The reason to offer this direction seriously rather than as the cheap option is that it is the only one that leaves the room a Victorian bedroom - which matters when the property is let, because a repaired sash, a waxed pine floor and a working hearth let at a premium and need no explanation to a landlord, a tenant or a surveyor. The client is on camera all day in front of a fireplace they now own again, in the quietest room in the house, and the room reads as somewhere someone chose to work rather than somewhere an office was installed.",
+
+  "axes": {
+    "plan": "Furniture pushed to the entrance and party walls; desk in the corner at x 1.70-3.30, y 0.15-1.05, sitter at y 1.45 facing the entrance wall with the full 2.35 m depth of the room behind them. The centre of the floor stays empty, as it was when this was a bedroom.",
+    "ceiling": "Lath and plaster retained and structurally re-secured with plaster washers before the crack is scrimmed; flat soft distemper. The original pendant stays, on a plain paper shade. Picture rail and frieze untouched.",
+    "floor": "Existing painted pine boards re-fixed, gaps closed with glued tapered pine slips, stripped and sanded back to bare pine and finished in three coats of clear hardwax oil. One small antique wool rug, 1,750 x 1,100, loose-laid in the middle of the empty floor and touching nothing.",
+    "seating": "Nothing built and nothing upholstered new: the client's task chair is re-upholstered in wool, and a free-standing low Victorian reading chair sits at the hearth on the window side. The room gains a second place to sit that is not the desk, and it can be carried out.",
+    "storage": "Two second-hand oak bookcases, 900 x 250 x 1950, one per alcove, sized to sit inside the 350 mm alcove line with 100 mm of air behind. 5 shelves each = 9.0 lin m against 6 required. Plus a small oak chest beside the desk. All free-standing.",
+    "lighting": "No new circuits and no rewire. Existing pendant plus three plug-in fittings: an anglepoise on the desk, a plug-in brass swing-arm screwed to the party wall as the call key at 36 degrees, and a floor lamp at the reading chair. New sockets are fed in painted skirting-level trunking off the existing ring.",
+    "programme": "Unchanged. A study for one that is also the quiet reading room of the house - the only room with a fire opening and a chair that is not a task chair."
+  },
+
+  "moves": [
+    {
+      "title": "Open the flue and re-secure the lid",
+      "detail": "Before any finish: sweep the flue, remove the blocking to the fireplace opening, fit a capped-and-vented pot at roof level and a permanent 4,000 mm2 vent at the base so the stack dries out both ends. In the same visit, sound the ceiling and re-fix any plaster that has lost its key with 45 mm plaster washers screwed to the joists, then scrim and lime-fill the hairline crack."
+    },
+    {
+      "title": "Strip back to what is there",
+      "detail": "Woodchip paper stripped off all four walls, plaster raked out and made good in lime-gauged plaster where the stripping brings it away, then two coats of clay-based vapour-open paint. Board paint tested for lead and removed by poultice, never by dry abrasive; boards re-screwed where they squeak, gaps closed with glued tapered pine slips, then sanded and hard-wax oiled."
+    },
+    {
+      "title": "Repair the sash and interrupt the cold",
+      "detail": "New waxed cotton cords and re-balanced weights, decayed sill and cill-horn sections cut out and spliced in new, brush-pile seals routed into the staff and parting beads, re-puttied and re-painted. A pelmet board at 2,060 with interlined wool curtains stopping 20 mm above the sill, so the cold-air loop down the glass is broken and the radiator, which stays fixed and uncovered, is not curtained over."
+    },
+    {
+      "title": "Set the desk in the corner and give the sitter the room",
+      "detail": "Partners' desk hard into the entrance/party-wall corner at x 1.70-3.30, y 0.15-1.05. Sitter at y 1.45 with their back to the room and the reopened hearth 2.35 m behind them. Anglepoise on the desk, plug-in brass swing-arm on the party wall above it as the call key, sockets in painted trunking at skirting level."
+    },
+    {
+      "title": "Furnish the alcoves and the hearth",
+      "detail": "Two second-hand oak bookcases, cut down to 900 x 250 x 1950 and re-polished, one in each alcove and each restrained to the wall with two brackets. Low Victorian reading chair and a floor lamp at the hearth on the window side, an oak chest beside the desk, and one 1,750 x 1,100 antique wool rug loose-laid in the empty centre."
+    }
+  ],
+
+  "items": [
+    {
+      "item": "Blocked fireplace opening (FP, wall w5)",
+      "change": "Blocking removed and the opening reinstated at 600 wide x 720 high with a salvaged cast-iron register grate, the brick reveals left bare and brushed, and a 1000 x 350 riven stone hearth slab bedded in lime mortar in front of it. Flue swept, capped-and-vented clay pot fitted at the head, and a 4,000 mm2 louvred vent set low in the builder's opening.",
+      "reason": "It gives the room a centre and gives the video call a backdrop that is architecture rather than decoration, at 2.35 m behind the sitter.",
+      "validation": "A blocked, unventilated flue in a solid-brick Sheffield terrace is the standard route to sulphate staining and damp patches on the breast - venting both ends is a repair, not a flourish. The opening is decorative, not a working fire, so no hearth build-up or constructional hearth check is triggered; even so the slab gives 350 mm of non-combustible floor across the opening and the wool rug stops behind it, 50 mm clear. Reinstating an original opening is the one intervention here a landlord will thank you for."
+    },
+    {
+      "item": "Lath and plaster ceiling",
+      "change": "Soffit sounded for lost key; loose areas re-secured with 45 mm stainless plaster washers screwed into the joists at 300 centres before anything else. Hairline crack raked, jute-scrimmed and filled in lime-gauged plaster. Two coats of soft distemper at LRV 82.",
+      "reason": "A flat, light, uninterrupted ceiling is the only way a 2.65 m room reads as full height.",
+      "validation": "Repair before finish: skimming or painting over a delaminating lath ceiling buys 18 months and then costs the whole ceiling. Distemper rather than emulsion because a lime-plaster ceiling over lath needs to breathe, and because distemper can be washed off and re-coated without building up a skin that eventually cracks. The pendant stays, so no ceiling penetration is added or blanked."
+    },
+    {
+      "item": "Woodchip wallpaper and plaster",
+      "change": "Woodchip stripped from all four walls and the breast. Plaster raked out where it comes away, made good in lime-gauged haired plaster to match, allowed to carbonate, then two coats of clay-based vapour-open matt paint at LRV 78, warm off-white.",
+      "reason": "The walls are the only surface in a 12.4 m2 room big enough to do any work; getting them flat and light is worth more than any object in the room.",
+      "validation": "Solid brick, no cavity: the wall must stay vapour-open or interstitial moisture surfaces as mould at the external corners. Clay or silicate paint over lime is the correct build-up; vinyl emulsion or a plastic-bound sealer on this wall is the failure mode. LRV 78 on the party wall is also load-bearing on the lighting - it is the bounce fill on the sitter's shadow side at 900 mm."
+    },
+    {
+      "item": "Painted pine floorboards",
+      "change": "Boards lifted only where they squeak, re-fixed with countersunk screws to the joists. Gaps closed with glued tapered pine slips cut from reclaimed board, not flexible filler. Existing paint tested for lead; if positive, removed by alkaline poultice and hand-scraping, never by dry sanding. Then sanded to 120 grit and finished in three coats of clear hardwax oil.",
+      "reason": "Bare waxed pine is the room's only large area of colour and it is already paid for.",
+      "validation": "Board gaps in a Victorian bedroom leak roughly the same air as a permanently open trickle vent; closing them with rigid pine slips is the largest cheap thermal win available at tier A and, unlike filler, it survives seasonal movement. The lead test is not optional on pre-1970 paint in a room someone will sit in eight hours a day. Hardwax oil is spot-repairable under a task chair, unlike lacquer, which requires a full re-sand once a castor wears through."
+    },
+    {
+      "item": "Sash window W1",
+      "change": "Retained and repaired, not replaced: new waxed cotton cords and re-balanced weights, decayed sill and lower rail sections cut out and spliced in seasoned redwood, glazing bars re-puttied in linseed putty, brush-pile draught seals routed into the staff bead and parting bead, ironmongery eased and a locking fitch catch fitted, then two coats of linseed-oil paint.",
+      "reason": "It is the room's only daylight source and its only original opening; repairing it keeps both.",
+      "validation": "The brief forbids replacement. Brush-pile seals cut infiltration without sealing the box shut, so the weights still run and the joinery still dries - a foam or silicone bead traps water in the box and rots the pulley stile within five winters. This direction deliberately stops short of secondary glazing: at tier A the sash is repaired and draught-stripped only, and P5 is honestly only partly solved."
+    },
+    {
+      "item": "Curtains and pelmet at W1",
+      "change": "Painted 140 mm deep pelmet board fixed to the wall at 2,060 FFL, immediately under the picture rail, spanning 1,550 (window plus 250 return each side). Interlined wool curtains, 320 g/m2 wool flannel, cotton bump interlining, hand-headed, hanging to 840 FFL - 20 mm above the sill.",
+      "reason": "A closed top and a heavy interlining are what turn a curtain from a decoration into insulation.",
+      "validation": "The convective loop down cold single glazing is only broken if the head is closed; a pole with a gap above is roughly half as effective. The drop stops at the sill, 90 mm above the radiator top at 750, so the fixed radiator is never curtained over and its output goes into the room rather than up the glass. Stacked back, the curtains sit on the wall either side and steal none of the window aperture in a room with one source of daylight."
+    },
+    {
+      "item": "Radiator (RAD, wall w8)",
+      "change": "Left in position and left uncovered. Flushed, bled and re-balanced, TRV fitted to the flow valve, and a 4 mm foil-faced reflective panel fixed to the wall behind it with double-sided pads.",
+      "reason": "It is the only heat source in the coldest room in the house and every direction that hides it makes the room colder.",
+      "validation": "Pipework position is fixed by the brief, so any move is out of scope. A cabinet or a shelf over it would cut output by 10-20 per cent in the one room that cannot afford it. The reflective panel is a 30-minute, fully reversible fix worth a few per cent on an uninsulated solid-brick external wall, and the TRV lets the client run this room warm without heating the landing."
+    },
+    {
+      "item": "Inherited oak partners' desk (RETAINED)",
+      "change": "Stays in this room. Re-sited hard into the entrance/party-wall corner at x 1.70-3.30, y 0.15-1.05. Top hand-stripped of old varnish, two ring-marks cut back, a lifting veneer section on the pedestal re-glued and cramped, then the whole re-polished in wax over shellac; leather insert cleaned and fed, not replaced. Cable grommet, 60 mm brass, cut into the top 80 mm off the back edge on the party-wall side.",
+      "reason": "It is 1.44 m2 of the room's 12.4 and the best object in it; it should look repaired, not refinished.",
+      "validation": "1.6 x 0.9 is too large to float in a 3.4 x 3.8 room, so it goes where it costs nothing: the corner nobody walks through. At x 1.70 its near end clears the door swing envelope by 170 mm even taking the conservative 1.53 m swing line. Wax over shellac is reversible and repairable in place by the client with a cloth - a modern lacquer on a 19th-century oak top is the irreversible option the brief forbids. The grommet is the single new hole in the desk and it is on the hidden face."
+    },
+    {
+      "item": "Task chair and video-call position",
+      "change": "Client's existing task chair retained; seat and back re-upholstered in a 1.4 mm dense-weave wool in a mid drab, gas lift serviced, hard-floor castors fitted. Positioned at x 2.17-2.83, y 1.15-1.81, sitter's eye at approximately x 2.50, y 1.45, facing the entrance wall.",
+      "reason": "The sitter's back becomes the camera's background, so the seating position is a design decision, not a furniture decision.",
+      "validation": "Hard-floor castors are required because the boards are now oiled pine, not carpet - office castors cut into hardwax oil within a season. Geometrically: with the camera on the desk edge at x 2.50, y 0.25 yawed 14 degrees toward the window to centre the reopened hearth, a 35 mm-equivalent frame (27 degree half-angle) crosses the window wall at y 3.13, which is 705 mm beyond the far reveal of W1 at y 2.425. The sash therefore never enters shot in any season, which is P2 solved by plan rather than by blackout."
+    },
+    {
+      "item": "Video-call lighting",
+      "change": "Plug-in brass swing-arm wall light screwed to the party wall at y 0.75, centre 1,750 FFL, 450 mm arm, opal glass shade, 6 W 3000 K CRI 95 lamp on an in-line dimmer. Cable dropped to a socket in the skirting trunking.",
+      "reason": "One controllable key light that matches the colour of late afternoon daylight, so the client looks the same at 9 am and 5 pm.",
+      "validation": "Measured off the plan: head at approximately x 2.98, y 0.80 sits 36 degrees horizontally and 34 degrees vertically off the sitter's face axis - a conventional three-quarter key, which is the geometry the door swing makes impossible on the window side of the room. Daylight from W1 then arrives on the opposite cheek as fill, and the LRV 78 party wall at 900 mm bounces the remainder, so no second fitting is needed. Two screws into a party wall and a plug: no new circuit, nothing notifiable, nothing to make good on a let."
+    },
+    {
+      "item": "Electrical distribution",
+      "change": "No rewire and no new circuits. Two new unswitched double sockets on the entrance wall and one on the party wall, connected to the existing ring by a qualified electrician and fed in 50 x 25 mm PVC trunking run at skirting head level, screwed through into plugs, filled and painted to match the wall. Minor works certificate issued.",
+      "reason": "P3 is a distribution problem, not a capacity problem, and trailing leads under a desk are the room's one genuine hazard.",
+      "validation": "A study load - two monitors, a laptop, a lamp, a router - is under 400 W and well inside an existing ring; the honest cheap answer is more outlets, not a new circuit. Surface trunking is chosen over chasing precisely because chasing a solid brick wall in a rented-out-later property is destructive and unnecessary. Painted out above the skirting it disappears, and it unscrews leaving three plugged holes per run."
+    },
+    {
+      "item": "Alcove bookcases (P1 and P4)",
+      "change": "Two second-hand oak bookcases, cut down and re-polished to 900 w x 250 d x 1950 h, 5 fixed shelves each at 340 centres. One in each alcove, set 20 mm off the back wall, each restrained with two L-brackets into the masonry. Left: x 0.05-0.95, y 3.53-3.78. Right: x 2.45-3.35, y 3.53-3.78.",
+      "reason": "The alcoves are 350 mm deep, which is exactly book and box-file depth and nothing else; sizing furniture to them is the whole answer to P1.",
+      "validation": "250 mm deep in a 350 mm alcove leaves 100 mm of visible reveal, so the bookcases read as furniture standing in the alcoves rather than as failed joinery trying to fill them. 5 x 0.90 x 2 = 9.0 linear metres against the 6 required, with the surplus taken by box files at 320 mm, which the 250 depth carries with a 70 mm overhang - acceptable on a fixed shelf, and the reason the shelves are fixed rather than pinned. The 20 mm air gap matters: these are chimney-flank walls in a cold house and a cabinet sealed against them will mildew on its back board. Both are strapped because they are 1950 tall on an uneven period floor."
+    },
+    {
+      "item": "Chest beside the desk (P4)",
+      "change": "Small second-hand oak chest of three drawers, 450 d x 900 w x 800 h, stripped and re-waxed to sit with the desk, against the party wall at x 2.95-3.40, y 1.35-2.25, top used as a landing surface.",
+      "reason": "Papers live on the floor because there is no surface at hand height within reach of the chair; this is that surface.",
+      "validation": "Its front face at x 2.95 clears the swept task chair at x 2.83 by 120 mm, so the sitter can reach it seated by turning rather than standing. Depth 450 into a 3.4 m room is affordable here because the opposite 2.07 m of that band is clear floor. A chest rather than a pedestal because it is a piece of furniture the client can take with them."
+    },
+    {
+      "item": "Reading chair and floor lamp",
+      "change": "Free-standing low Victorian nursing or fireside chair, approximately 720 w x 700 d x 920 h, frame re-glued and re-polished, re-upholstered in the same wool flannel as the curtains with a horsehair-and-cotton seat pad. Placed at x 0.30-1.02, y 2.45-3.15, standing 300 mm off the external wall and angled to the hearth. Turned wood floor lamp with a 300 mm base tucked into the corner behind its shoulder at x 0.05-0.35, y 3.18-3.48, 1,600 high, linen drum shade, 8 W 2700 K.",
+      "reason": "A study nobody can sit back in is a workstation; one chair at the fire is what makes it a room.",
+      "validation": "It sits on the window side out of the camera's 41-degree left frame edge, so it never appears on a call. It begins at y 2.45, 50 mm past the end of the fixed radiator at y 2.40, and stands 300 mm off the wall, so it neither masks the radiator face nor cooks its own upholstery; the lamp behind it clears the left bookcase by 50 mm. Horsehair and cotton over foam because this chair sits against a cold external wall in an unheated-overnight room, and a sealed foam pad on that wall holds condensation. Free-standing throughout: two people carry it out in one trip."
+    },
+    {
+      "item": "Rug",
+      "change": "One large antique wool rug, approximately 1,750 x 1,100, loose-laid in the empty centre of the room at x 1.10-2.85, y 1.95-3.05, over a thin natural-rubber anti-creep underlay.",
+      "reason": "The empty centre of the room needs a floor that is quiet underfoot and warm at the reading chair without covering the boards that have just been restored.",
+      "validation": "Loose wool over bare boards, not fitted carpet: the boards must stay able to dry from below in an uninsulated Victorian floor, and a wall-to-wall in this room would be a moisture trap and would bury the one surface the budget was spent on. It touches nothing: 140 mm clear of the swept task chair, 80 mm clear of the reading chair, 100 mm clear of the oak chest and 50 mm clear of the hearth slab, so no castor and no chair leg ever sits on an edge. A rug also drops the room's flutter echo between two hard parallel walls, which is the only acoustic treatment this direction can afford."
+    },
+    {
+      "item": "Pendant, picture rail and joinery decoration",
+      "change": "Original pendant retained on its existing drop, re-flexed, plain 400 mm paper drum shade, 9 W 2700 K 806 lm. Picture rail, skirting, architrave and door retained, washed down, filled and re-painted in a mid drab eggshell; four-panel door ironmongery stripped of paint and re-polished, not replaced.",
+      "reason": "The room's period detail is intact and complete, which is rare; the job is to make it legible again rather than to add to it.",
+      "validation": "Drab eggshell on the joinery is what pulls the room together against warm off-white walls and is the correct period register - it also hides the trunking run, which is painted in the same colour above the skirting. Retaining the pendant avoids a new ceiling penetration in a lath and plaster ceiling that has just been re-secured. The picture rail is kept live as a hanging rail, so nothing is screwed into the finished plaster."
+    }
+  ],
+
+  "keeps": [
+    "inherited oak partners' desk, repaired, re-polished and re-sited",
+    "client's task chair, re-upholstered",
+    "lath and plaster ceiling, re-secured and repaired",
+    "original pendant",
+    "picture rail, frieze, skirting, architrave and four-panel door",
+    "sash window W1, repaired and draught-stripped",
+    "radiator and its pipework, in position and uncovered",
+    "pine floorboards, stripped and oiled",
+    "the chimney breast, with its fireplace opening reinstated"
+  ],
+  "removes": [
+    "woodchip wallpaper",
+    "the fireplace blocking",
+    "trailing extension leads",
+    "old floor paint (by poultice, subject to lead test)"
+  ],
+
+  "teak_treatment": "The inherited oak partners' desk stays in this room and is the only thing in it not bought second-hand. It is re-sited into the entrance/party-wall corner, hand-stripped of failed varnish, its lifting pedestal veneer re-glued and its ring-marks cut back, then re-polished in wax over shellac so the repair is reversible and the client can maintain it with a cloth. The leather insert is cleaned and fed, not replaced. One 60 mm brass grommet is cut into the hidden back edge for cables. Nothing else is done to it.",
+  "table": "The partners' desk is the room's only work surface and is left clear by design: the 800 mm high oak chest beside it takes what is put down, and the 250 mm deep alcove bookcases take what is filed. The stone hearth slab and the top of each bookcase provide two further landing surfaces. No additional table is introduced - in 12.4 m2 with a 1.44 m2 desk that cannot leave, a second table is the thing that would make the room cramped.",
+
+  "scale_check": "Room 3.40 m across (x) by 3.80 m along (y), 12.4 m2, ceiling 2.65 m. Chimney breast occupies x 1.00-2.40, y 3.45-3.80.\n\nBand 1, the desk band (y 0.15-1.05), measured across 3.40 m: clear floor 0 to 1.70 = 1.700 + desk 1.600 + gap to party wall 0.100 = 3.400. CLEAR LANE 1.70 m from the window wall to the near end of the desk. The inward door swing envelope is checked at its conservative limit of x 1.53 (the room model puts the leaf at x 0.36-1.14): the desk end at x 1.70 clears it by 170 mm, and by 560 mm against the model.\n\nBand 2, the seated band (y 1.15-2.25), measured across 3.40 m: radiator projection 0.100 + clear floor 2.070 + task chair 0.660 + gap 0.120 + chest 0.450 = 3.400. CLEAR LANE 2.07 m of open floor on the window side of the seated chair - a person passes behind nobody, because there is nobody to pass behind.\n\nBand 3, the hearth band (y 2.45-3.15), measured across 3.40 m: clear at the window wall 0.300 + reading chair 0.720 + clear floor 2.380 = 3.400. CLEAR LANE 2.38 m between the reading chair and the party wall. The chair begins 50 mm beyond the end of the fixed radiator (which runs y 1.40-2.40), so nothing stands in front of the radiator face at any point.\n\nBand 4, the alcove band (y 3.53-3.78), measured across 3.40 m: gap 0.050 + left bookcase 0.900 + clear 0.050 + chimney breast 1.400 + clear 0.050 + right bookcase 0.900 + gap 0.050 = 3.400. Neither bookcase touches the breast returns, and each sits 250 mm deep inside a 350 mm alcove.\n\nAlong the 3.80 m: desk zone 0.15 + 0.90 = to y 1.05; gap 0.10; task chair 0.66 = to y 1.81; open floor 1.29 = to y 3.10; hearth slab 0.35 = to y 3.45, the breast face. Behind the sitter's eye at y 1.45 there is 2.00 m to the breast face and 2.35 m to the reinstated hearth back - the depth the camera sees.\n\nCirculation: the route from the door at x 1.14 runs down the window side of the room at x 1.20 to 1.75, never narrower than 700 mm between the desk end (x 1.70 at y up to 1.05) and the window wall - and in practice 1.20 m wide, because the desk is the only obstruction on that side and it stops at y 1.05.\n\nShelving: 2 bookcases x 5 shelves x 0.90 m = 9.0 linear metres against 6 required.",
+
+  "palette": [
+    {"name": "Distemper white", "hex": "#F2EEE4", "use": "Ceiling, in soft distemper at LRV 82"},
+    {"name": "Warm stone", "hex": "#E4DDCF", "use": "Walls in clay-based vapour-open matt at LRV 78, including the chimney breast"},
+    {"name": "Mid drab", "hex": "#6F6B58", "use": "Picture rail, skirting, architrave, door, pelmet board and the painted trunking"},
+    {"name": "Waxed pine", "hex": "#C8A574", "use": "Stripped and hard-wax-oiled floorboards"},
+    {"name": "Aged oak", "hex": "#8A6743", "use": "Partners' desk, alcove bookcases, chest, reading chair frame"},
+    {"name": "Madder red", "hex": "#8E4436", "use": "Antique wool rug"},
+    {"name": "Iron black", "hex": "#23211E", "use": "Cast register grate, door ironmongery, lamp bases"}
+  ],
+  "materials": [
+    "lime-gauged haired plaster and jute scrim",
+    "soft distemper and clay-based vapour-open matt paint",
+    "reclaimed pine slips and clear hardwax oil on original boards",
+    "seasoned redwood splices and linseed putty in the sash",
+    "brush-pile draught seal in routed staff and parting beads",
+    "salvaged cast-iron register grate and riven stone hearth slab",
+    "second-hand oak, re-polished in wax over shellac",
+    "wool flannel with cotton bump interlining",
+    "horsehair and cotton seat pads",
+    "antique wool rug on natural-rubber underlay",
+    "painted PVC skirting-level trunking",
+    "polished brass plug-in swing-arm and turned-wood floor lamp"
+  ],
+
+  "ventilation": "The reopened flue is the room's new background ventilation: swept, capped with a vented pot at the head and given a 4,000 mm2 louvred vent at the base, so the stack dries from both ends and the breast stops sulphating. The sash is draught-stripped but not sealed - the brush pile cuts infiltration while leaving the box and pulley stile able to dry. Nothing is fitted over the radiator and nothing is fixed hard against the external wall or the chimney flanks: the bookcases stand 20 mm off, the desk 100 mm off the party wall, and the floor is left bare boards under a loose rug so the uninsulated floor void can still breathe.",
+
+  "risks": [
+    "The plaster washers and the flue vent are the two items that will be struck out first and must not be. Painting a delaminating lath ceiling and re-finishing a sealed flue are both money spent twice.",
+    "The lead test on the floor paint is a real cost and a real programme item. If it comes back positive, the poultice strip is roughly three times the cost of a sand - budget for it before the boards are quoted, not after.",
+    "Stripping woodchip on a solid-brick Victorian wall routinely brings plaster with it. Carry a provisional sum for 4-6 m2 of lime re-plastering; do not let it be absorbed by deleting the re-plaster and hanging lining paper instead, which puts a plastic-bound skin back on a wall that has just been opened up.",
+    "This direction does not fix P5. It draught-strips, interlines and closes the board gaps, and the room will still be a solid-brick single-glazed room in February. Say so to the client in writing rather than letting the repair list imply a warm room.",
+    "Two second-hand bookcases cut down to 900 x 250 x 1950 is a joiner's afternoon plus a hunt. If the hunt fails, the fallback is a made-to-size painted softwood pair to the same dimensions - not a fitted alcove unit, which is a different direction.",
+    "The reopened hearth is decorative only. Make sure nobody assumes a stove or an open fire is coming later without a full flue liner and hearth assessment."
+  ],
+
+  "not_for": "Anyone who needs this room to be usable and warm through a Sheffield winter - that is D3, and no amount of draught-stripping substitutes for it. It is also wrong for a client who wants the room to look transformed: this direction spends most of its budget on things you cannot photograph, and after four weeks of work a visitor sees a Victorian bedroom with a desk in it. And it is wrong for anyone who wants storage that reads as architecture, because 9 linear metres arriving as two free-standing bookcases means the alcoves look furnished, not built.",
+
+  "render": {
+    "default": "A small Victorian back bedroom in a Sheffield terrace, 3.4 by 3.8 m, working as a study. Warm off-white matt walls, an intact picture rail and skirting painted a mid drab green-grey, a flat distempered ceiling with one plain paper drum pendant. Bare pine floorboards, stripped and waxed, with a small faded antique madder-red wool rug loose in the middle of the empty floor. The chimney breast on the far wall has been opened up: a black cast-iron register grate in a bare brick reveal with a riven stone hearth slab in front of it. In each shallow alcove either side stands a free-standing waxed oak bookcase, 900 wide and only 250 deep, full of books and box files. A large inherited oak partners' desk sits in the near corner against the entrance and party walls, its leather top clear except for a monitor, an anglepoise and papers; a brass swing-arm wall light on the party wall above it. A low Victorian fireside chair upholstered in drab wool sits at the hearth on the window side with a turned wood floor lamp beside it. Interlined wool curtains under a painted pelmet board at the sash window, hanging to the sill, radiator uncovered below. Painted skirting-level trunking. Repaired, quiet, entirely furnished rather than fitted.",
+    "hero-in": "Standing just inside the door of a small Victorian back bedroom, looking the length of the room at the chimney breast. The breast projects into the far wall and its fireplace has been reopened: a black cast-iron register grate set in a bare brushed brick reveal, with a riven stone hearth slab on the pine boards in front of it. In each shallow alcove either side, a free-standing waxed oak bookcase 900 wide and clearly only about 250 deep, so the alcove reveal still shows either side of it, packed with books and box files. Warm off-white matt walls, picture rail and skirting in a mid drab green-grey, flat distempered ceiling, one plain paper drum pendant. Stripped and waxed pine floorboards with a small faded madder-red antique wool rug free in the middle of the empty floor. On the left, against the external wall, a low Victorian fireside chair in drab wool angled toward the hearth with a turned wood floor lamp behind it. On the right, the sash window is out of shot; the room reads as a repaired Victorian bedroom that happens to contain a desk. The inherited oak partners' desk is behind the camera in the near corner. Compact, quiet, late afternoon.",
+    "desk": "From behind and just above the task chair at an inherited oak partners' desk, looking at exactly what the webcam sees. The desk is hard into the corner where the entrance wall meets the party wall; its leather top holds a monitor, an anglepoise lamp and a stack of papers, with a brass grommet at the back edge and no trailing cables. A polished brass plug-in swing-arm wall light reaches over the desk from the party wall on the right, opal shade, warm and slightly dimmed, throwing a three-quarter light across the seated figure's face. Beyond and behind the chair, the full 2.35 m depth of the room falls away to the chimney breast, softly out of focus: the reopened black cast-iron grate in bare brick, the stone hearth slab, and a waxed oak bookcase in each shallow alcove. Warm off-white walls, mid drab picture rail, waxed pine boards and a madder-red rug. No window is visible anywhere in this frame - the daylight arrives from the left as a soft fill on the far cheek. Painted skirting trunking with a double socket at the desk.",
+    "window": "Square-on to the external wall of a small Victorian back bedroom from about 2.4 m. The original single-glazed sash window sits centred in the wall, repaired and re-painted in linseed paint, its cords renewed and brush-pile seals just visible in the beads. Above it, a plain painted pelmet board fixed tight under the picture rail, with interlined wool curtains in a warm drab hanging straight to the sill and stacked back either side of the opening, so the whole glazed aperture is clear. Below the sill, the original radiator is left completely uncovered, freshly painted, with a TRV on the valve. Warm off-white matt walls either side, mid drab skirting and picture rail, stripped and waxed pine boards. To the left of frame, a low Victorian fireside chair in drab wool with a turned wood floor lamp; to the right, painted skirting-level trunking runs to a double socket. No chimney breast in shot. Grey Sheffield daylight from a small yard, cool against the warm walls."
+  },
+
+  "layout": {
+    "plan": [
+      {"label": "partners' desk (retained)", "x": 1.70, "y": 0.15, "w": 1.60, "d": 0.90, "h": 0.75, "kind": "keep"},
+      {"label": "task chair", "x": 2.17, "y": 1.15, "w": 0.66, "d": 0.66, "h": 1.05},
+      {"label": "oak chest", "x": 2.95, "y": 1.35, "w": 0.45, "d": 0.90, "h": 0.80},
+      {"label": "reading chair", "x": 0.30, "y": 2.45, "w": 0.72, "d": 0.70, "h": 0.92},
+      {"label": "floor lamp", "x": 0.05, "y": 3.18, "w": 0.30, "d": 0.30, "h": 1.60},
+      {"label": "bookcase - left alcove", "x": 0.05, "y": 3.53, "w": 0.90, "d": 0.25, "h": 1.95},
+      {"label": "bookcase - right alcove", "x": 2.45, "y": 3.53, "w": 0.90, "d": 0.25, "h": 1.95},
+      {"label": "hearth slab", "x": 1.20, "y": 3.10, "w": 1.00, "d": 0.35, "h": 0.02, "kind": "built"},
+      {"label": "rug", "x": 1.10, "y": 1.95, "w": 1.75, "d": 1.10, "h": 0.02},
+      {"label": "swing-arm key light", "x": 3.05, "y": 0.60, "w": 0.35, "d": 0.40, "h": 0.35, "z": 1.55, "kind": "built"}
+    ],
+    "route": [
+      [1.14, 0.15],
+      [1.20, 1.30],
+      [1.45, 2.40],
+      [1.75, 3.05]
+    ],
+    "elevations": {
+      "w1": [
+        {"label": "partners' desk (retained)", "u": 1.70, "w": 1.60, "z": 0.0, "h": 0.75, "kind": "keep"},
+        {"label": "framed prints on picture rail", "u": 2.30, "w": 0.55, "z": 1.25, "h": 0.70},
+        {"label": "painted skirting trunking + 2 doubles", "u": 1.45, "w": 1.90, "z": 0.12, "h": 0.06, "kind": "built"}
+      ],
+      "w5": [
+        {"label": "reopened hearth + cast register grate", "u": 0.40, "w": 0.60, "z": 0.0, "h": 0.72, "kind": "built"}
+      ],
+      "w8": [
+        {"label": "floor lamp", "u": 0.32, "w": 0.30, "z": 0.0, "h": 1.60},
+        {"label": "reading chair", "u": 0.65, "w": 0.70, "z": 0.0, "h": 0.92},
+        {"label": "pelmet board + interlined curtains", "u": 1.13, "w": 1.55, "z": 2.06, "h": 0.12, "kind": "built"}
+      ]
+    }
+  }
+}

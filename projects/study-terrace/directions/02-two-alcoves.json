@@ -1,0 +1,356 @@
+{
+  "id": "02",
+  "slug": "two-alcoves",
+  "name": "Two Alcoves, One Hearth",
+  "tagline": "The alcoves are shelf-shaped. Build them out, turn the desk round, and the wall of books becomes the backdrop.",
+  "budget_tier": "B",
+  "solves": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5"
+  ],
+  "thesis": "The two 1000 x 350 alcoves either side of the chimney breast are not awkward, they are specific: 350 mm is book and box-file depth and nothing else fits, which means the room already tells you what to build. This direction fills both alcoves with full-height fitted joinery to picture-rail height, plasters and paints the breast face into the same dark field so the whole far wall reads as one built object, and then turns the desk round to face the room, pulled 900 mm off that joinery so the sitter works with their back to it. Storage costs zero floor area because it lives in a recess that was never floor. The backlit-call problem is solved by cabinetwork rather than by a lighting rig: what the webcam sees is 7.0 linear metres of books at a fixed 900 mm behind the sitter's head, which needs no dimming and looks identical in February and June. The window wall, which is the one wall that cannot be storage, is left as window, radiator and daylight, and the middle of the room stays as 1.65 m of clear forecourt between the desk and the door.",
+  "story": "This is the move a Victorian terrace makes to itself. Alcove joinery either side of a chimney breast is native to the house type, so nothing here needs explaining to a future tenant or a valuer, and the money goes into something screwed to the building rather than into furniture that has to be stored later. The client's problems are, read closely, one problem: papers on the floor, six linear metres of books with nowhere to go, and a face in shadow on every call. All three are answered by the same four square metres of wall. The inherited oak partners' desk is the fixed point - 1.6 x 0.9 m, 12 per cent of a 12.4 m2 floor, and it stays - so the plan is designed around it rather than at it. Centring it on the chimney breast and pulling it forward is what makes a small room feel deliberate instead of leftover: the desk sits under the ceiling rose, on the room's axis, with a 900 mm lane down each side, and for the first time it is used as what it actually is, a partners' desk with a place to sit on both sides. And the hearth, which is currently a chipboard panel, is opened back to a ventilated brick recess at the foot of the composition - not commissioned as a fire, which this budget and this let cannot carry, but present, so the room keeps its centre and its chimney keeps breathing.",
+  "axes": {
+    "plan": "Symmetrical and axial. Desk centred on the chimney breast at x 0.90-2.50, y 1.65-2.55, pulled 900 mm clear of the joinery so the sitter sits in front of the storage with their back to it; 900 mm lane each side; 1.65 m of clear forecourt between desk and door. The centre of the far wall is the room's focus and the camera's backdrop.",
+    "ceiling": "Ceiling and the frieze above the picture rail carried in one mid-deep green-grey down to the rail, so the room gains a continuous top edge and the 2.65 m height reads as a deliberate lid rather than an accident. Hairline crack stitched. Pendant replaced with a flush period fitting because the desk is now directly beneath it.",
+    "floor": "Original pine boards repaired, stained near-black and matt-lacquered, wall to wall, with the original hearthstone exposed flush. No rug: the floor is the dark ground the joinery stands on, and it must stay flat for a castored chair.",
+    "seating": "Task chair re-upholstered, plus a second, lighter chair facing it across the desk. The only direction in the set that uses the partners' desk as a partners' desk. No soft seating.",
+    "storage": "Fitted alcove joinery, both alcoves, floor to picture rail: closed cupboards to 750 mm holding box files at 320 deep, four open book shelves above each, 7.04 linear metres open plus 1.76 m closed. Nothing free-standing anywhere in the room.",
+    "lighting": "Joinery-integrated. Warm linear LED under each shelf head so the backdrop is self-lit, two wall lights at picture-rail height on the party wall, a flush ceiling fitting, and one fixed key light bracketed to the window wall at 43 degrees off the camera axis. Fused spur to sockets in the joinery plinths; the desk is fed from below through a floor grommet.",
+    "programme": "A library-study for one, with a facing seat for a second: the room keeps its job and changes its quality. It is also the quiet reading wall of the house."
+  },
+  "moves": [
+    {
+      "title": "Strip, repair, and open the hearth",
+      "detail": "Woodchip paper off all four walls, plaster repaired and lime-skimmed where it blows; ceiling crack stitched with scrim and filler. The chipboard panel over the fireplace opening is removed, the brick opening cleaned back, a ventilated cast grille fitted low, and the original hearthstone lifted clear of the boards and exposed. No finish goes on until every defect is repaired."
+    },
+    {
+      "title": "Build both alcoves out to the picture rail",
+      "detail": "Two mirrored fitted units, 920 wide x 350 deep x 2200 high, scribed into the alcoves at x 0.04-0.96 and x 2.44-3.36, y 3.45-3.80. Cupboards with paired doors to 750, four adjustable open shelves above each, top edge held level with the underside of the existing picture rail so the rail runs uninterrupted round the room."
+    },
+    {
+      "title": "Paint the far wall as one object",
+      "detail": "Joinery, chimney breast face, skirting and the returns all in the same deep green-black eggshell so the breast stops projecting visually and the whole far wall reads as a single 3.4 m wide built element. Walls elsewhere in a warm putty at LRV 55 to bounce the one window's light back into the room."
+    },
+    {
+      "title": "Turn the desk round and set the chair zone",
+      "detail": "The oak partners' desk is re-sited centred on the breast at x 0.90-2.50, y 1.65-2.55, facing the door, 900 mm clear of the joinery face. Task chair behind it, facing chair in front. Desk top re-finished, not replaced."
+    },
+    {
+      "title": "Wire the room properly and light the backdrop",
+      "detail": "New radial circuit while the boards are up: two doubles in the joinery plinths, a data outlet, and a brushed floor grommet directly under the desk fed from the joist void so no lead crosses the chair zone. Warm-dim linear LED under every shelf head, two rail-height wall lights, flush ceiling fitting, and a wall-bracketed bi-colour key light on the window wall."
+    }
+  ],
+  "items": [
+    {
+      "item": "Alcove joinery, left and right",
+      "change": "Two mirrored units, 920 w x 350 d x 2200 h, 18 mm birch-faced ply carcasses with 20 mm poplar face frames, scribed to the out-of-plumb brickwork with 40 mm fillets each side. Open-backed on a 25 x 50 treated batten frame against the plaster, with a continuous 20 mm air gap and 10 mm vent slots at plinth and head. Clear internal 880 wide x 330 deep. Cupboards with paired 440 doors to 750; four adjustable open shelves per unit at 1100, 1385, 1670 and 1955 (25 mm ply, cross-tongued front edge, no shelf longer than 880 so nothing sags). Finished in deep green-black eggshell over shellac knot-block.",
+      "reason": "The alcoves are the only place in a 12.4 m2 room where four square metres of storage face costs no floor, and 350 mm is exactly the depth books and box files want. Full height to the rail is what turns two leftover recesses into the face of the room.",
+      "validation": "Delivers 4 shelves x 0.88 m x 2 units = 7.04 linear metres of open shelving against 6 required, plus 1.76 m closed - a 17 per cent margin, so the brief is met even if the client's shelf spacings differ. Depth is 350 flush with the 350 breast projection, so nothing projects into the room and the plan is untouched. Open-backed on battens is a climate decision, not a saving: these are solid brick walls with no cavity, and a sealed carcass against cold brick in a Sheffield winter is a mould farm. The whole unit is screwed through the face frame into plugged brick - it unscrews and leaves fixings, so it is non-destructive for a later let, and alcove joinery in a Victorian back bedroom reads as original rather than as something to explain."
+    },
+    {
+      "item": "Alcove cupboards, 0-750",
+      "change": "Paired 440 wide doors, flat panel with a 3 mm shadow gap, push-catch, no handles; one adjustable shelf inside each; interiors in the same eggshell. Cupboard tops form a continuous ledge at 750 mm, oak-lipped to match the desk.",
+      "reason": "Papers currently live on the floor because there is no surface to put anything down on. A 750 ledge behind the sitter is at desk height, so a stack of paper moves from desk to ledge in one motion, and everything ugly lives shut below it.",
+      "validation": "750 matches the desk top so the ledge reads as one plane with it rather than as a shelf at a random height. Interior clear depth 330 takes an A4 box file at 320 deep upright with 10 mm to spare, which is the whole reason the cupboards are here and not deeper. Door swing is 440, and the chair zone in front is 900, so a door opens fully with the task chair pushed in to the desk; this is stated in the risks because it is the one daily manoeuvre the plan makes you think about."
+    },
+    {
+      "item": "Chimney breast face",
+      "change": "Woodchip stripped, blown plaster hacked off and re-rendered in lime, skimmed flat, painted the same deep green-black eggshell as the joinery. A single oak mantel shelf, 1400 x 150 x 40, oiled to match the desk, fixed at 1100 so it lines through with the first open shelf in each alcove.",
+      "reason": "Painting the breast the joinery colour stops it reading as a lump projecting into a small room and lets the three elements - unit, breast, unit - resolve into one 3.4 m wall. The mantel gives the composition a horizontal that crosses the whole far wall.",
+      "validation": "Lime render on solid brick keeps the wall vapour-open, which matters more on a chimney breast than anywhere else in the room. The mantel projects 150 into the room at 1100 high, clear above the 1050 back of the task chair, and stops 170 short of the chair when it is pushed back - it cannot be walked into because the chair zone is behind the desk, not a route. Aligning it with the 1100 shelf line is what makes a dark wall read as designed rather than as three separate jobs."
+    },
+    {
+      "item": "Blocked fireplace opening",
+      "change": "Chipboard cover removed. Brick opening cleaned back, loose mortar raked and repointed in lime, back and cheeks left as brick and limewashed. A cast-iron 225 x 150 vent grille set at the base into a purpose-made removable panel that closes the flue at throat level. Original hearthstone lifted clear of later boarding, cleaned, bedded flush with the finished board level with no upstand.",
+      "reason": "The room's centre. Open, ventilated and empty, the hearth gives the far wall a base and the composition a reason to be symmetrical - and it is the honest version of a fireplace in a room with no budget for a flue liner.",
+      "validation": "Explicitly not commissioned as a working fire: no liner, no sweep certificate, no combustion in a let property without one. The grille is the non-negotiable part - a sealed, unventilated flue in a solid brick stack draws damp down and sweats onto the new joinery 300 mm away. Hearthstone bedded flush, not raised: the sitter's castored chair travels over this exact strip, and a 30 mm kerb in a 900 chair zone is a trip and a broken castor. Removing a chipboard panel and repointing is reversible and loses no heritage fabric."
+    },
+    {
+      "item": "Oak partners' desk (inherited, stays)",
+      "change": "Retained. Re-sited centred on the chimney breast at x 0.90-2.50, y 1.65-2.55, long axis across the room, facing the door. Top cleaned back to bare oak, any ring marks and ink scald cut out with a cabinet scraper before finishing, then three coats of hardwax oil to a satin sheen. Loose joints re-glued and cramped; castors, if fitted, replaced with felt-faced glides. A 1200 x 700 wool felt mat on the working side.",
+      "reason": "It is the only piece of furniture in the room and the room is planned around it. Centred on the breast it becomes the axis of the scheme; re-oiled rather than re-topped, it keeps the one warm material against a dark shell.",
+      "validation": "Repair before finish: joints are re-glued and the top is scraped flat before any oil goes on, because oil over an open joint is a defect sealed in. Hardwax oil rather than lacquer because it is spot-repairable in a working room, which a let property will need. Felt glides not castors, because the boards are being stained near-black and castor tracks would show. 1.6 x 0.9 in a 3.4 m width leaves exactly 900 each side, which is checked in the scale check. The felt mat is also the only soft surface on the desk plane and does measurable work on call audio."
+    },
+    {
+      "item": "Task chair",
+      "change": "Retained. Stripped, gas lift and mechanism serviced, re-upholstered in a dense charcoal wool with a 5 per cent nylon content; hard-floor castors swapped for soft-tread twin-wheel castors suited to a lacquered board floor. Positioned at x 1.37-2.03, y 2.62-3.28.",
+      "reason": "The client sits in this for six hours a day; the money belongs in the mechanism and the fabric, not in a new chair.",
+      "validation": "Soft-tread castors are specified because hard castors on a stained and lacquered pine board floor will cut through the lacquer along one arc within a year. Wool rather than a synthetic mesh because this room is cold in winter and mesh is cold to sit in. Seat depth 660 in a 900 chair zone leaves 240 of recoil, and the sitter rises sideways into one of the two 900 lanes rather than backwards - the plan is designed for side egress and says so."
+    },
+    {
+      "item": "Facing chair",
+      "change": "One lightweight elm or beech spindle-back side chair, no arms, seat 450, stained near-black, at x 1.60-2.20, y 0.92-1.50. Weight under 5 kg so it lifts with one hand.",
+      "reason": "It is a partners' desk and this is the only direction that uses it as one: a place for the second person in a conversation, a place to lay a coat, a chair that carries to the other side of the desk when two people work.",
+      "validation": "Sited clear of the door swing quadrant (x 0.75-1.53, y 0-0.78) by 70 mm in x and 140 mm in y - and armless and light so that if it does get nudged into the swing, the door pushes it rather than jams on it. It sits in the 1.65 m forecourt, not in a lane. It is also the room's overflow surface, which is why it has no arms."
+    },
+    {
+      "item": "Floor",
+      "change": "Original pine boards retained. Loose boards screwed down, squeaking joists packed, split boards resin-repaired, gaps over 4 mm filled with slivered pine rather than flexible filler. Lifted along the window wall and the alcove line for the new circuit, then relaid. Sanded, stained near-black with a penetrating water-based wood stain, finished in two coats of matt hard-wearing floor lacquer. No rug.",
+      "reason": "A dark, continuous, matt floor is the ground the joinery stands on: it removes the boundary between floor and wall at the far end, so the room's edges stop being countable.",
+      "validation": "Board gaps filled with pine slivers rather than mastic is the correct fix in a Victorian terrace: it stops the draught up through the floor - a real contributor to P5 - without sealing a suspended timber floor that must stay ventilated at the sub-floor vents outside. Matt lacquer, not gloss: a glossy dark floor under a single window becomes a mirror of the window and puts a bright rectangle into every call frame. The stain is a finish on a repaired floor, never over a loose or split board. No rug is a deliberate cost - see risks, this room is acoustically live and the mitigation is books, blind and felt, not carpet."
+    },
+    {
+      "item": "Ceiling and frieze",
+      "change": "Lath and plaster retained. Hairline crack raked, scrim-taped and filled, all bonded back where hollow. Ceiling and the frieze from the picture rail up painted in one mid-deep green-grey (LRV 15) matt emulsion. Picture rail retained and painted in the wall putty. Existing pendant removed and replaced with a flush opal-and-brass 300 mm fitting on a dimmable warm-white lamp.",
+      "reason": "Carrying the dark tone down to the rail gives the room a continuous top edge and makes the joinery, which stops at the same rail, part of the room's structure rather than a piece of furniture standing against a wall.",
+      "validation": "Bonded and stitched before painting - dark matt emulsion over a live crack telegraphs within a heating season. Flush rather than pendant because the desk is now directly under the ceiling centre and a hanging fitting at 2.65 would be in the eyeline of anyone standing at the desk and in the top of the call frame. The dark ceiling is the riskiest decision in the direction and is mitigated deliberately: the walls below the rail are held at LRV 55 and the ceiling is a lighter value than the joinery, so the room reads as banded, not as a box lined in black."
+    },
+    {
+      "item": "Walls below the picture rail",
+      "change": "Woodchip paper stripped, plaster made good and lime-skimmed where blown, then two coats of a chalky matt emulsion in warm putty at LRV 55 on the party wall, entrance wall and window wall. Original skirting and picture rail retained, filled and repainted.",
+      "reason": "A single window facing a small yard gives this room very little light; the three walls that are not the composition are there to bounce it.",
+      "validation": "LRV 55 is chosen against the near-black joinery precisely so the contrast is the design rather than the room simply being dark. Chalky matt over lime keeps the solid brick walls vapour-open, which is the correct build-up on an uninsulated external wall in a cold, damp climate - a vinyl or plastic emulsion here traps moisture behind the paint film and blows the skim. Stripping woodchip is also a small acoustic and dust gain in a room used for calls."
+    },
+    {
+      "item": "Sash window W1",
+      "change": "Original sash retained and repaired: sashes eased, cords renewed, parting and staff beads replaced, brush-pile draught seals let into the beads, sash lock and lifts refitted. Slim lift-out secondary glazing, 6 mm low-iron toughened in a slim white-painted aluminium frame, magnetically fixed inside the reveal, removable in seconds and leaving only frame magnets on the timber.",
+      "reason": "The single-glazed sash is the largest single source of both cold and call noise. Repairing and secondary-glazing keeps the original window and fixes both.",
+      "validation": "The constraint says the sash may be repaired or secondary-glazed and never replaced; this does exactly that and is fully reversible for a later let. Lift-out rather than fixed so the sash can still be opened in summer - a room with one window and a person in it all day must be ventilable, and a permanently sealed window in a solid-brick house creates condensation on the coldest surface, which is this reveal. Low-iron glass because standard float in front of a north-facing yard adds a green cast that shows on camera."
+    },
+    {
+      "item": "Window dressing",
+      "change": "Interlined wool Roman blind in a deep putty, mounted on a face-fixed 80 mm painted timber pelmet above the head at 2.15, dropping to the sill at 820 and no lower. Cords replaced with a child-safe chain and cleat.",
+      "reason": "Warmth and glare control at the one window, and a soft surface high on an otherwise hard wall.",
+      "validation": "Sill-length, deliberately: full-length curtains here would hang over the fixed radiator and dump its output into the window reveal, which is the standard mistake in a Victorian bedroom and a direct worsening of P5. Interlining gives roughly the thermal benefit of a second layer at night when the room is unoccupied and the sash is coldest. Wool and the pelmet together are also the room's only meaningful high-level acoustic absorption."
+    },
+    {
+      "item": "Radiator",
+      "change": "Retained in position, never boxed, never shelved over. Flushed and re-balanced, thermostatic valve fitted, painted in the wall putty colour with a radiator-grade eggshell. A 3 mm foil-faced reflective panel fixed to the wall behind it.",
+      "reason": "Fixed pipework means fixed position, so the design accepts it and makes it disappear into the wall colour instead of pretending it is not there.",
+      "validation": "Boxing in is explicitly excluded by the brief and would cost 10-15 per cent of the output of the only heat emitter in a solid-walled room. The reflective panel is the one cheap, reversible, genuinely effective thermal move available on an uninsulated external wall. A TRV is what lets a room that is empty at night and occupied all day be heated to a schedule; on its own it is the largest running-cost saving in the scheme."
+    },
+    {
+      "item": "Electrical installation",
+      "change": "New radial circuit from the consumer unit via a fused spur, run in the joist void while the boards are up. Two twin sockets face-fixed into the joinery plinths (one per alcove), one RJ45 data outlet in the left plinth, and a 25 mm brushed floor grommet in the board directly beneath the desk at approximately x 1.7, y 2.2, feeding a 4-gang surface block screwed to the underside of the desk rail. Certified and tested, with a certificate retained for letting.",
+      "reason": "One double socket and trailing leads is the room's most dangerous defect and the one that makes the desk unusable in its new central position.",
+      "validation": "The desk sits 900 off the wall, so any wall-fed lead would cross the chair zone and be run over by castors daily - the floor grommet is the only correct answer once the desk is central, and it is only affordable because the boards are already up for repair. Sockets in the plinth rather than chased into brick means no destructive chasing of solid walls and everything is at plug height above the skirting line. Screwing the block under the desk rail rather than laying it on the floor keeps the near-black floor clear, which the whole floor decision depends on."
+    },
+    {
+      "item": "Joinery lighting",
+      "change": "Warm-dim linear LED, 2700 K falling to 2200 K on dim, CRI 90+, in a 12 x 12 mm aluminium channel recessed into the front underside of every open shelf head in both units, wired back to a driver in the left cupboard on its own dimmed circuit.",
+      "reason": "The backdrop lights itself. Books lit from their own shelf front read as depth and texture on camera rather than as a dark mass, and the sitter's head separates from the wall behind it.",
+      "validation": "This is what replaces a backlight in a lighting rig: a fixed, permanently identical wash 900 mm behind the sitter's head, on a dimmer, that never needs positioning. CRI 90+ because low-CRI LED makes oak, wool and skin all look wrong in the same frame. Recessing into a channel in the shelf head means no diode is ever directly in the camera's line, which is the difference between a lit shelf and a row of visible dots on every call. Driver in a cupboard with the vent slots above it, not sealed in."
+    },
+    {
+      "item": "Room lighting",
+      "change": "Two brass wall lights with linen shades on the party wall at 2050 mm centre height (x 3.4, y 1.30 and y 2.50), on a dimmed circuit; the flush ceiling fitting over the desk on a second; and a small brass adjustable desk lamp with a 2700 K CRI 95 lamp. All on warm-white lamps, all dimmable.",
+      "reason": "Light from the walls at rail height is what keeps a room with a dark ceiling from feeling low, and it gives the room an evening setting that is not the ceiling fitting.",
+      "validation": "Wall lights are on the party wall, the only long wall with neither window, door, nor joinery on it, so they are the only pieces on that wall and do not compete with the composition. At 2050 they sit under the 2200 rail line and above eye level for a standing adult, so no lamp is ever in view. Surface-wired in painted mini-trunking down the party wall behind the joinery line - no chasing into a shared party wall, which is both a noise and a neighbour problem."
+    },
+    {
+      "item": "Call key light",
+      "change": "One bi-colour 2700-4000 K CRI 95 LED panel, 300 x 200, on a fixed articulated wall bracket screwed to the window wall at x 0.05, y 1.05-1.35, centre height 1720, aimed back and across at the seated head position at approximately (1.70, 3.00). Fed from a switched fused spur below at skirting level.",
+      "reason": "The joinery gives the backdrop; this gives the face. One fixed lamp, set up once, at a real key angle.",
+      "validation": "Geometry checked: from the seated head, the lamp is 1.65 m across and 1.80 m forward, which is 43 degrees off the camera axis - a proper key, not the 60-70 degree rake that a lamp placed further down the window wall would give. Mounted at 1720 it is above the desk plane, clear of the 900 lane in plan by projecting only 300 from a wall the plan gives no other use to, and it is beside the window opening rather than over it, so it never obstructs the sash or the blind. Bi-colour because the fill in this room is daylight in June and 2700 K tungsten in December, and a fixed-colour key mismatches one of them."
+    },
+    {
+      "item": "Door D1 and the swing",
+      "change": "Four-panel door retained, stripped of paint build-up on the lock stile so it closes cleanly, hinges re-set, compression draught seal let into the rebate, painted in the wall putty with the architrave. Swing kept inward as existing. A cast-iron hook on the back of the door.",
+      "reason": "The door stays as it is because the plan has been drawn to leave its quadrant empty; nothing here needs the swing reversed onto a narrow landing.",
+      "validation": "The swing quadrant x 0.75-1.53, y 0-0.78 is clear in this layout: the nearest object, the facing chair, sits 140 mm beyond it and the desk 870 mm beyond it. Draught-stripping the door is a genuine warmth measure in a house where the landing is unheated, and a coat hook on the door is the difference between a coat on the back of the task chair and a coat in the call frame."
+    },
+    {
+      "item": "Books and box files",
+      "change": "Client's own. Box files, boxed papers and everything with a logo on it live behind the cupboard doors below 750; books, run vertically with no more than two stacked horizontals per shelf, above. Shelf-end supports in blackened steel. Nothing lands on the top shelf that is not a book.",
+      "reason": "The backdrop is a working library, not a styled one, and it only stays legible if the ugly half of the storage is the half with doors on it.",
+      "validation": "This is a curatorial rule, not decoration: 7.04 m of open shelving fills up, and the direction's entire answer to P2 depends on what is on those shelves at eye level behind the sitter's head. The 1.76 m of closed shelving exists so that the answer to 'where does the ugly box go' is never 'on the open shelf'."
+    }
+  ],
+  "keeps": [
+    "the inherited oak partners' desk, repaired, re-sited centrally and re-oiled",
+    "the task chair, serviced and re-upholstered",
+    "original pine floorboards, repaired, stained and lacquered",
+    "lath and plaster ceiling, crack stitched",
+    "picture rail and skirting throughout",
+    "the original sash window, repaired and secondary-glazed",
+    "the radiator in its fixed position, unboxed",
+    "the four-panel door",
+    "the chimney breast and its opening, reopened and ventilated",
+    "the original hearthstone, exposed flush"
+  ],
+  "removes": [
+    "woodchip wallpaper from all walls",
+    "the chipboard panel over the fireplace opening (retained in the loft against a future reinstatement)",
+    "the existing pendant fitting and its shade",
+    "trailing extension leads",
+    "any free-standing bookcases or boxes currently holding the books, which the joinery replaces"
+  ],
+  "ventilation": "The room has one openable window and it must stay openable, so the secondary glazing is lift-out rather than fixed. The flue is left ventilated through a cast grille at the base of the opening. The alcove joinery is open-backed on battens with a 20 mm air gap and vent slots at plinth and head, so the cold external and party-wall plaster behind it stays ventilated. Sub-floor vents outside the building must be confirmed clear before the boards are relaid.",
+  "scale_check": "Across the 3.40 m width, on the desk line (y 1.65-2.55): 900 mm clear lane against the window wall + 1600 mm desk + 900 mm clear lane against the party wall = 3400 mm exactly. Both lanes are full height and unobstructed floor to ceiling, and 900 exceeds the 750 minimum for a single-person circulation route, so the desk can be walked round on either side. Across the 3.40 m width, on the joinery line (y 3.45-3.80): 40 scribe + 920 unit + 40 scribe + 1400 chimney breast + 40 scribe + 920 unit + 40 scribe = 3400 mm exactly, with both units held to the 350 mm alcove depth so nothing projects past the breast face. Along the 3.80 m depth, on the room's centre line: 1650 mm forecourt from the entrance wall to the desk + 900 mm desk + 900 mm chair zone + 350 mm joinery = 3800 mm exactly. The chair zone is the number that must be defended: 900 mm from desk edge to joinery face = 660 mm task chair depth + 240 mm of recoil, with egress sideways into either 900 mm lane rather than backwards, which is why 900 rather than 1000 is sufficient here. A 440 mm cupboard door needs 440 mm of swing and gets the full 900 whenever the chair is pushed in to the desk. The mantel projects 150 mm at 1100 mm high, which is 170 mm clear of the task chair at its rearmost and 50 mm above the top of its backrest. The door swing quadrant (x 0.75-1.53, y 0-0.78) contains nothing: the facing chair starts at y 0.92, 140 mm beyond it, and the desk at y 1.65, 870 mm beyond it. Shelving delivered: 4 open shelves x 880 mm clear x 2 units = 7.04 linear metres open, plus 2 x 880 mm inside the cupboards = 1.76 m closed, against 6.00 m required - a margin of 1.04 m, or 17 per cent.",
+  "palette": [
+    {
+      "name": "Alcove green-black",
+      "hex": "#26302A",
+      "use": "Both alcove units, chimney breast face, skirting, breast returns"
+    },
+    {
+      "name": "Frieze green-grey",
+      "hex": "#3E4A42",
+      "use": "Ceiling and frieze above the picture rail"
+    },
+    {
+      "name": "Warm putty",
+      "hex": "#CFC5B4",
+      "use": "Walls below the rail, picture rail, door, architrave, radiator"
+    },
+    {
+      "name": "Stained board black",
+      "hex": "#1E1A17",
+      "use": "Floor"
+    },
+    {
+      "name": "Oiled oak",
+      "hex": "#A8783F",
+      "use": "Partners' desk, mantel shelf, cupboard-top lipping"
+    },
+    {
+      "name": "Charcoal wool",
+      "hex": "#3B3B3D",
+      "use": "Task chair upholstery, felt desk mat"
+    },
+    {
+      "name": "Warm white light",
+      "hex": "#F3E0C2",
+      "use": "Shelf LED, wall lights, ceiling fitting"
+    }
+  ],
+  "materials": [
+    "18 mm birch-faced plywood with poplar face frames",
+    "deep green-black eggshell over shellac knot-block",
+    "chalky matt emulsion over lime skim",
+    "repaired and hardwax-oiled English oak",
+    "stained pine boards in matt floor lacquer",
+    "reclaimed brick and lime pointing at the hearth",
+    "interlined wool Roman blind",
+    "slim lift-out secondary glazing in low-iron toughened glass",
+    "blackened steel shelf ends",
+    "brass wall lights with linen shades"
+  ],
+  "risks": [
+    "The open-backed, battened, vented joinery construction is the first thing a joiner will offer to simplify into a sealed cabinet against the brick. It must not be. On an uninsulated solid wall in Sheffield that is a mould detail, and the books are on the other side of it.",
+    "The dark ceiling only works if the walls below the rail are held at LRV 55 and the shelf LED, wall lights and ceiling fitting are all dimmable and all installed. Delete the lighting and the room is simply dark.",
+    "This direction half-solves sound. Hard boards, plaster and glass with no rug make a lively room, and the mitigations - full shelves, interlined blind and pelmet, wool upholstery, felt desk mat - are all specified for acoustic reasons, not decorative ones. If calls are still echoing after handover, the answer is a fabric panel on the party wall, not a carpet over the new floor.",
+    "The flue vent grille and the ventilated hearth are not decoration. A sealed chimney next to new joinery is the single most likely cause of a callback.",
+    "The 900 mm chair zone is exact. Any thickening of the joinery beyond 350, or any deeper desk, eats it directly, and the direction stops working.",
+    "Do not commission the fireplace. This scheme's hearth is a ventilated recess; putting a stove or a basket in it needs a liner, a sweep and a landlord's certificate that the budget does not contain."
+  ],
+  "not_for": "Someone who is on camera all day and needs the sound as controlled as the picture - that is a lined, acoustically engineered room, and this is not it. It is also wrong for anyone who wants the room bright and airy: the far wall is deliberately dark and the ceiling comes down to the rail, and if the client's instinct is a pale room, this will feel closed. And it is wrong if the winter cold is the thing that actually stops the room being used - this direction draught-strips, secondary-glazes and reflects, but it does not insulate the external wall or the floor, and no amount of joinery will fix a wall that is 5 degrees colder than the air in it.",
+  "render": {
+    "default": "A small Victorian back bedroom in Sheffield converted to a study, 3.4 by 3.8 m, ceiling 2.65 m. The far wall is one composition: a chimney breast painted deep green-black with a plain brick fireplace recess at its foot and a single oiled oak mantel shelf across it, flanked by two identical full-height fitted bookcases in the same green-black, built into the shallow alcoves and stopping level with the original picture rail. The bookcases have flat doored cupboards to desk height with an oak-lipped ledge on top, and four open shelves above, packed with real books and lit from a thin warm strip under each shelf front. The ceiling and the frieze above the rail are a mid-deep green-grey; the other walls are warm putty. The floor is original pine boards stained near-black and matt-lacquered. Centred in front of the bookcases, an inherited oak partners' desk, 1.6 by 0.9 m, re-oiled, facing into the room, with a charcoal task chair between the desk and the shelves and a light black spindle-back chair on the far side. On the left, a single sash window with slim secondary glazing, an interlined putty wool Roman blind stopping at the sill, and a plain painted radiator fully exposed beneath it. Warm, low, bookish light. Working room, not a showroom.",
+    "hero-in": "Standing just inside the door of a small Victorian study looking straight down the room at the far wall. The whole far wall reads as one dark built object: two matching full-height fitted bookcases in deep green-black eggshell fill the shallow alcoves either side of the chimney breast, running up to the original picture rail, with flat doored cupboards to desk height and four open shelves above, each shelf lit from a warm strip under its front edge and filled with real books, files and a few small objects. Between them the chimney breast is painted the same green-black, with an oiled oak mantel shelf crossing it at the same height as the first open shelf, and below that an open, cleaned brick fireplace recess with a small cast-iron vent grille at its base and the original stone hearth flush in the dark floor. The inherited oak partners' desk is centred in front of it all, facing the camera, its top warm honey oak against the dark wall, with a charcoal task chair tucked behind it and a light spindle-back chair nearest the camera on this side. Daylight comes from the left across the desk from a sash window out of frame. Ceiling and the frieze above the rail in mid-deep green-grey, walls in warm putty, floor near-black boards. Compact, symmetrical, warm, lived in.",
+    "desk": "From behind and slightly above the task chair in a small study, looking out over the oak partners' desk toward the entrance wall. In the immediate foreground, the tops of the fitted bookcase shelves and the oak mantel shelf edge, dark green-black, with warm strip light spilling down over book spines. Below, the back of a charcoal wool task chair and the honey oak desk top with a monitor seen from behind, a brass desk lamp, a charcoal felt mat and papers squared up. Beyond the desk, 1.65 m of clear near-black board floor, the light spindle-back chair, and the warm putty entrance wall with a four-panel painted door. On the left, the sash window with its slim secondary glazing and putty wool Roman blind, and a small white bi-colour LED panel on a fixed brass-black bracket high on the wall beside it, angled back toward the seat. The mid-deep green-grey ceiling comes down to the picture rail; a flush opal and brass ceiling fitting sits directly overhead. This is the view the room gives the person working in it, with the call lighting visible as equipment.",
+    "window": "Square-on to the external wall of a small Victorian study. Centred, the original single-glazed sash window with slim white-framed lift-out secondary glazing inside the reveal, sill at 820 mm. Above it, a face-fixed painted timber pelmet and an interlined wool Roman blind in deep putty, half raised, its bottom edge stopping exactly at the sill. Directly beneath the sill, the existing radiator, entirely exposed, no casing and no shelf, painted the same warm putty as the wall so it almost disappears. To the left of the window on the wall, a fixed articulated bracket carrying a small bi-colour LED panel at about 1.7 m, aimed away across the room. The original picture rail runs across at 2.2 m with mid-deep green-grey above it and warm putty below. Near-black stained board floor, painted skirting. At the right edge of the frame, the end of the oiled oak desk and the corner of a dark green-black bookcase. Grey Sheffield daylight from a small yard. No chimney breast in view."
+  },
+  "layout": {
+    "plan": [
+      {
+        "label": "alcove joinery L",
+        "x": 0.04,
+        "y": 3.45,
+        "w": 0.92,
+        "d": 0.35,
+        "h": 2.2,
+        "kind": "built"
+      },
+      {
+        "label": "alcove joinery R",
+        "x": 2.44,
+        "y": 3.45,
+        "w": 0.92,
+        "d": 0.35,
+        "h": 2.2,
+        "kind": "built"
+      },
+      {
+        "label": "oak mantel",
+        "x": 1.0,
+        "y": 3.3,
+        "w": 1.4,
+        "d": 0.15,
+        "h": 0.04,
+        "z": 1.1,
+        "kind": "built"
+      },
+      {
+        "label": "partners' desk",
+        "x": 0.9,
+        "y": 1.65,
+        "w": 1.6,
+        "d": 0.9,
+        "h": 0.75
+      },
+      {
+        "label": "task chair",
+        "x": 1.37,
+        "y": 2.62,
+        "w": 0.66,
+        "d": 0.66,
+        "h": 1.05
+      },
+      {
+        "label": "facing chair",
+        "x": 1.6,
+        "y": 0.92,
+        "w": 0.6,
+        "d": 0.58,
+        "h": 0.85
+      },
+      {
+        "label": "key light bracket",
+        "x": 0.04,
+        "y": 1.05,
+        "w": 0.2,
+        "d": 0.3,
+        "h": 0.28,
+        "z": 1.72,
+        "kind": "built"
+      },
+      {
+        "label": "wall light",
+        "x": 3.28,
+        "y": 1.19,
+        "w": 0.12,
+        "d": 0.22,
+        "h": 0.2,
+        "z": 1.95,
+        "kind": "built"
+      },
+      {
+        "label": "wall light",
+        "x": 3.28,
+        "y": 2.39,
+        "w": 0.12,
+        "d": 0.22,
+        "h": 0.2,
+        "z": 1.95,
+        "kind": "built"
+      }
+    ],
+    "route": [
+      [
+        1.15,
+        0.3
+      ],
+      [
+        1.2,
+        0.72
+      ],
+      [
+        2.95,
+        0.82
+      ],
+      [
+        2.95,
+        3.05
+      ],
+      [
+        2.1,
+        3.1
+      ]
+    ]
+  }
+}

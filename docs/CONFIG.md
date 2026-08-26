@@ -49,9 +49,17 @@ Each view:
   caption: "The alcove bay"
   drawings: [elev-w4, plan]     # which measured drawing constrains this camera
   photos: [right-side.jpg]      # client photo nearest this standpoint
+  from:    [2.40, 1.90]         # where the camera stands, in room coordinates
+  look_at: [0.00, 1.90]         # what it points at
   camera: >
     CAMERA — ... describe the standpoint, lens, eye level and what must be in frame.
 ```
+
+**`from` and `look_at` matter more than they look.** From them the engine generates an orientation
+block naming which wall lands on the LEFT, the RIGHT, AHEAD and BEHIND for that specific frame, and
+which openings can admit daylight in it. Without them the model has world coordinates and prose,
+no way to convert one into the other, and will mirror the room roughly half the time and invent
+daylight on a wall the model says is solid. This was observed, not theorised.
 
 `drawings` matters more than it looks. A square-on view of one wall needs **that wall's
 elevation** as its first reference, or the model defaults to a long axial view. Axial views take

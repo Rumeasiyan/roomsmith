@@ -219,11 +219,19 @@ class Room:
         w = self.wall(op.wall)
         return w.point_at(op.pos - op.width / 2), w.point_at(op.pos + op.width / 2)
 
+    # An item must lie along a wall by at least this much to belong to it. Without the guard,
+    # a rectangle that merely touches a wall at one corner is assigned to it with a zero-length
+    # run and draws a ghost element on that elevation.
+    MIN_RUN = 0.05
+
     def nearest_wall(self, rect, tol=0.12):
         """Which wall a plan rectangle {x,y,w,d} sits against, if any.
 
-        Returns (wall, u_start, run) so the item can be drawn on that wall's elevation.
+        Returns (wall, u_start, run) so the item can be drawn on that wall's elevation, or None.
         Generic: works for any wall angle, not just axis-aligned ones.
+
+        Ties on perpendicular distance are broken by the LONGER run, so a unit in a corner is
+        attributed to the wall it actually lies along rather than the one it merely abuts.
         """
         cx, cy = rect["x"] + rect["w"] / 2, rect["y"] + rect["d"] / 2
         corners = [(rect["x"], rect["y"]), (rect["x"] + rect["w"], rect["y"]),
@@ -236,14 +244,16 @@ class Room:
                 if -0.02 <= t <= 1.02:
                     dists.append(perp)
                     us.append(u)
-            if not dists:
+            if not dists or min(dists) > tol:
                 continue
-            near = min(dists)
-            if near <= tol:
-                u0, u1 = min(us), max(us)
-                _, cperp, _ = w.project((cx, cy))
-                if best is None or cperp < best[0]:
-                    best = (cperp, w, u0, u1 - u0)
+            u0, u1 = max(0.0, min(us)), min(w.length, max(us))
+            run = u1 - u0
+            if run < self.MIN_RUN:
+                continue
+            _, cperp, _ = w.project((cx, cy))
+            key = (round(cperp, 4), -run)
+            if best is None or key < best[0]:
+                best = (key, w, u0, run)
         if not best:
             return None
         _, w, u0, run = best

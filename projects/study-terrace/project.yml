@@ -1,0 +1,129 @@
+# Written as if design-intake had just interviewed the client.
+name: "Back bedroom to home office"
+client: "Synthetic test client"
+
+brief:
+  what_it_is: >
+    The small back bedroom of a Victorian terrace in Sheffield, being converted into a
+    full-time home office for one person who takes video calls most of the day. It is
+    reached off the landing and is the quietest room in the house. Nobody sleeps in it.
+
+  register: >
+    A British Victorian terraced house, honestly period but not pastiche. Working room,
+    lived in, books and papers, not a showroom.
+
+  must_appear:
+    - "The client's inherited oak partners' desk, 1.6 m x 0.9 m, which will not be replaced"
+    - "A task chair and a video-call position facing away from the window"
+    - "Open shelving for roughly 6 linear metres of books"
+
+  fixed_furniture_note: >
+    The inherited oak desk stays in this room in every direction. It may be re-sited,
+    re-finished or re-topped, never removed.
+
+  problems:
+    - id: P1
+      text: "The chimney breast eats the middle of the far wall and leaves two awkward alcoves"
+    - id: P2
+      text: "Video calls are backlit by the window, so the client's face is in shadow"
+    - id: P3
+      text: "One double socket for the whole room, trailing extension leads"
+    - id: P4
+      text: "Nowhere to put anything down; papers live on the floor"
+    - id: P5
+      text: "Cold in winter - solid brick walls, single-glazed sash, radiator under the window"
+
+  constraints:
+    - "The chimney breast is structural and stays"
+    - "The sash window is original and may be repaired or secondary-glazed, not replaced"
+    - "The radiator position is fixed by the existing pipework"
+    - "It is a rented-out-later property, so nothing may be irreversible"
+
+room:
+  name: "Back bedroom study"
+  units: m
+  ceiling_height: 2.65
+  confirmed: false
+
+  # Chimney breast projecting into the room from the far wall, leaving an alcove either side.
+  shape:
+    type: polygon
+    points: [[0,0],[3.4,0],[3.4,3.8],[2.4,3.8],[2.4,3.45],[1.0,3.45],[1.0,3.8],[0,3.8]]
+
+  key_dimensions: {across: 3.4, along: 3.8}
+
+  wall_names:
+    w1: {name: "Entrance wall - door from the landing", role: entrance}
+    w2: {name: "Party wall - solid, shared with next door", role: flank}
+    w3: {name: "Far wall - right alcove", role: alcove}
+    w4: {name: "Chimney breast, right return", role: return}
+    w5: {name: "Chimney breast face", role: feature}
+    w6: {name: "Chimney breast, left return", role: return}
+    w7: {name: "Far wall - left alcove", role: alcove}
+    w8: {name: "External wall - sash window", role: flank}
+
+  openings:
+    - {tag: D1, type: door, wall: w1, pos: 0.75, width: 0.78, sill: 0.0, head: 1.98, desc: "Four-panel door from the landing, opens inward"}
+    - {tag: W1, type: window, wall: w8, pos: 1.9, width: 1.05, sill: 0.82, head: 2.05, desc: "Original single-glazed sash window"}
+
+  features:
+    - {tag: RAD, kind: radiator, wall: w8, pos: 1.9, width: 1.0, height: 0.6, z: 0.15, desc: "Radiator under the window - pipework fixed"}
+    - {tag: FP, kind: blocked fireplace opening, wall: w5, pos: 0.7, width: 0.6, height: 0.6, z: 0.1, desc: "Blocked fireplace in the chimney breast"}
+
+  shell_notes:
+    - "The chimney breast projects 350 mm into the room and is 1400 mm wide, leaving an alcove of about 1000 mm either side of it."
+    - "Solid brick walls, no cavity. Original skirting and picture rail survive."
+    - "Only the sash window admits daylight, and it faces a small yard."
+
+  existing:
+    floor: "Original pine floorboards, painted, worn"
+    ceiling: "Flat lath and plaster, one pendant, a hairline crack"
+    walls: "Woodchip paper over plaster, picture rail intact"
+
+  notes:
+    - "SYNTHETIC PROJECT for pipeline testing - dimensions are invented, not measured."
+    - "No client photographs exist, so views carry no photographic anchor."
+
+deliverables:
+  directions: 6
+  aspect_ratio: "16:9"
+  elevations: [w1, w5, w8]
+  iso_hide_walls: [w1, w2]
+
+  views:
+    - id: hero-in
+      caption: "From the door, looking at the chimney breast"
+      drawings: [plan, iso]
+      photos: []
+      from: [0.75, 0.25]
+      look_at: [1.70, 3.60]
+      camera: >
+        CAMERA - HERO. Standing just inside the door looking across the room at the
+        chimney breast and its two alcoves. 28 mm lens, eye level 1.55 m.
+    - id: desk
+      caption: "The desk and the video-call position"
+      drawings: [plan, iso]
+      photos: []
+      from: [1.30, 0.60]
+      look_at: [2.90, 1.20]
+      camera: >
+        CAMERA - AT THE DESK. Over the sitter's shoulder from just inside the door, looking
+        along the desk toward the party wall. 35 mm lens, eye level 1.45 m. This frame spans
+        about 2.2 m of wall. Show the working surface, the task chair and the key light.
+    - id: window
+      caption: "The window wall, radiator and daylight"
+      drawings: [elev-w8, plan]
+      photos: []
+      from: [2.40, 1.90]
+      look_at: [0.00, 1.90]
+      camera: >
+        CAMERA - WINDOW WALL. Square-on to the external wall from about 2.4 m, 35 mm lens,
+        eye level 1.55 m. This frame spans about 2.6 m of wall. Shows the sash window, the
+        radiator beneath it and how this direction treats them.
+
+style:
+  richness: ""
+
+render:
+  backend: codex
+  max_spend_usd: 5

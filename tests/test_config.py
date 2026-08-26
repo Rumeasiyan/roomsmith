@@ -87,6 +87,30 @@ def test_opening_sits_on_its_wall():
     assert [w.id for w in r.solid_walls()] == ["w2", "w3", "w4"]
 
 
+def test_wall_attribution_rejects_grazing_contact():
+    """A rectangle that only touches a wall at a corner must not be drawn on its elevation.
+
+    Found in a real project: an alcove unit grazed the chimney-breast face and appeared on that
+    elevation as a zero-width, full-height ghost.
+    """
+    from engine.room import Room
+    # a chimney breast projecting into the room, leaving an alcove either side
+    room = Room.from_config({
+        "shape": {"type": "polygon",
+                  "points": [[0, 0], [3.4, 0], [3.4, 3.8], [2.4, 3.8],
+                             [2.4, 3.45], [1.0, 3.45], [1.0, 3.8], [0, 3.8]]},
+        "ceiling_height": 2.65, "openings": []})
+
+    grazing = room.nearest_wall({"x": 2.40, "y": 3.45, "w": 0.92, "d": 0.35})
+    assert grazing is not None
+    wall, u, run = grazing
+    assert run >= room.MIN_RUN, "a grazing contact must never yield a near-zero run"
+    assert wall.id != "w5", "must not be attributed to the wall it merely touches at a corner"
+
+    free = room.nearest_wall({"x": 0.9, "y": 1.65, "w": 1.6, "d": 0.9})
+    assert free is None, "a free-standing item belongs to no wall"
+
+
 def test_example_project_still_valid():
     from engine.project import Project
     p = Project(ROOT / "projects" / "compact-hall")
