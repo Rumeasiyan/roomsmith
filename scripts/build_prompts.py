@@ -181,10 +181,13 @@ CAMERAS = {
         "furniture — a photographic equivalent of the dollhouse drawing."
     ),
     "alcove": (
-        "CAMERA — THE ALCOVE AND SHRINE. Standing in the middle of the room about 2 m in from the front "
-        "door, turned to face the entering-RIGHT flank square-on from about 2.4 m. 35 mm lens, eye "
-        "level 1.55 m. Shows the alcove step-out, the curtained doorway inside it, the shrine, and how "
-        "this direction treats that wall."
+        "CAMERA - THE ALCOVE BAY. Stand in the middle of the room about 3.3 m in from the front door "
+        "and turn 90 degrees to face the entering-RIGHT flank square-on from about 2.4 m. 35 mm lens, "
+        "eye level 1.55 m. DO NOT show the front door or the entrance wall in this view. The frame is "
+        "filled by the flank wall: the alcove step-out with the SECOND WINDOW W2 in its back wall and "
+        "two pierced ventilation grilles above it, daylight coming through it, the household's wall "
+        "shrine on the alcove's entrance-side return to one side, and the curtained doorway D2 beyond "
+        "that. This is the view that shows how the direction treats the daylit bay."
     ),
     "far-wall": (
         "CAMERA — THE FAR END. Standing about 2.5 m in from the front door, looking at the far wall and "
