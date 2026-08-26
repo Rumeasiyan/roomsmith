@@ -9,7 +9,7 @@ lang: en
 show_downloads: false
 
 author: Rumeasiyan
-logo: /roomsmith/media/hero-render.jpg
+logo: /media/hero-render.jpg
 
 # sitemap.xml and robots.txt are maintained by hand in docs/ so their contents are predictable.
 # jekyll-sitemap is deliberately NOT enabled - it would overwrite them.
@@ -18,7 +18,7 @@ plugins:
 
 defaults:
   - scope: {path: ""}
-    values: {image: /roomsmith/media/hero-render.jpg}
+    values: {image: /media/hero-render.jpg}
 
 exclude:
   - media/*.psd

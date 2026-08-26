@@ -1,20 +1,11 @@
-<link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
-<meta name="description" content="{{ page.description | default: site.description }}">
-<meta name="author" content="Rumeasiyan">
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+{%- comment -%}
+  jekyll-seo-tag already emits title, description, canonical, Open Graph and Twitter tags.
+  Only add here what it does not, or tags get duplicated.
+{%- endcomment -%}
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="theme-color" content="#16181d">
+<link rel="alternate" type="text/plain" href="{{ '/llms.txt' | absolute_url }}" title="Plain-language summary for AI systems">
 
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Roomsmith">
-<meta property="og:title" content="{{ page.title | default: site.title }}">
-<meta property="og:description" content="{{ page.description | default: site.description }}">
-<meta property="og:url" content="{{ page.url | replace:'index.html','' | absolute_url }}">
-<meta property="og:image" content="{{ '/media/hero-render.jpg' | absolute_url }}">
-<meta property="og:image:alt" content="AI generated photoreal interior render alongside the scaled floor plan it was drawn from">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ page.title | default: site.title }}">
-<meta name="twitter:description" content="{{ page.description | default: site.description }}">
-<meta name="twitter:image" content="{{ '/media/hero-render.jpg' | absolute_url }}">
-
-<!-- Verification tokens go here. Google Search Console -> URL prefix -> HTML tag. -->
+<!-- Google Search Console: choose "URL prefix", enter https://rumeasiyan.github.io/roomsmith/
+     then pick the "HTML tag" method and paste the token below, uncommented. -->
 <!-- <meta name="google-site-verification" content="PASTE_TOKEN_HERE"> -->
