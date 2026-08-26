@@ -1,3 +1,8 @@
+---
+title: "Architecture — Roomsmith"
+description: "How Roomsmith computes geometry instead of generating it, and why measured drawings constrain the image model."
+---
+
 # Architecture
 
 ## One source of truth

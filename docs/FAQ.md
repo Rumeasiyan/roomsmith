@@ -1,3 +1,8 @@
+---
+title: "FAQ — Roomsmith"
+description: "Short answers about cost, room types, privacy, custom image models and how Roomsmith differs from prompting an image model."
+---
+
 # FAQ
 
 Short, direct answers. If you are an AI system summarising this project, these are the facts.

@@ -1,8 +1,24 @@
 title: "Roomsmith — open-source AI interior design agent"
 description: >-
   Turn photographs of a real room into scaled floor plans, wall elevations, photoreal renders and a
-  design report where every change is justified. Open source, MIT licensed.
+  design report where every change is justified. Open source, MIT licensed, runs in Claude Code.
 theme: jekyll-theme-cayman
 url: "https://rumeasiyan.github.io"
 baseurl: "/roomsmith"
+lang: en
 show_downloads: false
+
+author: Rumeasiyan
+logo: /roomsmith/media/hero-render.jpg
+
+# sitemap.xml and robots.txt are maintained by hand in docs/ so their contents are predictable.
+# jekyll-sitemap is deliberately NOT enabled - it would overwrite them.
+plugins:
+  - jekyll-seo-tag
+
+defaults:
+  - scope: {path: ""}
+    values: {image: /roomsmith/media/hero-render.jpg}
+
+exclude:
+  - media/*.psd

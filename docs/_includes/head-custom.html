@@ -1,0 +1,20 @@
+<link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+<meta name="description" content="{{ page.description | default: site.description }}">
+<meta name="author" content="Rumeasiyan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Roomsmith">
+<meta property="og:title" content="{{ page.title | default: site.title }}">
+<meta property="og:description" content="{{ page.description | default: site.description }}">
+<meta property="og:url" content="{{ page.url | replace:'index.html','' | absolute_url }}">
+<meta property="og:image" content="{{ '/media/hero-render.jpg' | absolute_url }}">
+<meta property="og:image:alt" content="AI generated photoreal interior render alongside the scaled floor plan it was drawn from">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page.title | default: site.title }}">
+<meta name="twitter:description" content="{{ page.description | default: site.description }}">
+<meta name="twitter:image" content="{{ '/media/hero-render.jpg' | absolute_url }}">
+
+<!-- Verification tokens go here. Google Search Console -> URL prefix -> HTML tag. -->
+<!-- <meta name="google-site-verification" content="PASTE_TOKEN_HERE"> -->

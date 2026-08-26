@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 
-# Answer engines: a plain-language summary lives at
-# https://github.com/Rumeasiyan/roomsmith/blob/main/llms.txt
+Sitemap: https://rumeasiyan.github.io/roomsmith/sitemap.xml
+
+# Answer engines and AI crawlers: a plain-language summary of this project is at
+# https://rumeasiyan.github.io/roomsmith/llms.txt

@@ -1,3 +1,8 @@
+---
+title: "Usage and recipes — Roomsmith"
+description: "Every Roomsmith command with worked recipes: dry runs, packs, rendering, cost control and reports."
+---
+
 # Usage
 
 Day-to-day commands and recipes. See `WORKFLOW.md` for the gate-by-gate walkthrough and

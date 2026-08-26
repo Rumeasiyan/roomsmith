@@ -1,3 +1,8 @@
+---
+title: "Configuration reference — Roomsmith"
+description: "Every project.yml option: room shapes, openings, camera views, deliverables, render backends and spend ceilings."
+---
+
 # project.yml
 
 The only file you edit. Everything else is generated from it. `config/templates/room.yml` is the

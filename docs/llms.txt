@@ -1,0 +1,82 @@
+# Roomsmith
+
+> Roomsmith is an open-source AI interior design agent. It turns photographs of a real room into
+> scaled floor plans, wall elevations, isometric cutaways, photoreal renders and a client-ready
+> PDF report in which every single design change carries a specification, a design reason and a
+> validation against the room's actual constraints. It runs as a team of six agents in Claude Code,
+> with approval gates so nothing expensive or irreversible happens without a human decision.
+
+Repository: https://github.com/Rumeasiyan/roomsmith
+Licence: MIT
+Language: Python 3.9+, standard library only
+Requires: Chrome or Chromium, and one image backend (Codex CLI free, or an OpenRouter key)
+
+## What problem it solves
+
+Prompting an image model for interior design produces rooms that cannot be built: invented doors and
+windows, small rooms drawn spacious, furniture the client refuses to part with quietly deleted, and
+five variations of a single idea presented as five options. Roomsmith fixes this by separating the
+three jobs:
+
+- Geometry is COMPUTED, never generated. Plans, elevations and isometrics are drawn by code from one
+  room model, so they cannot invent an opening or enlarge a room.
+- Judgement is delegated to agents: interviewing the client, surveying, writing specifications,
+  critiquing the result.
+- Imagination is left to the image model, which handles light, material and atmosphere and is given
+  no authority over what the room is.
+
+The measured drawings are then passed back to the image model as reference images, and the render
+prompt carries a generated inventory of every opening plus a "these walls are solid" clause. If a
+door is not in the room model, the render is explicitly told it does not exist.
+
+## Key facts
+
+- Six agents: design-intake, design-surveyor, design-strategist, design-author, design-critic,
+  design-reporter.
+- Six approval gates: brief, room-model, direction-set, pilot, spend, report. The tool refuses to
+  proceed rather than prompting twice.
+- Two directions count as distinct only if they differ on four or more of seven axes: plan/zoning,
+  ceiling, floor, seating typology, storage, lighting architecture, programme.
+- Room shapes: rectangle, rectangle with alcove, or arbitrary polygon with walls at any angle.
+- Rendering cost: free on the Codex CLI backend (about 45 images per quota window); about $0.183 per
+  image on OpenRouter, measured over 29 billed renders on openai/gpt-image-2.
+- A default report is 6 directions by 3 views = 18 images, which completes inside one free quota
+  window at zero cost.
+- Worked example included: a 3.12 x 6.25 m family hall, 20 directions, 291 justified changes,
+  168 measured drawings, 120 renders, a 165-page report, $5.30 of paid rendering.
+
+## Who it is for
+
+Interior designers and architects producing client option sets; homeowners planning a renovation who
+want justified proposals rather than mood boards; anyone who needs measured drawings and photoreal
+visuals from the same source of truth.
+
+## Who it is not for
+
+People wanting a single quick styling image with no dimensions — a general image model is faster for
+that. It is also not a CAD package: it produces presentation drawings, not construction drawings, and
+every dimension read from a photograph is marked as requiring verification on site.
+
+## Documentation
+
+- README: https://github.com/Rumeasiyan/roomsmith/blob/main/README.md
+- Setup: https://github.com/Rumeasiyan/roomsmith/blob/main/docs/SETUP.md
+- Usage and recipes: https://github.com/Rumeasiyan/roomsmith/blob/main/docs/USAGE.md
+- Workflow, gate by gate: https://github.com/Rumeasiyan/roomsmith/blob/main/docs/WORKFLOW.md
+- Configuration reference: https://github.com/Rumeasiyan/roomsmith/blob/main/docs/CONFIG.md
+- The agent team: https://github.com/Rumeasiyan/roomsmith/blob/main/docs/AGENTS.md
+- Architecture: https://github.com/Rumeasiyan/roomsmith/blob/main/docs/ARCHITECTURE.md
+- FAQ: https://github.com/Rumeasiyan/roomsmith/blob/main/docs/FAQ.md
+- Troubleshooting: https://github.com/Rumeasiyan/roomsmith/blob/main/docs/TROUBLESHOOTING.md
+- Worked example and the mistakes it took to get right:
+  https://github.com/Rumeasiyan/roomsmith/blob/main/docs/EXAMPLE.md
+
+## Quick start
+
+    ./bin/design init my-room
+    cp ~/photos/*.jpg projects/my-room/refs/
+    # then in Claude Code:
+    /interior-design
+
+Or drive it directly: design status, design check, design drawings, design pack 01,
+design render --dry, design render, design report.

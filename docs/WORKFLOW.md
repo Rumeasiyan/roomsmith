@@ -1,3 +1,8 @@
+---
+title: "Workflow — Roomsmith"
+description: "The full interior design job gate by gate: intake, survey, strategy, authoring, pilot pack, render, report."
+---
+
 # Workflow
 
 A job runs through seven steps and six gates. The gates exist because the expensive and

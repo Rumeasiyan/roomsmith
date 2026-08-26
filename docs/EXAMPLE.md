@@ -1,3 +1,8 @@
+---
+title: "Worked example — Roomsmith"
+description: "A real 20-direction interior design job: 291 justified changes, 168 drawings, 120 renders, and the seven mistakes it took to get right."
+---
+
 # Worked example — a compact family hall
 
 `projects/compact-hall/` is a complete job, kept in the repo as a reference for how a real one

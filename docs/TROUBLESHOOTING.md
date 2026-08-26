@@ -1,3 +1,8 @@
+---
+title: "Troubleshooting — Roomsmith"
+description: "Fixes for invented doors, rooms drawn too large, bare renders, quota limits and drawing problems."
+---
+
 # Troubleshooting
 
 ## "BLOCKED — gate X is not approved"

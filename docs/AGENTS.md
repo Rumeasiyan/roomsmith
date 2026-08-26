@@ -1,3 +1,8 @@
+---
+title: "The agent team — Roomsmith"
+description: "The six AI agents that run an interior design job, why each exists, how they hand off, and how to customise them."
+---
+
 # The agent team
 
 Six agents, each with one job and a narrow remit. The `interior-design` skill orchestrates them.

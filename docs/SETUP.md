@@ -1,3 +1,8 @@
+---
+title: "Setup — Roomsmith"
+description: "Install Roomsmith and run your first interior design job. Python 3.9+, Chrome, and a free or paid image backend."
+---
+
 # Setup
 
 ## Requirements
