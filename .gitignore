@@ -1,5 +1,6 @@
+drawings/*.html
+.env
+.openrouter_key
 prompts/
 renders/*.log
-drawings/*.html
-.openrouter_key
 renders/_openrouter_cost.jsonl

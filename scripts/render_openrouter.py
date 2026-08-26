@@ -5,12 +5,14 @@ codex's built-in image_gen calls gpt-image-2 (gpt-image-1.5 is only its transpar
 so rendering through OpenRouter with openai/gpt-image-2 keeps the whole 120-image set visually
 consistent - same model, same prompt, same reference drawings and photographs.
 
-    OPENROUTER_API_KEY=sk-or-... scripts/render_openrouter.py <NN-slug> <view>
+    cp .env.example .env        # then put your key in OPENROUTER_API_KEY
+    scripts/render_openrouter.py --missing --dry    # price it, call nothing
     scripts/render_openrouter.py --missing          # render everything still missing
-    scripts/render_openrouter.py --missing --dry    # just price it, call nothing
+    scripts/render_openrouter.py <NN-slug> <view>   # one view
 
-The key is read from $OPENROUTER_API_KEY or from .openrouter_key (gitignored). It is never
-written to disk, never logged and never committed.
+Config comes from .env (gitignored): OPENROUTER_API_KEY, OPENROUTER_IMAGE_MODEL,
+OPENROUTER_IMAGE_QUALITY, OPENROUTER_MAX_SPEND_USD. A real environment variable overrides .env.
+The key is never logged and never committed.
 """
 import base64
 import json
@@ -28,8 +30,29 @@ DRAWINGS = ROOT / "drawings"
 REFS = ROOT / "refs"
 COSTLOG = RENDERS / "_openrouter_cost.jsonl"
 
-MODEL = "openai/gpt-image-2"
 ENDPOINT = "https://openrouter.ai/api/v1/images"
+
+
+def load_dotenv():
+    """Read .env into os.environ without adding a dependency. Real environment wins."""
+    f = ROOT / ".env"
+    if not f.exists():
+        return
+    for raw in f.read_text().splitlines():
+        line = raw.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        k, _, v = line.partition("=")
+        k, v = k.strip(), v.strip().strip("'").strip('"')
+        if k and k not in os.environ:
+            os.environ[k] = v
+
+
+load_dotenv()
+
+MODEL = os.environ.get("OPENROUTER_IMAGE_MODEL") or "openai/gpt-image-2"
+QUALITY = os.environ.get("OPENROUTER_IMAGE_QUALITY") or "high"
+MAX_SPEND = float(os.environ.get("OPENROUTER_MAX_SPEND_USD") or 0) or None
 VIEWS = ["hero-in", "hero-back", "seated", "corner", "alcove", "far-wall"]
 
 # Must mirror scripts/render.sh exactly, or the two backends would not be interchangeable.
@@ -52,11 +75,11 @@ DEFAULT_DWGS = ("plan", "iso")
 def api_key():
     k = os.environ.get("OPENROUTER_API_KEY", "").strip()
     if not k:
-        f = ROOT / ".openrouter_key"
+        f = ROOT / ".openrouter_key"          # legacy fallback
         if f.exists():
             k = f.read_text().strip()
-    if not k:
-        sys.exit("no key: set OPENROUTER_API_KEY or write it to .openrouter_key (gitignored)")
+    if not k or k.startswith("sk-or-v1-replace"):
+        sys.exit("no key. Run:  cp .env.example .env   then put your key in OPENROUTER_API_KEY")
     return k
 
 
@@ -108,7 +131,7 @@ def render(key, view, dry=False):
         "prompt": PREAMBLE + prompt_for(key, view),
         "n": 1,
         "aspect_ratio": "16:9",
-        "quality": "high",
+        "quality": QUALITY,
         "output_format": "png",
         "input_references": [{"type": "image_url", "image_url": {"url": data_url(p)}} for p in refs],
     }
@@ -164,9 +187,13 @@ def main():
     dry = "--dry" in sys.argv
     if "--missing" in sys.argv:
         todo = missing()
-        print(f"{len(todo)} views missing")
+        print(f"{len(todo)} views missing  ·  model {MODEL}  ·  quality {QUALITY}"
+              + (f"  ·  ceiling ${MAX_SPEND:.2f}" if MAX_SPEND else ""))
         total, fails = 0.0, 0
         for k, v in todo:
+            if MAX_SPEND and total >= MAX_SPEND:
+                print(f"\nstopping: hit the ${MAX_SPEND:.2f} ceiling from OPENROUTER_MAX_SPEND_USD")
+                break
             c = render(k, v, dry)
             if c is None:
                 fails += 1

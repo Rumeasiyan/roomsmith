@@ -36,6 +36,29 @@ Produced by the reusable **`interior-designer`** agent / **`/interior-design`** 
 10. **One direction at a time.** Build a pack, inspect it, fix defects in the shared code, then start
    the next. Never batch-generate a whole set.
 
+## Configuration
+
+Secrets live in `.env`, which is gitignored. `.env.example` is committed and documents every
+variable; it must never contain a real key.
+
+```bash
+cp .env.example .env      # then edit .env and paste your OpenRouter key
+```
+
+| Variable | Purpose |
+|---|---|
+| `OPENROUTER_API_KEY` | Only needed for the OpenRouter render backend |
+| `OPENROUTER_IMAGE_MODEL` | Defaults to `openai/gpt-image-2` — the same model codex's `image_gen` uses, so every image in the set stays visually consistent |
+| `OPENROUTER_IMAGE_QUALITY` | `high` matches codex output; `medium` is ~1/3 the cost and softer |
+| `OPENROUTER_MAX_SPEND_USD` | Hard ceiling for one `--missing` run, using the real per-image cost the API reports |
+
+Two interchangeable render backends, same prompts and same reference drawings:
+
+```bash
+./scripts/resume_renders.sh                        # via codex image_gen (free, quota-limited)
+python3 scripts/render_openrouter.py --missing     # via OpenRouter (paid, no quota)
+```
+
 ## Rebuilding
 
 ```bash
