@@ -199,7 +199,7 @@ forward. Then:  design approve pilot"""
 def cmd_render(a):
     p = resolve(a.project)
     p.require("room-model")
-    backend = a.backend or p.get("render.backend", "codex")
+    backend, why = render.choose_backend(p, a.backend)
     if a.which:
         key = p.spec_key(a.which)
         todo = [(key, v) for v in p.views()
@@ -217,8 +217,10 @@ def cmd_render(a):
             print("gate 'pilot' not approved — rendering only the first direction")
     ceiling = float(p.get("render.max_spend_usd") or 0) or None
     spent0 = render.spent(p)
-    print(f"{len(todo)} views to render · backend {backend}"
+    fb, fb_why = render.fallback_backend(p, backend)
+    print(f"{len(todo)} views to render · backend {backend} ({why})"
           + (f" · ceiling ${ceiling:.2f} (spent ${spent0:.2f})" if ceiling else ""))
+    print(f"  fallback: {fb} ({fb_why})" if fb else f"  no fallback ({fb_why})")
     fails = 0
     for key, v in todo:
         if ceiling and render.spent(p) >= ceiling:
@@ -229,13 +231,21 @@ def cmd_render(a):
                 c = render.render_one(p, key, v, backend, a.force)
                 break
             except render.QuotaExhausted as e:
-                if not a.wait:
-                    print(f"\nSTOPPED: {e}. Re-run when it resets; finished views are skipped.")
-                    sys.exit(2)
-                import time as _t
-                print(f"    quota exhausted ({e}) — waiting {a.wait//60} min, "
-                      f"{len(todo)} views still to do")
-                _t.sleep(a.wait)
+                nxt, nxt_why = render.fallback_backend(p, backend)
+                if nxt:
+                    print(f"    {e} — switching to '{nxt}' ({nxt_why})")
+                    p.log(f"backend fell back from '{backend}' to '{nxt}': {e}")
+                    backend = nxt
+                    continue
+                if a.wait:
+                    import time as _t
+                    print(f"    {e} — no fallback ({nxt_why}); waiting {a.wait // 60} min")
+                    _t.sleep(a.wait)
+                    continue
+                print(f"\nSTOPPED: {e}. No fallback ({nxt_why}).\n"
+                      f"Re-run when it resets; finished views are skipped. Or set\n"
+                      f"  render.fallback: openrouter   in project.yml, and approve the 'spend' gate.")
+                sys.exit(2)
         if c is None:
             fails += 1
             if fails >= 3:

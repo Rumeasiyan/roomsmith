@@ -68,6 +68,40 @@ the level of dressing.
 | Key | Purpose |
 |---|---|
 | `backend` | `codex` (free, quota-limited) or `openrouter` (paid) |
+| `fallback` | Optional. Backend to degrade to when the primary runs out mid-run |
 | `max_spend_usd` | Hard ceiling, enforced against the real per-image cost the API reports |
+
+### How the backend is chosen
+
+There is no automatic choice. Precedence, highest first:
+
+1. `--backend openrouter` on the command line
+2. `render.backend` in `project.yml`
+3. `codex`
+
+A paid backend is refused outright until the **`spend`** gate is approved. This is deliberate: a
+tool that decides by itself to start spending money is one you cannot hand an API key to.
+
+`design render` prints which backend it picked and why before it starts.
+
+### Falling back
+
+By default, running out of quota **stops** the run. Finished views are skipped on the next attempt,
+so nothing is wasted. Two ways to keep going:
+
+```bash
+./bin/design render --wait          # sit out the reset, then continue on the same backend
+```
+
+```yaml
+render:
+  backend: codex          # start free
+  fallback: openrouter    # switch to paid when the free quota runs out
+  max_spend_usd: 15
+```
+
+A fallback is only ever used when **all** of these hold: you set `render.fallback` explicitly; the
+`spend` gate is approved if it costs money; and the spend is under the ceiling. Otherwise the run
+stops and tells you exactly which condition failed. Every switch is written to `STATE.json`.
 
 Secrets live in `.env`, never here.

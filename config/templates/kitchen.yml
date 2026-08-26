@@ -125,4 +125,5 @@ style:
 # ---------------------------------------------------------------- rendering
 render:
   backend: codex
+  # fallback: openrouter
   max_spend_usd: 10

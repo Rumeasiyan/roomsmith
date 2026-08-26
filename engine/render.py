@@ -160,6 +160,41 @@ BACKENDS = {"codex": render_codex, "openrouter": render_openrouter}
 
 # ---------------------------------------------------------------- driver
 
+def choose_backend(project, requested=None):
+    """Resolve which backend to use, and why. Explicit beats configured beats default.
+
+    There is no cleverness here on purpose: a tool that silently decides to start spending
+    money is a tool you cannot trust with an API key.
+    """
+    if requested:
+        return requested, "--backend flag"
+    configured = project.get("render.backend")
+    if configured:
+        return configured, "render.backend in project.yml"
+    return "codex", "default"
+
+
+def fallback_backend(project, current):
+    """The backend to degrade to when `current` runs out, if the project opted in.
+
+    Returns (backend, reason) or (None, why-not). Requires an explicit `render.fallback`,
+    the `spend` gate if the fallback costs money, and headroom under the ceiling.
+    """
+    fb = project.get("render.fallback")
+    if not fb:
+        return None, "no render.fallback configured"
+    if fb == current:
+        return None, "fallback is the same as the current backend"
+    if fb not in BACKENDS:
+        return None, f"unknown fallback backend {fb!r}"
+    if fb != "codex" and not project.approved("spend"):
+        return None, f"fallback '{fb}' costs money and the 'spend' gate is not approved"
+    ceiling = float(project.get("render.max_spend_usd") or 0) or None
+    if ceiling and spent(project) >= ceiling:
+        return None, f"already at the ${ceiling:.2f} ceiling"
+    return fb, f"render.fallback, {'spend gate approved' if fb != 'codex' else 'free'}"
+
+
 def render_one(project, key, view, backend=None, force=False):
     out = out_path(project, key, view)
     out.parent.mkdir(parents=True, exist_ok=True)

@@ -127,5 +127,17 @@ style:
 
 # ---------------------------------------------------------------- rendering
 render:
-  backend: codex             # codex (free, quota-limited) | openrouter (paid)
-  max_spend_usd: 10          # hard ceiling; the run stops rather than overspending
+  # Which image backend to use. There is no automatic choice: a tool that decides
+  # on its own to start spending money is one you cannot trust with an API key.
+  #   codex       free, quota-limited, via the Codex CLI
+  #   openrouter  paid, no quota, needs the `spend` gate approved
+  backend: codex
+
+  # Optional. When the primary backend runs out mid-run, degrade to this one instead
+  # of stopping. Only ever used if you set it here AND, for a paid fallback, the
+  # `spend` gate is approved and there is headroom under the ceiling.
+  # fallback: openrouter
+
+  # Hard ceiling in USD, enforced against the real per-image cost the API reports.
+  # The run stops rather than overspending.
+  max_spend_usd: 10
