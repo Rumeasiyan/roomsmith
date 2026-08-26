@@ -125,8 +125,27 @@ Both backends stop cleanly on quota or ceiling and resume by skipping finished v
 Python 3 (no required third-party packages; PyYAML used if present), Chrome or Chromium for
 rasterising drawings and printing the PDF, and at least one render backend.
 
+## What is committed
+
+| Committed | Not committed |
+|---|---|
+| `project.yml` — brief and room model | `refs/` — the client's photographs |
+| `brief/*.md` — the survey | `drawings/` · `renders/` · `report/` — generated |
+| `directions/*.json` — authored specs | `.env` — secrets |
+| `STATE.json` — the approval record | |
+
+Everything on the right regenerates from everything on the left. Photographs of someone's home are
+their property and stay out of version control.
+
 ## Docs
 
-- `docs/SETUP.md` — install and first run
-- `docs/WORKFLOW.md` — the full job, gate by gate
-- `docs/CONFIG.md` — every `project.yml` option
+| | |
+|---|---|
+| `docs/SETUP.md` | Install and first run |
+| `docs/USAGE.md` | Commands and recipes |
+| `docs/WORKFLOW.md` | The full job, gate by gate |
+| `docs/CONFIG.md` | Every `project.yml` option |
+| `docs/AGENTS.md` | The team, handoffs, customising |
+| `docs/ARCHITECTURE.md` | How the engine works and why |
+| `docs/TROUBLESHOOTING.md` | When something goes wrong |
+| `docs/EXAMPLE.md` | The worked 20-direction job |

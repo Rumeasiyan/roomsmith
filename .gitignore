@@ -1,8 +1,30 @@
+# ---------------------------------------------------------------------------
+# Per-project INPUTS and OUTPUTS are never committed.
+#
+# Inputs are the client's private property — photographs of their home.
+# Outputs are large, binary and fully reproducible from the sources that ARE
+# committed (project.yml + brief/ + directions/), so committing them only bloats
+# the repository and creates merge conflicts nobody can resolve.
+#
+# COMMITTED     project.yml · STATE.json · brief/*.md · directions/*.json
+# NOT COMMITTED refs/ · drawings/ · renders/ · report/ · prompts/
+# ---------------------------------------------------------------------------
+projects/*/refs/*
+projects/*/drawings/*
+projects/*/renders/*
+projects/*/report/*
 projects/*/prompts/
-projects/*/renders/_cost.jsonl
-projects/*/renders/*.log
-projects/*/drawings/*.html
+
+# keep the directory structure so a fresh clone works
+!projects/*/refs/.gitkeep
+!projects/*/drawings/.gitkeep
+!projects/*/renders/.gitkeep
+!projects/*/report/.gitkeep
+
+# secrets
 .env
 .openrouter_key
+
+# python
 __pycache__/
 *.pyc
