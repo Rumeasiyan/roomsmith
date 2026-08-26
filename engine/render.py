@@ -24,6 +24,13 @@ import urllib.request
 from . import prompts
 
 ENDPOINT = "https://openrouter.ai/api/v1/images"
+
+# Measured on this project across several quota windows: the free codex backend yields roughly
+# 45-50 images before the limit, then resets in about 4-5 hours. Deliberately conservative.
+CODEX_IMAGES_PER_WINDOW = 45
+
+# Measured mean over 29 billed images on openai/gpt-image-2 at high quality, 16:9.
+OPENROUTER_USD_PER_IMAGE = 0.183
 PREAMBLE = (
     "The first reference images are MEASURED DRAWINGS of this exact room — a scaled plan, "
     "elevation or isometric. They are authoritative on geometry: room proportion, the position "
@@ -159,6 +166,24 @@ BACKENDS = {"codex": render_codex, "openrouter": render_openrouter}
 
 
 # ---------------------------------------------------------------- driver
+
+def forecast(backend, n_images):
+    """A one-line honest expectation before a run starts, so nobody is surprised."""
+    if n_images <= 0:
+        return "nothing to render"
+    if backend == "codex":
+        windows = -(-n_images // CODEX_IMAGES_PER_WINDOW)
+        if windows <= 1:
+            return (f"~{n_images} images · free · a codex window fits about "
+                    f"{CODEX_IMAGES_PER_WINDOW}, so this should finish in one go")
+        return (f"~{n_images} images · free · a codex window fits about "
+                f"{CODEX_IMAGES_PER_WINDOW}, so expect about {windows} windows "
+                f"({windows - 1} quota pause{'s' if windows > 2 else ''}, ~4-5 h each). "
+                f"Use --wait to ride them out")
+    est = n_images * OPENROUTER_USD_PER_IMAGE
+    return (f"~{n_images} images · estimated ${est:.2f} "
+            f"(${OPENROUTER_USD_PER_IMAGE:.3f}/image measured) · no quota pauses")
+
 
 def choose_backend(project, requested=None):
     """Resolve which backend to use, and why. Explicit beats configured beats default.

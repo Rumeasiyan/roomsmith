@@ -68,6 +68,10 @@ def cmd_status(a):
     print(f"views          {done}/{total} rendered ({len(views)} per direction)")
     dr = len(list((p.path / 'drawings').glob('*.png')))
     print(f"drawings       {dr}")
+    missing = len(render.missing(p)) if specs else 0
+    if missing:
+        backend, _ = render.choose_backend(p)
+        print(f"remaining      {render.forecast(backend, missing)}")
     sp = render.spent(p)
     print(f"spend          ${sp:.2f}" + (f" of ${p.get('render.max_spend_usd')} ceiling"
                                          if p.get("render.max_spend_usd") else ""))
@@ -220,6 +224,7 @@ def cmd_render(a):
     fb, fb_why = render.fallback_backend(p, backend)
     print(f"{len(todo)} views to render · backend {backend} ({why})"
           + (f" · ceiling ${ceiling:.2f} (spent ${spent0:.2f})" if ceiling else ""))
+    print(f"  {render.forecast(backend, len(todo))}")
     print(f"  fallback: {fb} ({fb_why})" if fb else f"  no fallback ({fb_why})")
     fails = 0
     for key, v in todo:

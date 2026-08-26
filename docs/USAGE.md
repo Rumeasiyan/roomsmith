@@ -135,5 +135,19 @@ The ceiling is enforced against the **real** per-image cost the API returns, not
 run stops rather than overspending. Spend to date is in `./bin/design status` and itemised in
 `projects/<slug>/renders/_cost.jsonl`.
 
-Roughly $0.18 per image on `openai/gpt-image-2`. A 20-direction job at six views is 120 images,
-about $22 — or free on the codex backend if you can live with quota pauses.
+Measured at **$0.183 per image** on `openai/gpt-image-2` over 29 billed renders.
+
+The free codex backend yields roughly **45–50 images per quota window**, resetting in about 4–5
+hours. Both shipped templates fit in one window:
+
+| Job | Images | Codex | OpenRouter |
+|---|---|---|---|
+| `room` default, 6 × 3 | 18 | one session | ~$3.30 |
+| `kitchen` default, 5 × 4 | 20 | one session | ~$3.66 |
+| One direction, 6 views | 6 | one session | ~$1.10 |
+| 20 × 6 | 120 | ~3 sessions | ~$22 |
+
+`design render` and `design status` both print the forecast before you commit to anything.
+
+The real cost trap is **re-rendering**. Getting the room model wrong and redoing 120 images is
+another $22, which is exactly why the `pilot` gate makes you review one 6-image direction first.

@@ -125,9 +125,28 @@ Python 3.9+ (no third-party packages), Chrome or Chromium, and one render backen
 <details>
 <summary><b>How much does it cost?</b></summary>
 
-Free on the `codex` backend, which is quota-limited. On OpenRouter it's about **$0.18 per image** —
-a 20-direction job at six views each is 120 images, roughly $22. `render.max_spend_usd` is a hard
-ceiling enforced against the real per-image cost the API returns.
+**A default report is free.** The `room` template is 6 directions × 3 views = 18 images, and a free
+codex quota window fits about 45 — so it completes in one session with room to spare.
+
+Beyond that, on OpenRouter it's **$0.183 per image**, measured over 29 billed renders:
+
+| Job | Images | Free backend | Paid |
+|---|---|---|---|
+| Default report (6 × 3) | 18 | one session | ~$3.30 |
+| One direction (6 views) | 6 | one session | ~$1.10 |
+| Large set (20 × 6) | 120 | ~3 sessions, with pauses | ~$22 |
+
+`design render` tells you which of these you're in for before it starts. `render.max_spend_usd` is
+a hard ceiling enforced against the real per-image cost the API returns.
+</details>
+
+<details>
+<summary><b>Will it finish in one free session?</b></summary>
+
+A codex quota window yields roughly 45–50 images before the limit, then resets in about 4–5 hours.
+Both shipped templates (18 and 20 images) fit inside one window. Anything above ~45 images will
+pause; `./bin/design render --wait` sits out the reset and continues automatically, and finished
+views are always skipped so nothing is rendered twice.
 </details>
 
 <details>
