@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+title: "Roomsmith: an open-source AI interior design agent"
+message: "If you use Roomsmith in your work, please cite it."
+type: software
+authors:
+  - given-names: Suseenthiran Arulraj
+    family-names: Rumeasiyan
+    alias: Rumeasiyan
+repository-code: "https://github.com/Rumeasiyan/roomsmith"
+url: "https://github.com/Rumeasiyan/roomsmith"
+abstract: >-
+  Roomsmith turns photographs of a real room into scaled floor plans, wall elevations, isometric
+  cutaways, photoreal renders and a client-ready design report in which every change carries a
+  specification, a design reason and a validation against the room's constraints. Geometry is
+  computed from a single room model rather than generated, so drawings cannot invent an opening or
+  misrepresent a room's size; those drawings are then used to constrain the image model. It runs as
+  a team of six agents with approval gates so nothing expensive happens without a human decision.
+keywords:
+  - interior design
+  - artificial intelligence
+  - ai agents
+  - multi-agent systems
+  - architectural drawings
+  - floor plans
+  - generative design
+  - design automation
+  - image generation
+license: MIT

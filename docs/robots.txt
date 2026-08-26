@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Answer engines: a plain-language summary lives at
+# https://github.com/Rumeasiyan/roomsmith/blob/main/llms.txt

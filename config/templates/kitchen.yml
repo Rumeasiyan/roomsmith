@@ -88,6 +88,8 @@ deliverables:
 
   views:
     - id: hero-in
+      from:    [1.00, 0.40]
+      look_at: [1.50, 4.50]
       caption: "From the doorway, looking in"
       drawings: [plan, iso]
       photos: []
@@ -95,6 +97,8 @@ deliverables:
         CAMERA - HERO. Standing in the doorway looking into the kitchen.
         28 mm lens, eye level 1.55 m. Both runs visible.
     - id: worktop
+      from:    [0.90, 2.30]
+      look_at: [3.00, 2.30]
       caption: "Along the main worktop"
       drawings: [elev-w2, plan]
       photos: []
@@ -103,6 +107,8 @@ deliverables:
         35 mm lens, eye level 1.55 m. Shows worktop, splashback, wall units and
         appliance placement as one elevation. Do not show the opposite wall.
     - id: sink
+      from:    [1.50, 3.40]
+      look_at: [1.50, 4.60]
       caption: "At the sink, looking out of the window"
       drawings: [elev-w3, plan]
       photos: []
@@ -110,6 +116,8 @@ deliverables:
         CAMERA - AT THE SINK. Standing at the sink facing the window wall from
         about 1 m, 35 mm lens, eye level 1.55 m.
     - id: corner
+      from:    [0.40, 0.40]
+      look_at: [3.00, 4.60]
       caption: "High corner overview"
       drawings: [plan, iso]
       photos: []

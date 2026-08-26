@@ -141,6 +141,10 @@ def cmd_check(a):
             for f in ("item", "change", "reason", "validation"):
                 if not str(it.get(f, "")).strip():
                     bad.append(f"{spec['id']}: an item has no {f}")
+    for v in (p.get("deliverables.views") or []):
+        if not (v.get("from") and v.get("look_at")):
+            bad.append(f"view '{v.get('id','?')}' has no from/look_at - no orientation block will "
+                       f"be generated, so the render may mirror the room or invent daylight")
     print(f"room     {room.name}  {x1-x0:.2f} × {y1-y0:.2f} m  {len(room.walls)} walls  "
           f"{len(room.openings)} openings")
     print(f"specs    {len(p.specs())}")

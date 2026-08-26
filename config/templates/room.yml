@@ -100,6 +100,11 @@ deliverables:
       caption: "From the entrance, looking in"
       drawings: [plan, iso]
       photos: []
+      # Camera position and target, in room coordinates. These generate the orientation block
+      # that tells the renderer which wall is on the LEFT, the RIGHT and AHEAD in this frame.
+      # Without them the render will mirror the room and invent daylight on solid walls.
+      from:    [1.00, 0.40]
+      look_at: [2.00, 5.00]
       camera: >
         CAMERA — HERO. Standing just inside the entrance looking into the room.
         28 mm lens, eye level 1.55 m.
@@ -107,6 +112,8 @@ deliverables:
       caption: "From the far end, looking back"
       drawings: [plan, iso]
       photos: []
+      from:    [2.00, 4.60]
+      look_at: [1.00, 0.00]
       camera: >
         CAMERA — HERO REVERSE. From the far end looking back toward the entrance.
         28 mm lens, eye level 1.55 m.
@@ -114,6 +121,8 @@ deliverables:
       caption: "High corner overview"
       drawings: [plan, iso]
       photos: []
+      from:    [0.40, 0.40]
+      look_at: [4.00, 5.00]
       camera: >
         CAMERA — HIGH CORNER. From a corner, 1.85 m up, angled down across the
         room. 24 mm lens. A three-quarter overview showing the plan of the
