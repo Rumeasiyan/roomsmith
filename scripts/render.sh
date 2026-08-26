@@ -22,20 +22,31 @@ fi
 
 # Photographic anchors: whichever of the owner's photographs was taken nearest this standpoint.
 case "$VIEW" in
-  hero-in)    PHOTOS="$ROOT/refs/from-entrance.jpg $ROOT/refs/right-side-of-entrance.jpg" ;;
-  hero-back)  PHOTOS="$ROOT/refs/entrance.jpg $ROOT/refs/left-side-of-entrance.jpg" ;;
-  seated)     PHOTOS="$ROOT/refs/right-side-of-entrance.jpg $ROOT/refs/from-entrance.jpg" ;;
+  hero-in)    PHOTOS="$ROOT/refs/from-entrance.jpg $ROOT/refs/left-side-of-entrance.jpg" ;;
+  hero-back)  PHOTOS="$ROOT/refs/entrance.jpg" ;;
+  seated)     PHOTOS="$ROOT/refs/left-side-of-entrance.jpg" ;;
   corner)     PHOTOS="$ROOT/refs/entrance.jpg $ROOT/refs/from-entrance.jpg" ;;
-  alcove)     PHOTOS="$ROOT/refs/left-side-of-entrance.jpg $ROOT/refs/entrance.jpg" ;;
-  far-wall)   PHOTOS="$ROOT/refs/from-entrance.jpg $ROOT/refs/left-side-of-entrance.jpg" ;;
+  # right-side-of-entrance.jpg is the ONLY photograph taken square-on to the alcove flank:
+  # it shows the arch, window W2, the shrine on the return and the curtained doorway in one frame.
+  alcove)     PHOTOS="$ROOT/refs/right-side-of-entrance.jpg" ;;
+  far-wall)   PHOTOS="$ROOT/refs/from-entrance.jpg" ;;
   *)          PHOTOS="$ROOT/refs/from-entrance.jpg $ROOT/refs/entrance.jpg" ;;
 esac
 
+# Which measured drawing best constrains this camera. A long-axis view needs the plan; a
+# square-on view of one wall needs that wall's elevation, or the model keeps drawing a long view.
+case "$VIEW" in
+  alcove)     DWG1="elev-right"; DWG2="plan" ;;
+  far-wall)   DWG1="elev-far";   DWG2="plan" ;;
+  seated)     DWG1="elev-left";  DWG2="plan" ;;
+  *)          DWG1="plan";       DWG2="iso"  ;;
+esac
+
 # Measured drawings of this direction, as dimensional references.
-PLAN="$ROOT/drawings/${KEY}-plan.png"
-ISO="$ROOT/drawings/${KEY}-iso.png"
-[[ -s "$PLAN" ]] || PLAN="$ROOT/drawings/_shell-plan.png"
-[[ -s "$ISO"  ]] || ISO="$ROOT/drawings/_shell-iso.png"
+PLAN="$ROOT/drawings/${KEY}-${DWG1}.png"
+ISO="$ROOT/drawings/${KEY}-${DWG2}.png"
+[[ -s "$PLAN" ]] || PLAN="$ROOT/drawings/_shell-${DWG1}.png"
+[[ -s "$ISO"  ]] || ISO="$ROOT/drawings/_shell-${DWG2}.png"
 
 REFS="$PLAN $ISO $PHOTOS"
 PROMPT="$(python3 "$ROOT/scripts/build_prompts.py" "$KEY" "$VIEW")"
@@ -54,9 +65,10 @@ Generate exactly one image with the image_gen tool, then save it and stop.
 
 Pass these as referenced_image_paths:
 $REF_LIST
-The FIRST image is a measured floor plan of this exact room, and the SECOND is a measured isometric
-cutaway of it. Use them to get the room's proportion, its narrowness, the position of every opening
-and the placement of the furniture correct. The remaining images are BEFORE photographs of the same
+The FIRST TWO images are measured drawings of this exact room - a scaled elevation or plan. Use them
+to get the room's proportion, its narrowness, the position of every opening and the placement of the
+furniture correct. If the first drawing is a WALL ELEVATION, the camera must look SQUARE-ON at that
+wall and the image must match it: same openings, same widths, same order along the wall. The remaining images are BEFORE photographs of the same
 room taken from roughly this camera position - use them for the architectural shell only: the
 finishes, furniture, ceiling treatment and colours in them are the condition being replaced.
 
