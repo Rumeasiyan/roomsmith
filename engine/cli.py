@@ -5,7 +5,8 @@
     design check                             validate config, geometry, layouts; find real errors
     design drawings [NN|--shell]             measured drawings
     design pack <NN>                         drawings + all views for ONE direction, then stop
-    design render [NN] [--backend B] [--wait]  photoreal views; --wait rides out a quota reset
+    design render [NN] [--backend B] [--wait] [--dry]  photoreal views
+                                             --dry validates everything, calls nothing
     design report                            build the PDF
     design approve <gate> [--note "..."]     record an approval
     design gates                             list gates and their status
@@ -207,7 +208,9 @@ def cmd_render(a):
     if a.which:
         key = p.spec_key(a.which)
         todo = [(key, v) for v in p.views()
-                if a.force or not render.out_path(p, key, v).exists()]
+                if a.force or a.dry or not render.out_path(p, key, v).exists()]
+    elif a.force or a.dry:
+        todo = [(f"{sp['id']}-{sp['slug']}", v) for sp in p.specs() for v in p.views()]
     else:
         todo = render.missing(p)
         if todo and not p.approved("pilot"):
@@ -221,6 +224,29 @@ def cmd_render(a):
             print("gate 'pilot' not approved — rendering only the first direction")
     ceiling = float(p.get("render.max_spend_usd") or 0) or None
     spent0 = render.spent(p)
+    if a.dry:
+        print(f"DRY RUN — {len(todo)} views would render on '{backend}'. "
+              f"No image model is called and nothing is written.\n")
+        bad = warned = 0
+        for key, v in todo:
+            info, errors, warnings = render.dry_run(p, key, v)
+            mark = "✗" if (errors or not info) else ("!" if warnings else "✓")
+            bad += bool(errors or not info)
+            warned += bool(warnings and not errors)
+            detail = (f"  ~{info['prompt_tokens']} prompt tokens, refs: {', '.join(info['refs'])}"
+                      if info else "")
+            print(f"  {mark} {key}-{v}{detail}")
+            for x in errors:
+                print(f"      ERROR  {x}")
+            for x in warnings:
+                print(f"      warn   {x}")
+        print(f"\n{len(todo) - bad}/{len(todo)} views ready"
+              + (f", {warned} with warnings" if warned else ""))
+        print(f"  {render.forecast(backend, len(todo))}")
+        if bad:
+            sys.exit(1)
+        return
+
     fb, fb_why = render.fallback_backend(p, backend)
     print(f"{len(todo)} views to render · backend {backend} ({why})"
           + (f" · ceiling ${ceiling:.2f} (spent ${spent0:.2f})" if ceiling else ""))
@@ -299,6 +325,8 @@ def main(argv=None):
     s.add_argument("--force", action="store_true")
     s.add_argument("--wait", type=int, nargs="?", const=600, default=0, metavar="SECONDS",
                    help="on quota exhaustion, wait and retry instead of stopping (default 600s)")
+    s.add_argument("--dry", action="store_true",
+                   help="validate prompts and references without calling any image model")
     s.set_defaults(fn=cmd_render)
 
     s = sub.add_parser("report", parents=[common]); s.add_argument("--no-pdf", action="store_true")

@@ -51,6 +51,25 @@ Do this early and actually look at it. Drawings expose errors prose hides.
 Builds its drawings and every camera view, then stops and prints a QA checklist. Run the
 `design-critic` agent on the result.
 
+**Test the whole pipeline without spending anything**
+
+```bash
+./bin/design render --dry            # every view
+./bin/design render 03 --dry         # one direction
+```
+
+Builds every prompt, resolves every reference image and checks it exists — but calls no image
+model and writes nothing. Free, instant, and works while a quota is exhausted. Use it before any
+real run: it catches a missing drawing, a photo named in the config but absent from `refs/`, a view
+with no camera, or a spec with no scene, all of which would otherwise waste quota to discover.
+
+```
+  ✓ 03-heritage-vitrine-gallery-hero-in  ~2730 prompt tokens, refs: …-plan.png, …-iso.png, from-entrance.jpg
+  ! 03-heritage-vitrine-gallery-alcove   …
+      warn   'elev-w4' falls back to the empty-room drawing - this direction's furniture
+             will not appear on it. Run: design drawings 03-heritage-vitrine-gallery
+```
+
 **Render everything**
 
 ```bash

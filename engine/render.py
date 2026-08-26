@@ -220,6 +220,57 @@ def fallback_backend(project, current):
     return fb, f"render.fallback, {'spend gate approved' if fb != 'codex' else 'free'}"
 
 
+def dry_run(project, key, view):
+    """Everything a real render does, except calling the image model.
+
+    Builds the prompt, resolves the reference images and checks they exist. Catches a missing
+    drawing, a photo named in the config but not in refs/, an empty scene description or a broken
+    view before any quota or money is spent on finding out.
+    """
+    errors, warnings = [], []
+    try:
+        spec = json.loads((project.path / "directions" / f"{key}.json").read_text())
+    except Exception as e:
+        return None, [f"cannot read spec: {e}"], []
+
+    vc = project.view_cfg(view)
+    if not vc:
+        errors.append(f"view '{view}' is not declared in deliverables.views")
+    if not vc.get("camera"):
+        errors.append(f"view '{view}' has no camera description")
+
+    for name in vc.get("drawings", []):
+        own = project.path / "drawings" / f"{key}-{name}.png"
+        shell = project.path / "drawings" / f"_shell-{name}.png"
+        if own.exists():
+            continue
+        if shell.exists():
+            warnings.append(f"'{name}' falls back to the empty-room drawing - this direction's "
+                            f"furniture will not appear on it. Run: design drawings {key}")
+        else:
+            errors.append(f"reference drawing '{name}' missing - run: design drawings {key}")
+    for photo in vc.get("photos", []):
+        if not (project.path / "refs" / photo).exists():
+            warnings.append(f"reference photo '{photo}' not in refs/ - the render loses its "
+                            f"photographic anchor but will still run")
+
+    scene = (spec.get("render") or {}).get(view) or (spec.get("render") or {}).get("default")
+    if not scene:
+        warnings.append(f"no scene for '{view}' and no render.default - falling back to the thesis, "
+                        f"which is thinner than a written scene")
+
+    try:
+        prompt = prompts.build(project, spec, view)
+    except Exception as e:
+        return None, errors + [f"prompt build failed: {e}"], warnings
+
+    refs = refs_for(project, key, view)
+    if not refs:
+        errors.append("no reference images at all - the render has nothing to anchor geometry to")
+    return ({"prompt_chars": len(prompt), "prompt_tokens": len(prompt) // 4,
+             "refs": [p.name for p in refs]}, errors, warnings)
+
+
 def render_one(project, key, view, backend=None, force=False):
     out = out_path(project, key, view)
     out.parent.mkdir(parents=True, exist_ok=True)

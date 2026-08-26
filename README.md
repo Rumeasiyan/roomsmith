@@ -141,6 +141,15 @@ a hard ceiling enforced against the real per-image cost the API returns.
 </details>
 
 <details>
+<summary><b>Can I test it without using quota or spending money?</b></summary>
+
+Yes — `./bin/design render --dry`. It builds every prompt, resolves every reference image and
+validates them, but calls no image model and writes nothing. It runs fine while a quota is
+exhausted, and catches the things that would otherwise burn quota to discover: a missing drawing, a
+photo named in the config but absent, a view with no camera, a spec with no scene.
+</details>
+
+<details>
 <summary><b>Will it finish in one free session?</b></summary>
 
 A codex quota window yields roughly 45–50 images before the limit, then resets in about 4–5 hours.
