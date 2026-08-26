@@ -121,13 +121,23 @@ def draw_plan(room, spec=None, blueprint=False, title=None):
         o.append(t(mx + nx * 16, my + ny * 16 + 4, op.tag, 11,
                    ACCENT if not blueprint else BLUE_LINE, "middle", 700))
 
-    # features (vents etc) as dashed ticks
+    # Fixed features - radiators, vents, flues. Drawn as real hatched objects with their tag,
+    # because a radiator the brief says must not be boxed in has to be visible on the plan.
     for f in room.features:
         w = room.wall(f.wall)
         a, b = w.point_at(f.pos - f.width / 2), w.point_at(f.pos + f.width / 2)
         (ax, ay), (bx, by) = px(*a), px(*b)
         nx, ny = w.inward
-        o.append(line(ax + nx * 4, ay + ny * 4, bx + nx * 4, by + ny * 4, mid, 1.6, dash="2 2"))
+        dpt = 10.0
+        quad = [(ax, ay), (bx, by), (bx + nx * dpt, by + ny * dpt), (ax + nx * dpt, ay + ny * dpt)]
+        o.append(poly(quad, "none" if blueprint else "#e9edf1", mid, 1.1))
+        for i in range(1, 7):
+            t0 = i / 7
+            hx, hy = ax + (bx - ax) * t0, ay + (by - ay) * t0
+            o.append(line(hx, hy, hx + nx * dpt, hy + ny * dpt, mid, 0.5))
+        # sit the tag well clear of any opening tag on the same stretch of wall
+        o.append(t((ax + bx) / 2 + nx * (dpt + 30), (ay + by) / 2 + ny * (dpt + 30) + 3,
+                   f.tag, 7.5, mid, "middle", 700))
 
     # fan / ceiling items
     fan = (room.existing or {}).get("fan")
@@ -148,7 +158,22 @@ def draw_plan(room, spec=None, blueprint=False, title=None):
             if lbl:
                 cx, cy = X + it["w"] * S / 2, Y + it["d"] * S / 2 + 3
                 rot = -90 if it["d"] > it["w"] * 1.6 else None
-                o.append(t(cx, cy, lbl.upper(), 8, ink, "middle", 600, rot=rot, ls=0.4))
+                # Fit the text to the box: along the box's long side, shrinking to a floor, and
+                # only then spilling outside with a leader. An unreadable plan is a useless plan.
+                avail = (it["d"] if rot else it["w"]) * S - 6
+                size = 8.0
+                while size > 5.2 and len(lbl) * size * 0.64 > avail:
+                    size -= 0.4
+                if len(lbl) * size * 0.64 <= avail:
+                    o.append(t(cx, cy, lbl.upper(), size, ink, "middle", 600, rot=rot, ls=0.3))
+                else:
+                    lx = X + it["w"] * S + 8
+                    anchor = "start"
+                    if lx + len(lbl) * 4.6 > ml + W * S:      # would run off the sheet
+                        lx, anchor = X - 8, "end"
+                    o.append(line(X + it["w"] * S / 2, cy - 3, lx + (4 if anchor == "start" else -4),
+                                  cy - 3, mid, 0.6))
+                    o.append(t(lx, cy, lbl.upper(), 7.5, ink, anchor, 600, ls=0.3))
         if spec["layout"].get("route"):
             rt = [px(*p) for p in spec["layout"]["route"]]
             o.append(path("M " + " L ".join(f"{a:.1f} {b:.1f}" for a, b in rt),
@@ -298,8 +323,12 @@ def draw_iso(room, spec=None, hide=None):
         xx, yy = p3(*mxy, op.head + 0.12)
         o.append(t(xx, yy, op.tag, 10, ACCENT, "middle", 700))
 
+    # Painter's algorithm: in this projection screen-depth grows with (x + y), so the FAR
+    # items are the ones with the smallest sum and must be drawn first. Ties broken by height so
+    # a rug never paints over the bookcase standing on the same spot.
     items = sorted(spec.get("layout", {}).get("plan", []) if spec else [],
-                   key=lambda i: -(i["x"] + i["y"] + i["w"] / 2 + i["d"] / 2))
+                   key=lambda i: (i["x"] + i["w"] / 2 + i["y"] + i["d"] / 2,
+                                  i.get("z", 0) + i.get("h", 0.45)))
     for it in items:
         x, y, w_, d_ = it["x"], it["y"], it["w"], it["d"]
         z0 = it.get("z", 0.0)

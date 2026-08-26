@@ -15,6 +15,16 @@
       "at": "2026-08-26 17:49:30",
       "by": "client",
       "note": "6 directions, min pairwise difference 6/7 axes"
+    },
+    "pilot": {
+      "at": "2026-08-26 18:30:15",
+      "by": "client",
+      "note": "orientation fix verified on the re-rendered hero-in"
+    },
+    "report": {
+      "at": "2026-08-26 18:35:00",
+      "by": "client",
+      "note": "synthetic pipeline test; 2 of 6 directions produced"
     }
   },
   "log": [
@@ -29,6 +39,14 @@
     {
       "at": "2026-08-26 17:49:30",
       "msg": "approved gate 'direction-set': 6 directions, min pairwise difference 6/7 axes"
+    },
+    {
+      "at": "2026-08-26 18:30:15",
+      "msg": "approved gate 'pilot': orientation fix verified on the re-rendered hero-in"
+    },
+    {
+      "at": "2026-08-26 18:35:00",
+      "msg": "approved gate 'report': synthetic pipeline test; 2 of 6 directions produced"
     }
   ]
 }
