@@ -13,12 +13,26 @@ import subprocess
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-DIRECTIONS = ROOT / "directions"
-RENDERS = ROOT / "renders"
-DRAWINGS = ROOT / "drawings"
-REFS = ROOT / "refs"
-REPORT = ROOT / "report"
-SURVEY = ROOT / "brief" / "site-survey.md"
+DIRECTIONS = RENDERS = DRAWINGS = REFS = REPORT = SURVEY = None
+PROJECT = None
+
+
+def _bind(project):
+    global DIRECTIONS, RENDERS, DRAWINGS, REFS, REPORT, SURVEY, PROJECT, VIEWS, DWGS
+    PROJECT = project
+    DIRECTIONS = project.path / "directions"
+    RENDERS = project.path / "renders"
+    DRAWINGS = project.path / "drawings"
+    REFS = project.path / "refs"
+    REPORT = project.path / "report"
+    SURVEY = project.path / "brief" / "site-survey.md"
+    VIEWS = [(v["id"], v.get("caption", v["id"]))
+             for v in (project.get("deliverables.views") or [])]
+    room = project.room()
+    DWGS = ([("plan", "Measured floor plan"), ("iso", "Isometric cutaway — dollhouse view"),
+             ("blueprint", "Blueprint")]
+            + [(f"elev-{w}", f"Elevation — {room.wall(w).name}")
+               for w in (project.get("deliverables.elevations") or [x.id for x in room.walls])])
 
 TIER_NAME = {
     "A": "Tier A — light touch",
@@ -355,7 +369,8 @@ def matrix(specs):
 </section>"""
 
 
-def build():
+def build(project, pdf=True):
+    _bind(project)
     specs = load_specs()
     REPORT.mkdir(exist_ok=True)
 
@@ -451,7 +466,7 @@ def build():
     )
     print(f"wrote {out}  ({out.stat().st_size/1_048_576:.1f} MB, {len(specs)} directions, {n_items} justified changes)")
 
-    if "--pdf" in sys.argv:
+    if pdf:
         chrome = next((c for c in ("google-chrome", "chromium", "chromium-browser")
                        if subprocess.run(["which", c], capture_output=True).returncode == 0), None)
         if not chrome:
@@ -465,4 +480,5 @@ def build():
 
 
 if __name__ == "__main__":
-    build()
+    from .project import resolve
+    build(resolve(None))

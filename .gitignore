@@ -1,6 +1,8 @@
-drawings/*.html
+projects/*/prompts/
+projects/*/renders/_cost.jsonl
+projects/*/renders/*.log
+projects/*/drawings/*.html
 .env
 .openrouter_key
-prompts/
-renders/*.log
-renders/_openrouter_cost.jsonl
+__pycache__/
+*.pyc

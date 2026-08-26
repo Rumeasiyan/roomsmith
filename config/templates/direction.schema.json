@@ -1,0 +1,242 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Interior design direction spec",
+  "type": "object",
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "tagline",
+    "thesis",
+    "story",
+    "budget_tier",
+    "axes",
+    "moves",
+    "items",
+    "palette",
+    "materials",
+    "risks",
+    "not_for",
+    "render",
+    "teak_treatment",
+    "table",
+    "scale_check"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[0-9]{2}$"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "tagline": {
+      "type": "string"
+    },
+    "thesis": {
+      "type": "string",
+      "description": "One paragraph: the spatial idea. Must be a strategy, not a style label."
+    },
+    "story": {
+      "type": "string",
+      "description": "Why this room, this household, this idea. The narrative justification."
+    },
+    "budget_tier": {
+      "enum": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    "solves": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Problem tags from the site survey, e.g. P1, P5"
+    },
+    "axes": {
+      "type": "object",
+      "description": "The seven difference axes. Used to prove directions are genuinely distinct.",
+      "required": [
+        "plan",
+        "ceiling",
+        "floor",
+        "seating",
+        "storage",
+        "lighting",
+        "programme"
+      ],
+      "properties": {
+        "plan": {
+          "type": "string"
+        },
+        "ceiling": {
+          "type": "string"
+        },
+        "floor": {
+          "type": "string"
+        },
+        "seating": {
+          "type": "string"
+        },
+        "storage": {
+          "type": "string"
+        },
+        "lighting": {
+          "type": "string"
+        },
+        "programme": {
+          "type": "string"
+        }
+      }
+    },
+    "moves": {
+      "type": "array",
+      "description": "The three to five headline interventions, in build order.",
+      "items": {
+        "type": "object",
+        "required": [
+          "title",
+          "detail"
+        ],
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "items": {
+      "type": "array",
+      "description": "Every physical change, justified. This is the core of the deliverable.",
+      "items": {
+        "type": "object",
+        "required": [
+          "item",
+          "change",
+          "reason",
+          "validation"
+        ],
+        "properties": {
+          "item": {
+            "type": "string",
+            "description": "The element being changed"
+          },
+          "change": {
+            "type": "string",
+            "description": "The specification: material, finish, dimension"
+          },
+          "reason": {
+            "type": "string",
+            "description": "The design intent"
+          },
+          "validation": {
+            "type": "string",
+            "description": "Why it survives this room's constraints: climate, proportion, circulation, damp, devotion, budget, use"
+          }
+        }
+      }
+    },
+    "palette": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "hex",
+          "use"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "hex": {
+            "type": "string"
+          },
+          "use": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "materials": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "keeps": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Existing items retained, and how"
+    },
+    "removes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Existing items removed, and where they go"
+    },
+    "shrine": {
+      "type": "string",
+      "description": "How the household's devotional niche is handled. Mandatory in this project."
+    },
+    "heirlooms": {
+      "type": "string",
+      "description": "How the curio contents are displayed"
+    },
+    "ventilation": {
+      "type": "string",
+      "description": "How cross-ventilation and the fan are handled"
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "not_for": {
+      "type": "string",
+      "description": "Who this direction is wrong for"
+    },
+    "render": {
+      "type": "object",
+      "required": [
+        "a",
+        "b"
+      ],
+      "description": "Scene descriptions per camera. Camera framing and room shell facts are added by build_prompts.py.",
+      "properties": {
+        "a": {
+          "type": "string",
+          "description": "View A: standing in the main doorway looking down the length of the hall toward the far arch"
+        },
+        "b": {
+          "type": "string",
+          "description": "View B: standing at the far arch looking back toward the main door and window"
+        }
+      }
+    },
+    "teak_treatment": {
+      "type": "string",
+      "description": "How the inherited carved teak settee, armchairs and curio cabinet are re-worked and re-used IN THIS ROOM. Removing them is not permitted."
+    },
+    "table": {
+      "type": "string",
+      "description": "How the low table and the eating/study table function are provided. Deleting the table function is not permitted."
+    },
+    "scale_check": {
+      "type": "string",
+      "description": "Written proof the layout fits 3.12 m x 6.25 m: widths added across the narrow dimension, with the clear circulation lane stated."
+    }
+  }
+}

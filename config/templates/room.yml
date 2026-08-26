@@ -1,0 +1,131 @@
+# ============================================================================
+#  PROJECT CONFIG — the only file you need to edit.
+#  Everything else (drawings, prompts, renders, report) is generated from it.
+#  Run `design check` after editing; it will tell you what is wrong.
+#  Or just run the intake agent, which interviews you and fills this in.
+# ============================================================================
+
+name: "My project"
+client: ""
+
+# ---------------------------------------------------------------- the brief
+brief:
+  # One or two sentences a stranger could read and understand the room from.
+  what_it_is: >
+    Describe the room: what it is for, who uses it, what happens in it,
+    and how people move through it.
+
+  # The cultural and social register. This stops renders drifting into
+  # generic hotel-lobby styling.
+  register: "A lived-in family home."
+
+  # Things that MUST appear in every render. Inherited furniture, religious
+  # objects, a piano, a pet's bed - whatever the household will not give up.
+  must_appear:
+    - "A sofa and a low table"
+
+  # Optional extra sentence pinned into every prompt about retained items.
+  fixed_furniture_note: ""
+
+  # What is actually wrong with the room today. Directions refer back to these.
+  problems:
+    - id: P1
+      text: "Describe a real problem"
+
+  # Hard limits no direction may break.
+  constraints:
+    - "Repair defects at source before specifying any finish"
+
+# ---------------------------------------------------------------- the room
+room:
+  name: "Room"
+  units: m
+  ceiling_height: 2.7
+  confirmed: false          # flip to true only once measured on site
+
+  # Three ways to describe the shape. Pick one.
+  shape:
+    type: rectangle          # rectangle | rectangle_with_alcove | polygon
+    width: 4.0
+    length: 5.0
+    # for rectangle_with_alcove also give:
+    # alcove: {wall: right, start: 2.0, end: 4.0, depth: 0.7}
+    # for polygon instead give:
+    # points: [[0,0],[4,0],[4,5],[0,5]]
+
+  # If the room has an alcove or bay, the bounding box overstates how wide it feels.
+  # Give the main body's dimensions here so prompts describe the room honestly.
+  # key_dimensions: {across: 4.0, along: 5.0}
+
+  # Friendly names for the auto-generated walls w1, w2, ... Run
+  # `design drawings --shell` once and look at the plan to see which is which.
+  wall_names:
+    w1: {name: "Entrance wall", role: entrance}
+    w2: {name: "Right wall", role: flank}
+    w3: {name: "Far wall", role: far}
+    w4: {name: "Left wall", role: flank}
+
+  # EVERY opening. If it is not listed here, renders are told it does not exist.
+  openings:
+    - {tag: D1, type: door, wall: w1, pos: 1.0, width: 0.9, sill: 0.0, head: 2.05,
+       desc: "Entrance door"}
+
+  # Vents, niches, radiators, columns - anything fixed that is not an opening.
+  features: []
+
+  # Sentences appended to the shell description in every render prompt.
+  shell_notes: []
+
+  existing:
+    floor: ""
+    ceiling: ""
+    walls: ""
+    # fan: {x: 2.0, y: 2.5, blade_span: 1.2}
+
+  notes:
+    - "Figures read from photographs must be checked with a tape before joinery."
+
+# ---------------------------------------------------------------- deliverables
+deliverables:
+  directions: 6              # how many distinct design directions
+  aspect_ratio: "16:9"
+  elevations: [w1, w2, w3, w4]
+  iso_hide_walls: [w1, w2]   # walls omitted from the dollhouse so you can see in
+
+  # Each view becomes one render per direction. `drawings` names which measured
+  # drawing constrains that camera - use an elevation for a square-on view, or
+  # the plan for an axial one, otherwise the model defaults to a long view.
+  views:
+    - id: hero-in
+      caption: "From the entrance, looking in"
+      drawings: [plan, iso]
+      photos: []
+      camera: >
+        CAMERA — HERO. Standing just inside the entrance looking into the room.
+        28 mm lens, eye level 1.55 m.
+    - id: hero-back
+      caption: "From the far end, looking back"
+      drawings: [plan, iso]
+      photos: []
+      camera: >
+        CAMERA — HERO REVERSE. From the far end looking back toward the entrance.
+        28 mm lens, eye level 1.55 m.
+    - id: corner
+      caption: "High corner overview"
+      drawings: [plan, iso]
+      photos: []
+      camera: >
+        CAMERA — HIGH CORNER. From a corner, 1.85 m up, angled down across the
+        room. 24 mm lens. A three-quarter overview showing the plan of the
+        furniture — the photographic equivalent of the dollhouse drawing.
+
+# ---------------------------------------------------------------- style
+style:
+  # Leave blank to use the built-in richness rules, which are what stop renders
+  # looking bare. Override only if you want a different level of dressing.
+  richness: ""
+
+# ---------------------------------------------------------------- rendering
+render:
+  backend: codex             # codex (free, quota-limited) | openrouter (paid)
+  max_spend_usd: 10          # hard ceiling; the run stops rather than overspending
