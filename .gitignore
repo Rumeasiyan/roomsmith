@@ -1,3 +1,5 @@
 prompts/
 renders/*.log
 drawings/*.html
+.openrouter_key
+renders/_openrouter_cost.jsonl
