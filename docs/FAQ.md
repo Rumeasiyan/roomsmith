@@ -45,7 +45,7 @@ ceiling enforced against the real per-image cost the API returns.
 
 Any. The room model accepts rectangles, rectangles with an alcove, or arbitrary polygons with walls
 at any angle — so chimney breasts, bays, L-shaped kitchens and re-entrant corners all work. It ships
-with `room` and `kitchen` templates. It has been run end to end on a 3.12 × 6.25 m local family
+with `room` and `kitchen` templates. It has been run end to end on a narrow 3.12 × 6.25 m family
 hall and on a Victorian back bedroom with a chimney breast.
 
 ## Do I need Claude Code?

@@ -7,9 +7,9 @@
       "note": "synthetic brief accepted for pipeline test"
     },
     "room-model": {
-      "at": "2026-08-26 17:40:14",
+      "at": "2026-08-27 16:09:36",
       "by": "client",
-      "note": "synthetic geometry; dimensions invented, not measured"
+      "note": "local test"
     },
     "direction-set": {
       "at": "2026-08-26 17:49:30",
@@ -47,6 +47,10 @@
     {
       "at": "2026-08-26 18:35:00",
       "msg": "approved gate 'report': synthetic pipeline test; 2 of 6 directions produced"
+    },
+    {
+      "at": "2026-08-27 16:09:36",
+      "msg": "approved gate 'room-model': local test"
     }
   ]
 }

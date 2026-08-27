@@ -401,7 +401,7 @@ def build(project, pdf=True):
   <div>
     <div class="kicker">Interior design directions · compact family hall</div>
     <h1>Twenty Ways to<br>Rebuild One Room</h1>
-    <p class="lede">A 3.12 by 6.25 metre family hall in a suburban house, surveyed from
+    <p class="lede">A room surveyed from
     photographs and re-designed twenty times over. Every direction keeps the household's inherited
     carved teak settee, armchairs, curio cabinet and tables, keeps the shrine in daily use, keeps the
     cross-ventilation the room depends on, and is drawn at the room's true and unforgiving scale.

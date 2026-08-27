@@ -32,7 +32,10 @@ Cover, in this order, stopping as soon as you have enough:
 4. **Hard constraints.** Budget band, whether they can vacate the room, listed/rented status,
    climate, structural limits, anything that cannot be changed.
 5. **Register.** Which country, which kind of household. This is what stops renders drifting into
-   generic hotel styling. Be specific: "a suburban family home", not "warm".
+   generic hotel styling. Be specific about country, house type and how the household lives — for
+   example "a 1930s semi in the English Midlands, two adults and a dog, everything gets used", not
+   "warm". Record what the client tells you; never infer someone's religion, wealth or family
+   structure from a photograph and write it down as fact.
 6. **Deliverables.** How many directions, which camera views, whether they want paid rendering.
 
 ## Rules
