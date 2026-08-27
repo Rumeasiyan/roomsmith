@@ -385,13 +385,20 @@ def build(project, pdf=True):
     specs = load_specs()
     REPORT.mkdir(exist_ok=True)
 
+    # The cover shows the client's own photographs of the room as it is today. Take whatever is
+    # in refs/, in the order the views reference them so the most useful ones come first, rather
+    # than hard-coding filenames from one particular project.
+    preferred, seen = [], set()
+    for v in (PROJECT.get("deliverables.views") or []):
+        for name in v.get("photos", []) or []:
+            if name not in seen:
+                seen.add(name)
+                preferred.append(REFS / name)
+    rest = sorted(q for q in REFS.glob("*")
+                  if q.suffix.lower() in {".jpg", ".jpeg", ".png", ".webp"} and q not in preferred)
     cover_imgs = "".join(
-        f"<img src='{u}'>" for u in filter(None, (
-            data_uri(REFS / "from-entrance.jpg", 900),
-            data_uri(REFS / "entrance.jpg", 900),
-            data_uri(REFS / "right-side-of-entrance.jpg", 900),
-            data_uri(REFS / "left-side-of-entrance.jpg", 900),
-        ))
+        f"<img src='{u}'>" for u in filter(None,
+            (data_uri(q, 900) for q in (preferred + rest)[:4]))
     )
     n_items = sum(len(s["items"]) for s in specs)
     n_renders = len(list(RENDERS.glob("*.png")))

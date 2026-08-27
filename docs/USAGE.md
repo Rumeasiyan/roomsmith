@@ -69,7 +69,7 @@ real run: it catches a missing drawing, a photo named in the config but absent f
 with no camera, or a spec with no scene, all of which would otherwise waste quota to discover.
 
 ```
-  ✓ 03-heritage-vitrine-gallery-hero-in  ~2730 prompt tokens, refs: …-plan.png, …-iso.png, from-entrance.jpg
+  ✓ 03-heritage-vitrine-gallery-hero-in  ~2730 prompt tokens, refs: …-plan.png, …-iso.png, …-photo.jpg
   ! 03-heritage-vitrine-gallery-alcove   …
       warn   'elev-w4' falls back to the empty-room drawing - this direction's furniture
              will not appear on it. Run: design drawings 03-heritage-vitrine-gallery

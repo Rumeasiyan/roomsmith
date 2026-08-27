@@ -7,7 +7,7 @@
       "note": "synthetic brief accepted for pipeline test"
     },
     "room-model": {
-      "at": "2026-08-27 16:09:36",
+      "at": "2026-08-27 16:12:36",
       "by": "client",
       "note": "local test"
     },
@@ -50,6 +50,14 @@
     },
     {
       "at": "2026-08-27 16:09:36",
+      "msg": "approved gate 'room-model': local test"
+    },
+    {
+      "at": "2026-08-27 16:11:01",
+      "msg": "approved gate 'room-model': local test"
+    },
+    {
+      "at": "2026-08-27 16:12:36",
       "msg": "approved gate 'room-model': local test"
     }
   ]
